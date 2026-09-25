@@ -12,10 +12,15 @@ Un `if (strcmp(commande, "commande") == 0)` pour executer une commande enfonctio
 Un simple break qui arrete la boucle et qui met donc fin au script
 
 ## INSCRIRE
-> En cours
+> Thomas
+Inscrire des participants
+
+
+## PARTICIPANTS
+> Thomas
 
 ## CREER
 
-## PARTICIPANTS
+
 
 ## CONCOURS
