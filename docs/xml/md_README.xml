@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="fr">
+  <compounddef id="md_README" kind="page">
+    <compoundname>md_README</compoundname>
+    <title>Projet SAE 1.01</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><anchor id="md_README_1autotoc_md0"/></para>
+<sect1 id="md_README_1autotoc_md1">
+<title>Implémentation du projet</title><sect2 id="md_README_1autotoc_md2">
+<title>La boucle principale</title><para>Une boucle while True: simple &amp; efficace.</para>
+</sect2>
+<sect2 id="md_README_1autotoc_md3">
+<title>Les commandes</title><para>Un <computeroutput>if (strcmp(commande, "commande") == 0)</computeroutput> pour executer une commande enfonction de la commande.</para>
+</sect2>
+</sect1>
+<sect1 id="md_README_1autotoc_md4">
+<title>EXIT</title><para>Un simple break qui arrete la boucle et qui met donc fin au script</para>
+</sect1>
+<sect1 id="md_README_1autotoc_md5">
+<title>INSCRIRE</title><para><blockquote><para>Thomas Inscrire des participants </para>
+</blockquote></para>
+</sect1>
+<sect1 id="md_README_1autotoc_md6">
+<title>PARTICIPANTS</title><para><blockquote><para>Thomas </para>
+</blockquote></para>
+</sect1>
+<sect1 id="md_README_1autotoc_md7">
+<title>CREER</title></sect1>
+<sect1 id="md_README_1autotoc_md8">
+<title>CONCOURS</title></sect1>
+    </detaileddescription>
+    <location file="README.md"/>
+  </compounddef>
+</doxygen>

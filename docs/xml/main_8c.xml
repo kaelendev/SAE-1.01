@@ -1,0 +1,198 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="fr">
+  <compounddef id="main_8c" kind="file" language="C++">
+    <compoundname>main.c</compoundname>
+    <includes local="no">stdio.h</includes>
+    <includes local="no">string.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>main.c</label>
+        <link refid="main_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>stdio.h</label>
+      </node>
+      <node id="3">
+        <label>string.h</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="main_8c_1a322565ccf348d13e4d3de13af771e5fc" prot="public" static="no">
+        <name>debug</name>
+        <initializer>printf</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="main.c" line="4" column="9" bodyfile="main.c" bodystart="4" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="main_8c_1a6df4923d4f7727753f7dc617bb0aa321" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int inscrire</definition>
+        <argsstring>()</argsstring>
+        <name>inscrire</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="main.c" line="121" column="5" bodyfile="main.c" bodystart="121" bodyend="125" declfile="main.c" declline="6" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="main_8c_1ae66f6b31b5ad750f1fe042a706a4e3d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int main</definition>
+        <argsstring>()</argsstring>
+        <name>main</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para>Définition des structures</para>
+        </inbodydescription>
+        <location file="main.c" line="8" column="5" bodyfile="main.c" bodystart="8" bodyend="119"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>debug<sp/>printf</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>inscrire();</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main()<sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{NB_PARTICIPANTS=100,<sp/>NB_CONCOURS=20};<sp/></highlight><highlight class="comment">//<sp/>Constantes<sp/>pour<sp/>le<sp/>nombre<sp/>maximum<sp/>de<sp/>participants<sp/>et<sp/>d&apos;événements</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>prenom[30];</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>nom[30];</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>Participant;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="comment">//<sp/>Structure<sp/>pour<sp/>les<sp/>Concours</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>nom[30];</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>Concours;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Définitions<sp/>des<sp/>variables<sp/>globales<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>Participant<sp/>participants[NB_PARTICIPANTS];</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>Concours<sp/></highlight><highlight class="keyword">event</highlight><highlight class="normal">[NB_CONCOURS];<sp/></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>last_participant_index=-1;<sp/><sp/></highlight><highlight class="comment">//<sp/>0<sp/>l&apos;init:<sp/>aucun<sp/>participant</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>last_event_index=1;<sp/></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Boucle<sp/>infinie<sp/>pour<sp/>l&apos;entrée<sp/>utilisateur<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(1)<sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>commande[30];</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Variables<sp/>pours<sp/>les<sp/>autres<sp/>informations<sp/>après<sp/>la<sp/>commande</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>arg1[30];</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>arg2[30];</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>scanf(</highlight><highlight class="stringliteral">&quot;%s%s%s&quot;</highlight><highlight class="normal">,<sp/>commande,<sp/>arg1,<sp/>arg2);<sp/></highlight><highlight class="comment">//<sp/>%s<sp/>!</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//printf(&quot;%s<sp/>\n&quot;,<sp/>commande);<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>strcmp<sp/>renvoie<sp/>0<sp/>si<sp/>expr1<sp/>et<sp/>expr2<sp/>contienne<sp/>la<sp/>meme<sp/>stringr</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Manuellement<sp/>on<sp/>devrait<sp/>faire<sp/>un<sp/>boucle<sp/>sur<sp/>chaque<sp/>char<sp/>pour<sp/>verifier<sp/>qu&apos;ils<sp/>soient<sp/>tous<sp/>identiques,<sp/>une<sp/>galere<sp/>quoi...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(strcmp(commande,<sp/></highlight><highlight class="stringliteral">&quot;test&quot;</highlight><highlight class="normal">)==0)<sp/>{<sp/></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Tu<sp/>as<sp/>selectionne<sp/>test\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(strcmp(commande,<sp/></highlight><highlight class="stringliteral">&quot;EXIT&quot;</highlight><highlight class="normal">)==0)<sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;<sp/></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(strcmp(commande,<sp/></highlight><highlight class="stringliteral">&quot;CREER&quot;</highlight><highlight class="normal">)==0)<sp/>{<sp/></highlight><highlight class="comment">//Creation<sp/>d&apos;un<sp/>concours</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>Nom_Existe<sp/>=<sp/>0;<sp/></highlight><highlight class="comment">//boolean</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;last_event_index;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(strcmp(arg1,<sp/>event[i].nom)==0)<sp/>{<sp/></highlight><highlight class="comment">//<sp/>il<sp/>est<sp/>par<sp/>la<sp/>le<sp/>prblm</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Nom_Existe<sp/>=<sp/>1;<sp/></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(Nom_Existe=1){</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Nom<sp/>Incorrect\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(last_event_index<sp/>&gt;=<sp/>NB_CONCOURS)<sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Nombre<sp/>d&apos;evenements<sp/>maximum<sp/>atteint\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Creation<sp/>enregistree<sp/>(%d)\n&quot;</highlight><highlight class="normal">,<sp/>last_event_index);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">event</highlight><highlight class="normal">[last_event_index].nom;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>last_event_index++;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(strcmp(commande,<sp/></highlight><highlight class="stringliteral">&quot;INSCRIRE&quot;</highlight><highlight class="normal">)==0)<sp/>{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Pour<sp/>chaque<sp/>élément<sp/>du<sp/>tableau<sp/>on<sp/>regarde<sp/>si<sp/>un<sp/>élément<sp/>contient<sp/>les<sp/>meme<sp/>prénom<sp/>et<sp/>nom</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>correct<sp/>=<sp/>1;<sp/></highlight><highlight class="comment">//<sp/>bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>p_id=0;<sp/>p_id<sp/>&lt;=<sp/>last_participant_index<sp/>;++p_id)<sp/>{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((strcmp(arg1,participants[p_id].prenom)==0)<sp/>&amp;&amp;<sp/>(strcmp(arg2,participants[p_id].nom)==0))<sp/>{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Nom<sp/>Incorrect\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>correct<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(correct==1)<sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>On<sp/>ajoute<sp/>la<sp/>participant</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++last_participant_index;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>strcpy(participants[last_participant_index].prenom,<sp/>arg1);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>strcpy(participants[last_participant_index].nom,<sp/>arg2);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>On<sp/>a<sp/>finis<sp/>!</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Inscription<sp/>enregistree<sp/>(%d)\n&quot;</highlight><highlight class="normal">,<sp/>last_participant_index+1);<sp/></highlight><highlight class="comment">//<sp/>id=index+1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(strcmp(commande,<sp/></highlight><highlight class="stringliteral">&quot;PARTICIPANTS&quot;</highlight><highlight class="normal">)==0)<sp/>{</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(last_participant_index==-1)<sp/>{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Aucun<sp/>participant<sp/>inscrit.\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++last_participant_index;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>strcpy(participants[last_participant_index].prenom,<sp/>arg1);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>strcpy(participants[last_participant_index].nom,<sp/>arg2);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>On<sp/>a<sp/>finis<sp/>!</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Inscription<sp/>enregistree<sp/>(%d)\n&quot;</highlight><highlight class="normal">,<sp/>last_participant_index+1);<sp/></highlight><highlight class="comment">//<sp/>id=index+1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;=last_participant_index;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;(%d)<sp/>%s<sp/>%s<sp/>:<sp/>%d<sp/>concours\n&quot;</highlight><highlight class="normal">,<sp/>i+1,<sp/>participants[i].prenom,<sp/>participants[i].nom,<sp/>0<sp/>);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>inscrire()<sp/>{</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;EXIT<sp/>!\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="main.c"/>
+  </compounddef>
+</doxygen>

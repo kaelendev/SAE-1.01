@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="fr">
+  <compounddef id="README_8md" kind="file" language="Markdown">
+    <compoundname>README.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>Projet<sp/>SAE<sp/>1.01</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Implémentation<sp/>du<sp/>projet</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>La<sp/>boucle<sp/>principale</highlight></codeline>
+<codeline><highlight class="normal">Une<sp/>boucle<sp/>while<sp/>True:<sp/>simple<sp/>&amp;<sp/>efficace.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Les<sp/>commandes</highlight></codeline>
+<codeline><highlight class="normal">Un<sp/>`if<sp/>(strcmp(commande,<sp/>&quot;commande&quot;)<sp/>==<sp/>0)`<sp/>pour<sp/>executer<sp/>une<sp/>commande<sp/>enfonction<sp/>de<sp/>la<sp/>commande.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>EXIT</highlight></codeline>
+<codeline><highlight class="normal">Un<sp/>simple<sp/>break<sp/>qui<sp/>arrete<sp/>la<sp/>boucle<sp/>et<sp/>qui<sp/>met<sp/>donc<sp/>fin<sp/>au<sp/>script</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>INSCRIRE</highlight></codeline>
+<codeline><highlight class="normal">&gt;<sp/>Thomas</highlight></codeline>
+<codeline><highlight class="normal">Inscrire<sp/>des<sp/>participants</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>PARTICIPANTS</highlight></codeline>
+<codeline><highlight class="normal">&gt;<sp/>Thomas</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>CREER</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>CONCOURS</highlight></codeline>
+    </programlisting>
+    <location file="README.md"/>
+  </compounddef>
+</doxygen>

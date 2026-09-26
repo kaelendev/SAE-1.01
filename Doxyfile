@@ -1,0 +1,32 @@
+# Configuration Doxygen — projet SAE 1.01
+# À utiliser depuis la racine du projet ; renommer ce fichier en « Doxyfile ».
+
+DOXYFILE_ENCODING        = UTF-8
+PROJECT_NAME             = "SAE 1.01"
+OUTPUT_LANGUAGE          = French
+OPTIMIZE_OUTPUT_FOR_C    = YES
+
+# Sources C et pages Markdown du projet
+INPUT                    = .
+FILE_PATTERNS            = *.c *.h *.md
+RECURSIVE                = YES
+EXCLUDE                  = docs
+EXCLUDE_PATTERNS         = */.git/* */build/*
+
+# Documentation et avertissements
+EXTRACT_ALL              = NO
+WARNINGS                 = YES
+WARN_IF_UNDOCUMENTED     = YES
+WARN_IF_DOC_ERROR        = YES
+MARKDOWN_SUPPORT         = YES
+
+# Sorties : HTML lisible directement ; XML pour conversion en Markdown
+OUTPUT_DIRECTORY         = docs
+GENERATE_HTML            = YES
+HTML_OUTPUT              = html
+GENERATE_XML             = YES
+XML_OUTPUT               = xml
+GENERATE_LATEX           = NO
+GENERATE_RTF             = NO
+GENERATE_MAN             = NO
+GENERATE_DOCBOOK         = NO
