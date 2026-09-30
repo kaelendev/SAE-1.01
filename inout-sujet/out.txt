@@ -1,0 +1,51 @@
+Inscription enregistree (1)
+Inscription enregistree (2)
+Nom incorrect
+(1) Marcel Pagnol : 0 concours
+(2) Albert Camus : 0 concours
+Creation enregistree (1)
+Creation enregistree (2)
+Nom incorrect
+(1) Livre : 0 participant
+(2) Adaptation : 0 participant
+Gain enregistre
+(1) Marcel Pagnol - 1 concours
+(2) Albert Camus - 0 concours
+(1) Livre : 1 participant
+(2) Adaptation : 0 participant
+Gain enregistre
+Gain enregistre
+Gain enregistre
+(1) Marcel Pagnol : 2 concours
+(2) Albert Camus : 1 concours
+Marcel Pagnol
+(1) Livre : 2 points
+(2) Adaptation : 1 point
+Albert Camus
+(1) Livre : 3 points
+Livre
+1 -> (2) Albert Camus : 3 points
+2 -> (1) Marcel Pagnol : 2 points
+Inscription enregistree (3)
+Gain enregistre
+Livre
+1ex -> (2) Albert Camus : 3 points
+1ex -> (3) Georges Perec : 3 points
+3 -> (1) Marcel Pagnol : 2 points
+Adaptation versus Livre
+(1) Marcel Pagnol : 1 point/2 points : 50.00%
+(2) Albert Camus : 0 point/3 points : 0.00%
+(3) Georges Perec : 0 point/3 points : 0.00%
+Livre
+1ex -> (2) Albert Camus : 3 points : +0 place
+1ex -> (3) Georges Perec : 3 points : +2 places
+3 -> (1) Marcel Pagnol : 2 points : -2 places
+Livre
+1ex -> (2) Albert Camus : 3 points : +0 place
+1ex -> (3) Georges Perec : 3 points : +0 place
+3 -> (1) Marcel Pagnol : 2 points : +0 place
+Gain enregistre
+Livre
+1 -> (1) Marcel Pagnol : 5 points : +2 places
+2ex -> (2) Albert Camus : 3 points : -1 place
+2ex -> (3) Georges Perec : 3 points : -1 place

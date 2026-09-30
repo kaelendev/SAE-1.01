@@ -4,6 +4,8 @@
 #define debug printf
 
 
+
+
 int main() {
     enum {NB_PARTICIPANTS=100, NB_CONCOURS=20}; // Constantes pour le nombre maximum de participants et d'événements
 
@@ -33,9 +35,7 @@ int main() {
         char commande[30];
 
         // Variables pours les autres informations après la commande
-        char arg1[30];
-        char arg2[30];
-        scanf("%s%s%s", commande, arg1, arg2); // %s !
+        scanf("%s", commande); // %s !
 
         
         //printf("%s \n", commande); 
@@ -51,6 +51,9 @@ int main() {
             break; 
         
         } else if (strcmp(commande, "CREER")==0) { //Creation d'un concours
+            char arg1[30];
+
+            scanf("%s", arg1);
             int Nom_Existe = 0; //boolean
             for (int i=0; i<=last_event_index; ++i) {
                 if (strcmp(arg1, event[i].nom)==0) { // il est par la le prblm
@@ -74,11 +77,13 @@ int main() {
             
             
         } else if (strcmp(commande, "INSCRIRE")==0) {
+            char prenom[30], nom[30];
+            scanf("%s%s", prenom, nom);
             // Pour chaque élément du tableau on regarde si un élément contient les meme prénom et nom
             char correct = 1; // bool
             for (int p_id=0; p_id <= last_participant_index ;++p_id) {
-                if ((strcmp(arg1,participants[p_id].prenom)==0) && (strcmp(arg2,participants[p_id].nom)==0)) {
-                    printf("Nom Incorrect\n");
+                if ((strcmp(prenom,participants[p_id].prenom)==0) && (strcmp(nom,participants[p_id].nom)==0)) {
+                    printf("Nom incorrect\n");
                     correct = 0;
                     break;
                     
@@ -89,8 +94,8 @@ int main() {
             if (correct==1) {
                 // On ajoute la participant
                 ++last_participant_index;
-                strcpy(participants[last_participant_index].prenom, arg1);
-                strcpy(participants[last_participant_index].nom, arg2);
+                strcpy(participants[last_participant_index].prenom, prenom);
+                strcpy(participants[last_participant_index].nom, nom);
 
                 // On a finis !
                 printf("Inscription enregistree (%d)\n", last_participant_index+1); // id=index+1
@@ -98,6 +103,8 @@ int main() {
 
             
         } else if (strcmp(commande, "PARTICIPANTS")==0) {
+            
+
             if (last_participant_index==-1) {
                 printf("Aucun participant inscrit.\n");
                 continue;
