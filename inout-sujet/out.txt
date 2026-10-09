@@ -9,11 +9,10 @@ Nom incorrect
 (1) Livre : 0 participant
 (2) Adaptation : 0 participant
 Gain enregistre
-(1) Marcel Pagnol - 1 concours
-(2) Albert Camus - 0 concours
+(1) Marcel Pagnol : 1 concours
+(2) Albert Camus : 0 concours
 (1) Livre : 1 participant
 (2) Adaptation : 0 participant
-Gain enregistre
 Gain enregistre
 Gain enregistre
 (1) Marcel Pagnol : 2 concours
