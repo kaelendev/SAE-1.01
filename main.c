@@ -92,8 +92,8 @@ int main() {
             //printf("[DEBUG] SCORES\n");
 
             for (unsigned int i=0; i<=last_participant_index; ++i) {
-                printf("SCORES %d\n", i+1);
-                for (unsigned int k=0; k<last_event_index; ++k){
+                //printf("SCORES %d\n", i+1);
+                for (unsigned int k=0; k<=last_event_index; ++k){
                     if(participants[i].concours_points[k]!=0){
                         printf("(%u) %s : %u points\n", i+1, event[k].nom, participants[i].concours_points[k]);
                     }else {
