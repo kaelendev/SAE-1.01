@@ -89,19 +89,37 @@ int main() {
             // garitaur le fera ce larper
             unsigned int participant_id;
             scanf("%u", &participant_id);
-            //printf("[DEBUG] SCORES\n");
+            
+            //debug("[DEBUG] SCORES\n");
 
-            for (unsigned int i=0; i<=last_participant_index; ++i) {
-                //printf("SCORES %d\n", i+1);
-                for (unsigned int k=0; k<=last_event_index; ++k){
-                    if(participants[i].concours_points[k]!=0){
-                        printf("(%u) %s : %u points\n", i+1, event[k].nom, participants[i].concours_points[k]);
-                    }else {
-                        
+            if (participant_id > last_participant_index+1) {
+                printf("\n");
+                continue;
+            }
+
+            printf("%s %s\n", participants[participant_id-1].prenom, participants[participant_id-1].nom);
+
+            for (unsigned int concours_index=0; concours_index<=last_event_index; ++concours_index){
+                // concours_id: k+1
+                unsigned int concours_id = concours_index+1;
+                int points =  participants[participant_id-1].concours_points[concours_id];
+
+                if(participants[participant_id-1].concours_points[concours_id]!=0){
+                    printf("(%u) %s : %u ", concours_id, event[concours_index].nom, points);
+
+                    // le pluriels de point
+                    if (points == 1) {
+                        printf("point\n");
+                    } else {
+                        printf("points\n");
                     }
+                }else {
                     
-                        
                 }
+                
+                    
+            }
+                
 
 
                 
@@ -110,7 +128,7 @@ int main() {
                     // boucle sur <participants[i].concours_points>
                     //        si participants[i].concours_points[i] est null => on passe
                     //        si participants[i].concours_points[i] renvoie une valeur => on affiche
-            }
+            
 
         } else if (strcmp(commande, "CONCOURS")==0){
             
@@ -123,9 +141,21 @@ int main() {
             int concours_id;
             scanf("%d", &concours_id);
             
+
+            unsigned int concours_index=concours_id-1;
             // On devrait vérifier que l'id est correcte pour ne pas planter le programme mais ce n'est pas demandé.
             // assert(concours_id!=last_event_id+1)
             //if (event[concours_id-1])
+
+            if (concours_id >  last_event_index+1) {
+                printf("Identifiant incorrect\n");
+                continue;
+            }
+
+            printf("%s\n", event[concours_id-1]);
+
+            
+
         }
 
     };
