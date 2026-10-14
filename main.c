@@ -14,11 +14,11 @@ typedef struct {
     char prenom[STRING_LENGHT];
     char nom[STRING_LENGHT];
     unsigned int concours_points[NB_CONCOURS]; // Tableau: "<id concours>": <nb de points>         participant.concours_points[1] => 3
-    unsigned int nb_concours; // nb de concours au quel participe le participant
+    unsigned int nb_concours; // nb de concours auquel participe le participant
 } Participant;
 
-
-typedef struct { // Structure pour les Concours
+// Structure pour les Concours
+typedef struct { 
     char nom[30];
     unsigned int participants_id[NB_PARTICIPANTS]; // Vraiment utile ?
     unsigned int nb_participants;
@@ -32,7 +32,8 @@ void func_participants(Participant participants[NB_PARTICIPANTS], int last_parti
 void creer(Concours event[NB_CONCOURS], int* last_event_index);
 void inscrire(Participant participants[NB_PARTICIPANTS], int* last_participant_index);
 void gain(Participant participants[NB_PARTICIPANTS], Concours event[NB_CONCOURS], int* last_participant_index, int* last_event_index);
-
+void classement(Concours event[], Participant participants[]);
+void comparaison(Concours event[], Participant participants[]);
 
 int main() {
 
@@ -42,24 +43,17 @@ int main() {
     Participant participants[NB_PARTICIPANTS];
     Concours event[NB_CONCOURS]; 
 
-    int last_participant_index=-1;  // 0 l'init: aucun participant
+    int last_participant_index=-1;
     int last_event_index=-1; 
 
-    
+    char commande[STRING_LENGHT];
+
     /* Boucle infinie pour l'entrée utilisateur */
-    while (1) {
-        char commande[STRING_LENGHT];
-
+    do {
         // Variables pours les autres informations après la commande
-        scanf("%s", commande); // %s !
+        scanf("%s", commande);
 
-        
-        //printf("%s \n", commande); 
-        
-        // strcmp renvoie 0 si expr1 et expr2 contienne la meme stringr
-        // Manuellement on devrait faire un boucle sur chaque char pour verifier qu'ils soient tous identiques, une galere quoi...
-        
-        
+
         if (strcmp(commande, "test")==0) { 
             printf("Tu as selectionne test\n");
 
@@ -74,9 +68,6 @@ int main() {
                 }
             }
 
-        } else if (strcmp(commande, "EXIT")==0) {
-            break; 
-        
         } else if (strcmp(commande, "CREER")==0) { //Creation d'un concours
             creer(event, &last_event_index);            
         } else if (strcmp(commande, "INSCRIRE")==0) {
@@ -86,7 +77,6 @@ int main() {
         } else if (strcmp(commande, "GAIN")==0) {
             gain(participants, event, &last_participant_index, &last_event_index);
         } else if (strcmp(commande, "SCORES")==0){
-            // garitaur le fera ce larper
             unsigned int participant_id;
             scanf("%u", &participant_id);
             
@@ -119,15 +109,12 @@ int main() {
                 
                     
             }
-                
-
-
-                
-                //printf("SCORES %u", i+1);
-                    //for( int k=0; k<);
-                    // boucle sur <participants[i].concours_points>
-                    //        si participants[i].concours_points[i] est null => on passe
-                    //        si participants[i].concours_points[i] renvoie une valeur => on affiche
+            
+            //printf("SCORES %u", i+1);
+                //for( int k=0; k<);
+                // boucle sur <participants[i].concours_points>
+                //        si participants[i].concours_points[i] est null => on passe
+                //        si participants[i].concours_points[i] renvoie une valeur => on affiche
             
 
         } else if (strcmp(commande, "CONCOURS")==0){
@@ -158,7 +145,7 @@ int main() {
 
         }
 
-    };
+    } while (strcmp(commande, "EXIT")!=0);
 
     return 0;
 }
@@ -293,4 +280,12 @@ void gain(Participant participants[NB_PARTICIPANTS], Concours event[NB_CONCOURS]
     
 
     printf("Gain enregistre\n");
+}
+
+void classement(Concours event[], Participant participants[]) {
+
+}
+
+void comparaison(Concours event[], Participant participants[]) {
+
 }
