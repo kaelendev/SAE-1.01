@@ -195,7 +195,7 @@ void func_participants(const Activite *a) {
     }
 }
 
-void inscrire(const Activite *a) {
+void inscrire(Activite *a) {
     char prenom[TAILLE_STR], nom[TAILLE_STR];
     scanf("%s%s", prenom, nom);
     
@@ -213,7 +213,7 @@ void inscrire(const Activite *a) {
 
     if (correct==1) {
         // On ajoute la participant
-        ++ a->dernier_indice_participant; // TO FIX
+        ++a->dernier_indice_participant; // TO FIX
         strcpy(a->participants[a->dernier_indice_participant].prenom, prenom);
         strcpy(a->participants[a->dernier_indice_participant].nom, nom);
 
@@ -229,7 +229,7 @@ void inscrire(const Activite *a) {
             
 }
 
-void creer(const Activite *a) {
+void creer(Activite *a) {
     
     char arg1[TAILLE_STR];
 
@@ -259,7 +259,7 @@ void creer(const Activite *a) {
         
 }
 
-void gain(const Activite *a) {
+void gain( Activite *a) {
     unsigned int participant_id, concours_id;
     int points ;
     scanf("%d%d%d", &participant_id, &concours_id, &points);
@@ -295,9 +295,8 @@ void gain(const Activite *a) {
         //printf("[DEBUG] %u == %u ?\n", participant_id, event[concours_index].participants_id[participant_concours_id_index]);
 
         // TO FIX
-        if (participant_id == a->concours[concours_index].participants_id [participant_concours_id_index]) {
+        if (participant_id == a->concours[concours_index].nb_participants)
             deja_dedans=1;
-        }
     }            
 
     // event[concours_id].participants_id[event[concours_id-1].nb_participants-1]==0 marche pas
@@ -307,7 +306,8 @@ void gain(const Activite *a) {
         a->participants[participant_index].nb_concours += 1;
 
         // On ajoute l'id de l'utilisateur à l'index nb_participants, c'est le dernier
-        a->concours[concours_index].participants_id[a->concours[concours_index].nb_participants]=participant_id;
+                //a->concours[concours_index].nb_participants[a->concours[concours_index].nb_participants]=participant_id;
+        
 
         // On augmente le compteur de nombre d'utilisateur du concours
         a->concours[concours_index].nb_participants +=1;
@@ -346,7 +346,7 @@ void comparaison(const Activite *a) {
     if (concoursA.nb_participants == 0 && concoursB.nb_participants == 0) {
         printf("Aucun participant\n");
     }
-
+ 
     // verifier si un même utilisateur a un score nul dans un concours mais pas un autre
     // for (int id; id <= concoursA.nb_participants; ++id) {
     //     if (concoursA.participants_id[id] == 0) {
