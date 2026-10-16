@@ -73,11 +73,11 @@ Inscrire des participants
 
 
 ### CREER
-> @garigataur
+> @garitaur
 
 
 ### CONCOURS
-> @garigataur
+> @garitaur
 
 
 ### GAIN
@@ -87,11 +87,11 @@ Une commande qui inscrit l'utilisateur dans le concours en question et ajoute le
 
 
 ### SCORES
-> @garigataur & @kaelendev
+> @garitaur & @kaelendev
 
 
 ### CLASSEMENT
-> @garigataur
+> @garitaur
 
 
 ### COMPARAISON
@@ -99,4 +99,4 @@ Une commande qui inscrit l'utilisateur dans le concours en question et ajoute le
 
 
 ### COMPARAISON
-> @garigataur & @kaelendev
+> @garitaur & @kaelendev
