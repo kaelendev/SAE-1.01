@@ -1,4 +1,4 @@
-# Projet SAE 1.01
+# SAE-1.01
 
 ## Le Projet
 
@@ -37,7 +37,7 @@ typedef struct {
     
 ```
 
-#### Certaines informations ici sont redondantes et non optimale en terme d'allocation mémoire, pourquoi ce choix ?
+#### Certaines informations ici sont redondantes et non optimale en terme d'allocation mémoire, pourquoi ce choix ? => NON RECEVABLE
 
 La priorité a été d'avoir un moyen rapide et moins complexe d'accéder à certains types d'informations:
 
@@ -58,45 +58,45 @@ Une simple vérification de la commande entrée `if (strcmp(commande, "commande"
 Nous avons commencé par implémenter les commandes une par une au sein de la fonction `main()` par soucide praticité, cela nous a permis de facilement tester quelle approche nous prenions concernant la structuration des données des concours et des participants.
 
 
-## EXIT
-Un simple break qui arrete la boucle et qui met donc fin au script
+#### EXIT
+La condition d'arrêt de la boucle principale
 
 
-## INSCRIRE
+#### INSCRIRE
 > @kaelendev
 
 Inscrire des participants
 
 
-## PARTICIPANTS
+### PARTICIPANTS
 > @kaelendev
 
 
-## CREER
+### CREER
 > @garigataur
 
 
-## CONCOURS
+### CONCOURS
 > @garigataur
 
 
-## GAIN
+### GAIN
 > @kaelendev
 
 Une commande qui inscrit l'utilisateur dans le concours en question et ajoute le concours en questions à la liste de concours de l'utilisateur. La commande `GAIN` permet aussi d'attribuer un certains nombre de point qui est stocké dans
 
 
-## SCORES
+### SCORES
 > @garigataur & @kaelendev
 
 
-## CLASSEMENT
+### CLASSEMENT
 > @garigataur
 
 
-## COMPARAISON
+### COMPARAISON
 > @kaelendev
 
 
-## COMPARAISON
+### COMPARAISON
 > @garigataur & @kaelendev

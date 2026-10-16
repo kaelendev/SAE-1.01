@@ -1,0 +1,18 @@
+Inscription enregistree (1)
+Inscription enregistree (2)
+Inscription enregistree (3)
+Nom incorrect
+(1) Kaelen dev : 0 concours
+(2) Gariga taur : 0 concours
+(3) Albert Einstein : 0 concours
+Concours incorrects
+Creation enregistree (1)
+Creation enregistree (2)
+Nom incorrect
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Concours incorrects
+(1) Football : 2 participant
+(2) Manifestation : 1 participant

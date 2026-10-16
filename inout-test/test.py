@@ -2,13 +2,16 @@ import sys
 import pexpect
 from pathlib import Path
 
-BASE = Path(__file__).resolve().parent
-EXE = str(BASE / "build" / "main")
+BASE = Path(__file__).resolve().parent # ../../build/main
+EXE = str(BASE.parent / "build" / "main")
 print(EXE)
-IN_FILE = BASE / "inout-sujet" / "in.txt"
-OUT_FILE = BASE / "inout-sujet" / "out.txt"
+INOUT_DIR = input("INOUT_DIR: ") or False
+IN_FILE = (BASE / Path(INOUT_DIR) / "in.txt" if INOUT_DIR else False) or input("IN_FILE: ") or BASE / "inout-sujet" / "in.txt"
+OUT_FILE = (BASE / Path(INOUT_DIR) / "out.txt" if INOUT_DIR else False) or input("OUT_FILE: ") or BASE / "inout-sujet" / "out.txt"
 TIMEOUT = 5 
 RESPONSE_TIMEOUT = 0.2
+
+print(IN_FILE)
 
 GREEN = "\033[92m"
 RED = "\033[91m"

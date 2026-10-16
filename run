@@ -1,1 +1,1 @@
-mkdir -p build && gcc main.c -o ./build/main && clear && ./build/main
+mkdir -p build && gcc src/main.c -Wall -Wextra -g -o ./build/main && clear && ./build/main
