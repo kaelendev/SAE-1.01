@@ -46,17 +46,7 @@ void gain(Activite *a);
 void classement(const Activite *a);
 void comparaison(const Activite *a);
 void concours(const Activite *a);
-
-
-void combine(int listeA[INT_MAX], int nbA, int listeB[INT_MAX], int nbB, int result[INT_MAX]) {
-    for (int i=0; i < nbA; i++) {
-        result[i] = listeA[i];
-    }
-
-    for (int j=0; j < nbA+nbB; j++) {
-        result[j] = listeB[j];
-    }
-}
+void bilan(Activite *a);
 
 /**
  * Trier dans l'ordre croissante une liste d'entier
@@ -75,18 +65,6 @@ void sort(int liste[INT_MAX], int nb) {
 }
 
 /**
- * Srcpy pour un COPier un tableau d'INT
- * \param src Tableau source
- * \param dst Tableau de destination (la copie)
- * \param nb Nombre d'éléments de src
- */
-void copint(const int src[], int dst[], int nb) {
-    for (int i=0; i < nb; ++i) {
-        dst[i] = src[i];
-    }
-}
-
-/**
  * Vérifier si element est dans liste
  */
 char dans(int element, const int liste[], int nb) {
@@ -98,33 +76,22 @@ char dans(int element, const int liste[], int nb) {
 }
 
 /**
- * Vérifier si liste possède des doublons
- * \param liste La liste en question _(concours ou participants)_
- * \param nb Le nombre d'élements dans la liste
- * \return 0=false or 1=true
+ * Renvoie 1 si l'utilisateur est dans le concours donné et 0 s'il n'est pas dans le concours
+ * \param concours_id L'identifiant du concours
+ * \param participant_id L'identifiant du participant
+ * \param a Le contexte global Activité (non modifiable)
  */
-char doublon(const int liste[], int nb) {
-    for (int index=0; index < nb; index++) {
-        int copy[NB_PARTICIPANTS];
-        copint(liste, copy, nb);
-
-        copy[index] = -1;
-
-        if (dans(liste[index], copy, nb )==1) {
-            return 1;
-        }
-    }
-    return 0;
-}
-
-
-// Renvoie 1 si l'utilisateur est dans le concours donné
 char participeAuConcours(int concours_id, int participant_id, const Activite *a) {
     if (a->participants[participant_id-1].inscrit[concours_id] == 1) return 1;
     return 0;
 }
 
-// Lister les participants à un concours
+/**
+ * Renvoie la liste d'identifiants de participants qui participe au concours donné
+ * \param a Le contexte global Activité (non modifiable)
+ * \param concours_id L'identifiant du concours
+ * \param resultat Le tableau de sortie qui va contenir le résultat
+ */
 void concoursParticipants(const Activite *a, int concours_id, int resultat[NB_PARTICIPANTS]) {
     int nb_results = 0;
     for (int id=1; id <= a->dernier_indice_participant+1; ++id) {
@@ -141,7 +108,12 @@ void concoursParticipants(const Activite *a, int concours_id, int resultat[NB_PA
 
 // { 2: 12, 4: 24, 5: 10}
 
-// Lister les points de participants pour le concours donné
+/**
+ * Lister les points de participants par identifiant pour le concours donné
+ * \param a Le contexte global Activité (non modifiable)
+ * \param concours_id L'identifiant du concours
+ * \param points Le tableau de sortie qui va contenir le résultat
+ */
 void pointsParticipants(const Activite *a, int concours_id, unsigned int points[NB_PARTICIPANTS]) {
     //Concours concours = a->concours[concours_id-1];
 
@@ -198,32 +170,7 @@ int main() {
         } else if (strcmp(commande, "GAIN")==0) {
             gain(&activite);
         } else if (strcmp(commande, "SCORES")==0){
-            unsigned int participant_id;
-            scanf("%u", &participant_id);
-
-            if (participant_id > activite.dernier_indice_participant+1) {
-                printf("\n");
-                continue;
-            }
-
-            printf("%s %s\n", activite.participants[participant_id-1].prenom, activite.participants[participant_id-1].nom);
-
-            for (unsigned int concours_index=0; concours_index<=activite.dernier_indice_concours; ++concours_index){
-                // concours_id: k+1
-                unsigned int concours_id = concours_index+1;
-                int points = activite.participants[participant_id-1].concours_points[concours_id];
-
-                if(activite.participants[participant_id-1].concours_points[concours_id]!=0){
-                    printf("(%u) %s : %u ", concours_id, activite.concours[concours_index].nom, points);
-
-                    // le pluriels de point
-                    if (points == 1) {
-                        printf("point\n");
-                    } else {
-                        printf("points\n");
-                    }
-                }  
-            }
+            scores(&activite);
         } else if (strcmp(commande, "CONCOURS")==0){
             concours(&activite);
         } else if (strcmp(commande, "CLASSEMENT")==0) {
@@ -338,6 +285,10 @@ void creer(Activite *a) {
         
 }
 
+/**
+ * Commande GAIN: ajouter des points à un participants dans un concours
+ * \param a Le contexte global Activité
+ */
 void gain( Activite *a) {
     unsigned int participant_id, concours_id;
     int points ;
@@ -384,6 +335,10 @@ void gain( Activite *a) {
     printf("Gain enregistre\n");
 }
 
+/**
+ * Commande CONCOURS: Liste les concours par ID et affiche le nombre de participants
+ * \param a Le contexte global Activité
+ */
 void concours(const Activite *a) {
     for (int i=0; i<=a->dernier_indice_concours; ++i) {
         printf("(%u) %s : %u participant", i+1 , a->concours[i].nom, a->concours[i].nb_participants);
@@ -392,6 +347,40 @@ void concours(const Activite *a) {
 
     }
 }
+
+/**
+ * Commande SCORE: Donne le score d'un participant dans chaque concours
+ * \param a Le contexte global Activité (non modifiable)
+ */
+void score(const Activite *a) {
+    unsigned int participant_id;
+    scanf("%u", &participant_id);
+
+    if (participant_id > a->dernier_indice_participant+1) {
+        printf("\n");
+        return;
+    }
+
+    printf("%s %s\n", a->participants[participant_id-1].prenom, a->participants[participant_id-1].nom);
+
+    for (unsigned int concours_index=0; concours_index <= a->dernier_indice_concours; ++concours_index){
+        // concours_id: k+1
+        unsigned int concours_id = concours_index+1;
+        int points = a->participants[participant_id-1].concours_points[concours_id];
+
+        if(a->participants[participant_id-1].concours_points[concours_id]!=0){
+            printf("(%u) %s : %u ", concours_id, a->concours[concours_index].nom, points);
+
+            // le pluriels de point
+            if (points == 1) {
+                printf("point\n");
+            } else {
+                printf("points\n");
+            }
+        }  
+    }
+}
+
 // Prend la liste non triée et nb
 void sort2(int liste[], int nb, int resultat[], const Activite *a, int concours_id) {
     // Copie liste des identifiant
@@ -416,6 +405,10 @@ void sort2(int liste[], int nb, int resultat[], const Activite *a, int concours_
     }
 }
 
+/**
+ * Commande CLASSEMENT: Afficher dans l'ordre décroissant les aprticipants avec le plus de points sur un concours
+ * \param a Le contexte global Activité
+ */
 void classement(const Activite *a) {
     int concours_id_ByUser;
     scanf("%d", &concours_id_ByUser);
@@ -450,6 +443,10 @@ void classement(const Activite *a) {
     }
 }
 
+/**
+ * Commande COMPARAISON: Compare le nombre de points d'un participants dans 2 concours
+ * \param a Le contexte global Activité
+ */
 void comparaison(const Activite *a) {
     int concoursA_id;
     int concoursB_id;
@@ -497,4 +494,12 @@ void comparaison(const Activite *a) {
         
 
     }
+}
+
+/**
+ * Commande BILAN: Affiche les avancées progressive de chaque participants depuis la dernière commande BILAN
+ * \param a Le contexte global Activité
+ */
+void bilan(Activite *a) {
+
 }
