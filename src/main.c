@@ -16,24 +16,20 @@ typedef struct {
     char prenom[TAILLE_STR];
     char nom[TAILLE_STR];
     unsigned int concours_points[NB_CONCOURS+1]; // Tableau: "<id concours>": <nb de points>         participant.concours_points[1] => 3
-    char inscrit[NB_CONCOURS+1]; // Tableau: "<id concours>: 0/1 pour inscrit ou pas inscrit"
+    char inscrit[NB_CONCOURS+1]; // Tableau: "<id concours>: 0/1 pour inscrit ou pas inscrit" // INUTILE
     unsigned int nb_concours; // nb de concours auquel participe le participant
 } Participant;
 
 // Structure pour les Concours
 typedef struct { 
     char nom[TAILLE_STR];
-    unsigned int nb_participants;
+    unsigned int nb_participants; // EN DOUBLONS on compte le nb participant avec pts non nul/ concours
 } Concours;
     
 
 typedef struct {
-    // Tous les participants
-    Participant participants[NB_PARTICIPANTS];
-
-    // Tous les concours
-    Concours concours[NB_CONCOURS];
-
+    Participant participants[NB_PARTICIPANTS]; // Tous les participants
+    Concours concours[NB_CONCOURS]; // Tous les concours
     int dernier_indice_participant;
     int dernier_indice_concours;
 } Activite;
@@ -43,17 +39,18 @@ void func_participants(const Activite *a);
 void creer(Activite *a);
 void inscrire(Activite *a);
 void gain(Activite *a);
-void classement(const Activite *a);
+void classement(Activite *a);
 void comparaison(const Activite *a);
 void concours(const Activite *a);
 void bilan(Activite *a);
+void scores(Activite *a);
 
 /**
  * Trier dans l'ordre croissante une liste d'entier
  * \param liste La liste à trier
  * \param nb Le nombre d'éléments de liste
  */
-void sort(int liste[INT_MAX], int nb) {
+void sort(int liste[], int nb) {
 
     for (int index=0; index+1 < nb; ++index) {
         if (liste[index] > liste[index+1]) {
@@ -352,7 +349,7 @@ void concours(const Activite *a) {
  * Commande SCORE: Donne le score d'un participant dans chaque concours
  * \param a Le contexte global Activité (non modifiable)
  */
-void score(const Activite *a) {
+void scores( Activite *a) {
     unsigned int participant_id;
     scanf("%u", &participant_id);
 
@@ -381,65 +378,72 @@ void score(const Activite *a) {
     }
 }
 
-// Prend la liste non triée et nb
-void sort2(int liste[], int nb, int resultat[], const Activite *a, int concours_id) {
-    // Copie liste des identifiant
-    for (int i = 0; i < nb; ++i) {
-        resultat[i] = liste[i];
-    }
-
+/**
+ * Trie par points décroissants, puis par identifiant croissant en cas d'égalité
+ * \param ids    Les identifiants des participants
+ * \param points Les points correspondants
+ * \param nb     Le nombre d'éléments
+ */
+void sortvic(int list[], int points[], int nb) {
     for (int fin = nb - 1; fin > 0; --fin) {
-        int meilleur_index = 0;
+        for (int index = 0; index < fin; ++index) {
+            if (points[index] < points[index+1]) {
+                // On échange les points
+                int tmp = points[index+1];
+                points[index+1] = points[index];
+                points[index] = tmp;
 
-        for (int i = 1; i <= fin; ++i) {
-            int points_i = a->participants[resultat[i] - 1].concours_points[concours_id];
-            int points_meilleur = a->participants[resultat[meilleur_index] - 1].concours_points[concours_id];
-            if (points_i > points_meilleur || (points_i == points_meilleur && resultat[i] < resultat[meilleur_index])) {
-                meilleur_index = i;
+                // On échange les identifiants
+                tmp = list[index+1];
+                list[index+1] = list[index];
+                list[index] = tmp;
+            } else if (points[index] == points[index+1]) {
+                if (list[index] > list[index+1]) {
+                    // On échange les identifiants
+                    int tmp = list[index+1];
+                    list[index+1] = list[index];
+                    list[index] = tmp;
+                }
             }
         }
-
-        int tmp = resultat[fin];
-        resultat[fin] = resultat[meilleur_index];
-        resultat[meilleur_index] = tmp;
     }
 }
+void classement(Activite *a) {
+    int concours_id;
+    scanf("%d", &concours_id);
 
-/**
- * Commande CLASSEMENT: Afficher dans l'ordre décroissant les aprticipants avec le plus de points sur un concours
- * \param a Le contexte global Activité
- */
-void classement(const Activite *a) {
-    int concours_id_ByUser;
-    scanf("%d", &concours_id_ByUser);
-
-    if (concours_id_ByUser < 1 || concours_id_ByUser > a->dernier_indice_concours + 1) {
+    if (concours_id < 1 || concours_id > a->dernier_indice_concours + 1) {
         printf("Identifiant incorrect\n");
         return;
-    } else if ((a->concours[concours_id_ByUser - 1].nb_participants == 0)) {
-        printf("Aucun participant\n");
-        return;
     }
-    else {
-        int ParticipantNONTrier[NB_PARTICIPANTS];
-        int ParticipantOUITrier[NB_PARTICIPANTS];
-        int nb = 0;
-        for ( int k=0; k<= a->dernier_indice_participant+1; ++k){
 
-            if(participeAuConcours(concours_id_ByUser, k+1, a) == 1){
-                ParticipantNONTrier[nb] = a->participants[k].id;
+    int list[NB_PARTICIPANTS];
+    int points[NB_PARTICIPANTS];
+    int nb = 0;
+
+    // On récupère les participants inscrits au concours
+    for (int i = 0; i <= a->dernier_indice_participant; ++i) {
+        if (a->participants[i].inscrit[concours_id] == 1) {
+            list[nb] = a->participants[i].id;
+            points[nb] = a->participants[i].concours_points[concours_id];
             ++nb;
-            }
         }
-        sort2(ParticipantNONTrier,nb, ParticipantOUITrier,a,concours_id_ByUser);
-        //LES PRINTSSSSS
-        printf("%s\n", a->concours[concours_id_ByUser -1].nom);
+    }
 
-        for(int l = 0; l< NB_PARTICIPANTS; ++l){
-            int participants;
-            //printf("%d%s -> (%d) %s %s : %d points", ParticipantOUITrier[k], aexeco="1" ? "ex" : "", a->participants->id, a->participants->prenom, a->participants->nom, a->participants->concours_points );
-        
+    // On trie les participants par points décroissants
+    sortvic(list, points, nb);
+
+    // On affiche le classement
+    for (int i = 0; i < nb; ++i) {
+        Participant *p = &a->participants[list[i] - 1];
+
+        printf("%d -> (%d) %s %s : %d point", i+1, p->id ,p->prenom, p->nom, points[i]);
+
+        if (points[i] != 1) {
+            printf("s");
         }
+
+        printf("\n");
     }
 }
 
