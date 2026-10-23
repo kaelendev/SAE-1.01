@@ -436,8 +436,11 @@ void classement(Activite *a) {
     // On affiche le classement
     for (int i = 0; i < nb; ++i) {
         Participant *p = &a->participants[list[i] - 1];
-
-        printf("%d -> (%d) %s %s : %d point", i+1, p->id ,p->prenom, p->nom, points[i]);
+        printf("%d", i+1);
+        if(points[i]==points[i+1] || points[i]==points[i-1] ){ //print ex si =points avant ou non sinon ignorer
+            printf("ex ");
+        }
+        printf("-> (%d) %s %s : %d point", p->id ,p->prenom, p->nom, points[i]);
 
         if (points[i] != 1) {
             printf("s");
