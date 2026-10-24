@@ -417,6 +417,8 @@ void classement(Activite *a) {
         return;
     }
 
+    printf("%s\n", a->concours[concours_id-1].nom);
+
     int list[NB_PARTICIPANTS];
     int points[NB_PARTICIPANTS];
     int nb = 0;
@@ -436,11 +438,15 @@ void classement(Activite *a) {
     // On affiche le classement
     for (int i = 0; i < nb; ++i) {
         Participant *p = &a->participants[list[i] - 1];
-        printf("%d", i+1);
-        if(points[i]==points[i+1] || points[i]==points[i-1] ){ //print ex si =points avant ou non sinon ignorer
-            printf("ex ");
+        if(points[i]==points[i+1]){ //print ex si =points avant ou non sinon ignorer
+            printf("%dex", i+1);
+        } else if (points[i]==points[i-1] ) {
+            printf("%dex", i); // S'ils sont ex-arquo ils sont à la même place !
+        } // Et s'ils sont 3 à être ex-aequo ou plus ??
+        else {
+            printf("%d", i+1);
         }
-        printf("-> (%d) %s %s : %d point", p->id ,p->prenom, p->nom, points[i]);
+        printf(" -> (%d) %s %s : %d point", p->id ,p->prenom, p->nom, points[i]);
 
         if (points[i] != 1) {
             printf("s");
@@ -458,7 +464,7 @@ void comparaison(const Activite *a) {
     int concoursA_id;
     int concoursB_id;
 
-    scanf("%u%u", &concoursA_id, &concoursB_id);
+    scanf("%u%u", &concoursB_id, &concoursA_id);
 
 
     if (concoursA_id > a->dernier_indice_concours+1 ||
@@ -468,19 +474,22 @@ void comparaison(const Activite *a) {
         return;
     }
 
+    // Affichage
+    printf("%s versus %s\n", a->concours[concoursA_id-1].nom, a->concours[concoursB_id-1].nom);
+
+
     // Verification que les utilisateurs sont inscrits dans les 2 concours
     for (int participant_index=0; participant_index <= a->dernier_indice_participant; ++participant_index) {
-        if (!(
+        if ((
             participeAuConcours(concoursA_id, participant_index+1, a) == 1 &&
-            participeAuConcours(concoursB_id, participant_index+1, a) == 1
-            )) {
+            participeAuConcours(concoursB_id, participant_index+1, a) == 0
+            )
+            ) {
             printf("Concours incompatibles\n");
             return;
         }
     }
 
-    // Affichage
-    printf("%s versus %s\n", a->concours[concoursA_id-1].nom, a->concours[concoursB_id-1].nom);
 
     for (int participant_index=0; participant_index <= a->dernier_indice_participant; ++participant_index) {
         const Participant* participant = &a->participants[participant_index];
@@ -488,18 +497,16 @@ void comparaison(const Activite *a) {
         int p_pointsB = participant->concours_points[concoursB_id];
         printf("(%d) %s %s : ", participant->id, participant->prenom, participant->nom);
 
-        if (p_pointsA == 1) printf("1 point");
+        if (p_pointsA <= 1) printf("%d point", p_pointsA);
         else printf("%d points", p_pointsA);
 
         printf("/");
 
-        if (p_pointsB == 1) printf("1 point");
+        if (p_pointsB <= 1) printf("%d point", p_pointsB);
         else printf("%d points", p_pointsB);
 
         printf(" : %.2f", ((float)p_pointsA / (float)p_pointsB)*100);
-        puts("%\n");
-        
-
+        puts("%");        
     }
 }
 
