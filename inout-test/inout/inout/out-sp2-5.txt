@@ -1,0 +1,72 @@
+Creation enregistree (1)
+Nom incorrect
+Creation enregistree (2)
+Inscription enregistree (1)
+Inscription enregistree (2)
+Apo Gao
+Aucun gain
+Apo Apo
+Aucun gain
+Concours incorrect
+Identifiant incorrect
+Inscription enregistree (3)
+Apo Apo
+Aucun gain
+Identifiant incorrect
+Identifiant incorrect
+Concours incorrect
+Inscription enregistree (4)
+(1) Apo Apo : 0 concours
+(2) Apo Gao : 0 concours
+(3) Apo Roy : 0 concours
+(4) Apo Nao : 0 concours
+Gain enregistre
+(1) Faire_des_challenges : 1 participant
+(2) Se_reposer : 0 participant
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Apo Nao
+(1) Faire_des_challenges : 3 points
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+(1) Apo Apo : 2 concours
+(2) Apo Gao : 2 concours
+(3) Apo Roy : 2 concours
+(4) Apo Nao : 2 concours
+(1) Apo Apo : 2 concours
+(2) Apo Gao : 2 concours
+(3) Apo Roy : 2 concours
+(4) Apo Nao : 2 concours
+(1) Faire_des_challenges : 4 participants
+(2) Se_reposer : 4 participants
+Apo Apo
+(1) Faire_des_challenges : 18 points
+(2) Se_reposer : 4 points
+Apo Gao
+(1) Faire_des_challenges : 4 points
+(2) Se_reposer : 8 points
+Apo Roy
+(1) Faire_des_challenges : 12 points
+(2) Se_reposer : 5 points
+Apo Nao
+(1) Faire_des_challenges : 3 points
+(2) Se_reposer : 7 points

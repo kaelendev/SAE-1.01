@@ -1,0 +1,70 @@
+Creation enregistree (1)
+Inscription enregistree (1)
+Creation enregistree (2)
+Inscription enregistree (2)
+Participant incorrect
+(1) Jay Jay : 0 concours
+(2) Jay Nil : 0 concours
+Inscription enregistree (3)
+Gain enregistre
+Points incorrects
+Identifiant incorrect
+Points incorrects
+Identifiant incorrect
+Inscription enregistree (4)
+Concours incorrect
+Jay Nil
+Aucun gain
+Jay Noy
+Aucun gain
+Jay Noy
+Aucun gain
+Gain enregistre
+(1) Ecouter_de_la_musique : 0 participant
+(2) Construire_une_cabane : 2 participants
+Gain enregistre
+Gain enregistre
+Gain enregistre
+(1) Jay Jay : 1 concours
+(2) Jay Nil : 1 concours
+(3) Jay Noy : 1 concours
+(4) Jay Leo : 1 concours
+Jay Leo
+(1) Ecouter_de_la_musique : 1 point
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+(1) Jay Jay : 2 concours
+(2) Jay Nil : 2 concours
+(3) Jay Noy : 2 concours
+(4) Jay Leo : 2 concours
+(1) Ecouter_de_la_musique : 4 participants
+(2) Construire_une_cabane : 4 participants
+Jay Jay
+(1) Ecouter_de_la_musique : 4 points
+(2) Construire_une_cabane : 7 points
+Jay Nil
+(1) Ecouter_de_la_musique : 9 points
+(2) Construire_une_cabane : 11 points
+Jay Noy
+(1) Ecouter_de_la_musique : 6 points
+(2) Construire_une_cabane : 11 points
+Jay Leo
+(1) Ecouter_de_la_musique : 5 points
+(2) Construire_une_cabane : 1 point

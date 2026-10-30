@@ -1,0 +1,18 @@
+INSCRIRE Ray Ray
+CREER Trainer_sur_les_reseaux
+CONCOURS
+INSCRIRE Ray Dan
+INSCRIRE Ray Abi
+CREER Trainer_sur_les_reseaux
+INSCRIRE Ray Dan
+CREER Prendre_de_bonnes_habitudes
+INSCRIRE Ray Ray
+PARTICIPANTS
+INSCRIRE Ray Teo
+INSCRIRE Ray Abi
+PARTICIPANTS
+INSCRIRE Ray Dan
+CREER Trainer_sur_les_reseaux
+PARTICIPANTS
+CONCOURS
+EXIT

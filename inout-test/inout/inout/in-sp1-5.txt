@@ -1,0 +1,18 @@
+CONCOURS
+INSCRIRE Rut Rut
+CREER Faire_l'ecole_a_ses_enfants
+CREER Lire_un_livre
+INSCRIRE Rut Yva
+CREER Faire_l'ecole_a_ses_enfants
+INSCRIRE Rut Aby
+INSCRIRE Rut Rut
+INSCRIRE Rut Aby
+INSCRIRE Rut Nah
+INSCRIRE Rut Rut
+PARTICIPANTS
+INSCRIRE Rut Rut
+CREER Lire_un_livre
+PARTICIPANTS
+PARTICIPANTS
+CONCOURS
+EXIT

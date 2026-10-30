@@ -1,0 +1,27 @@
+Aucun concours cree
+Inscription enregistree (1)
+Creation enregistree (1)
+Creation enregistree (2)
+Inscription enregistree (2)
+Nom incorrect
+Inscription enregistree (3)
+Nom incorrect
+Nom incorrect
+Inscription enregistree (4)
+Nom incorrect
+(1) Rut Rut : 0 concours
+(2) Rut Yva : 0 concours
+(3) Rut Aby : 0 concours
+(4) Rut Nah : 0 concours
+Nom incorrect
+Nom incorrect
+(1) Rut Rut : 0 concours
+(2) Rut Yva : 0 concours
+(3) Rut Aby : 0 concours
+(4) Rut Nah : 0 concours
+(1) Rut Rut : 0 concours
+(2) Rut Yva : 0 concours
+(3) Rut Aby : 0 concours
+(4) Rut Nah : 0 concours
+(1) Faire_l'ecole_a_ses_enfants : 0 participant
+(2) Lire_un_livre : 0 participant

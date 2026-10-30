@@ -1,0 +1,70 @@
+Creation enregistree (1)
+Inscription enregistree (1)
+Creation enregistree (2)
+Inscription enregistree (2)
+Nom incorrect
+Gain enregistre
+(1) Lea Lea : 1 concours
+(2) Lea Ode : 0 concours
+Inscription enregistree (3)
+Gain enregistre
+Participant incorrect
+Points incorrects
+Gain enregistre
+Inscription enregistree (4)
+(1) Organiser_des_repas_a_theme : 3 participants
+(2) Construire_une_cabane : 0 participant
+Nom incorrect
+Participant incorrect
+Concours incorrect
+Lea Lee
+(1) Organiser_des_repas_a_theme : 4 points
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Lea Ode
+(1) Organiser_des_repas_a_theme : 3 points
+Lea Ode
+(1) Organiser_des_repas_a_theme : 3 points
+Lea Ode
+(1) Organiser_des_repas_a_theme : 3 points
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+(1) Lea Lea : 2 concours
+(2) Lea Ode : 2 concours
+(3) Lea Lee : 1 concours
+(4) Lea Nor : 1 concours
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+(1) Lea Lea : 2 concours
+(2) Lea Ode : 2 concours
+(3) Lea Lee : 2 concours
+(4) Lea Nor : 2 concours
+(1) Organiser_des_repas_a_theme : 4 participants
+(2) Construire_une_cabane : 4 participants
+Lea Lea
+(1) Organiser_des_repas_a_theme : 16 points
+(2) Construire_une_cabane : 6 points
+Lea Ode
+(1) Organiser_des_repas_a_theme : 11 points
+(2) Construire_une_cabane : 10 points
+Lea Lee
+(1) Organiser_des_repas_a_theme : 4 points
+(2) Construire_une_cabane : 3 points
+Lea Nor
+(1) Organiser_des_repas_a_theme : 4 points
+(2) Construire_une_cabane : 3 points

@@ -1,0 +1,25 @@
+Aucun participant inscrit
+Inscription enregistree (1)
+Creation enregistree (1)
+Creation enregistree (2)
+Inscription enregistree (2)
+Inscription enregistree (3)
+Inscription enregistree (4)
+(1) Commencer_une_serie : 0 participant
+(2) Jouer_d'un_instrument : 0 participant
+Nom incorrect
+(1) Asa Asa : 0 concours
+(2) Asa Paj : 0 concours
+(3) Asa Ayo : 0 concours
+(4) Asa Ali : 0 concours
+Nom incorrect
+Nom incorrect
+Nom incorrect
+Nom incorrect
+Nom incorrect
+(1) Asa Asa : 0 concours
+(2) Asa Paj : 0 concours
+(3) Asa Ayo : 0 concours
+(4) Asa Ali : 0 concours
+(1) Commencer_une_serie : 0 participant
+(2) Jouer_d'un_instrument : 0 participant

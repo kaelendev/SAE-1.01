@@ -1,0 +1,120 @@
+Creation enregistree (1)
+Inscription enregistree (1)
+Creation enregistree (2)
+Inscription enregistree (2)
+Faire_des_DIY versus Faire_des_DIY
+Aucun participant
+Participant incorrect
+Nom incorrect
+Identifiant incorrect
+Faire_des_DIY
+Aucun participant
+Inscription enregistree (3)
+Inscription enregistree (4)
+Points incorrects
+Identifiant incorrect
+Nom incorrect
+Nel Lan
+Aucun gain
+Gain enregistre
+Prendre_des_photos versus Prendre_des_photos
+(4) Nel Lan : 1 point/1 point : 100.00%
+Faire_des_DIY versus Faire_des_DIY
+Aucun participant
+Gain enregistre
+Nel Lan
+(2) Prendre_des_photos : 1 point
+Nel Nya
+Aucun gain
+Gain enregistre
+Gain enregistre
+Nel Lan
+(2) Prendre_des_photos : 1 point
+Gain enregistre
+Gain enregistre
+Gain enregistre
+(1) Faire_des_DIY : 3 participants
+(2) Prendre_des_photos : 3 participants
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Faire_des_DIY
+1 -> (1) Nel Nel : 7 points
+2 -> (3) Nel Nya : 4 points
+3ex -> (2) Nel Pie : 2 points
+3ex -> (4) Nel Lan : 2 points
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Prendre_des_photos
+1 -> (1) Nel Nel : 9 points
+2ex -> (3) Nel Nya : 7 points
+2ex -> (4) Nel Lan : 7 points
+4 -> (2) Nel Pie : 2 points
+(1) Nel Nel : 2 concours
+(2) Nel Pie : 2 concours
+(3) Nel Nya : 2 concours
+(4) Nel Lan : 2 concours
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+(1) Nel Nel : 2 concours
+(2) Nel Pie : 2 concours
+(3) Nel Nya : 2 concours
+(4) Nel Lan : 2 concours
+(1) Nel Nel : 2 concours
+(2) Nel Pie : 2 concours
+(3) Nel Nya : 2 concours
+(4) Nel Lan : 2 concours
+(1) Faire_des_DIY : 4 participants
+(2) Prendre_des_photos : 4 participants
+Nel Nel
+(1) Faire_des_DIY : 7 points
+(2) Prendre_des_photos : 11 points
+Nel Pie
+(1) Faire_des_DIY : 5 points
+(2) Prendre_des_photos : 11 points
+Nel Nya
+(1) Faire_des_DIY : 4 points
+(2) Prendre_des_photos : 7 points
+Nel Lan
+(1) Faire_des_DIY : 4 points
+(2) Prendre_des_photos : 11 points
+Faire_des_DIY
+1 -> (1) Nel Nel : 7 points
+2 -> (2) Nel Pie : 5 points
+3ex -> (3) Nel Nya : 4 points
+3ex -> (4) Nel Lan : 4 points
+Prendre_des_photos
+1ex -> (1) Nel Nel : 11 points
+1ex -> (2) Nel Pie : 11 points
+1ex -> (4) Nel Lan : 11 points
+4 -> (3) Nel Nya : 7 points
+Faire_des_DIY versus Faire_des_DIY
+(1) Nel Nel : 7 points/7 points : 100.00%
+(2) Nel Pie : 5 points/5 points : 100.00%
+(3) Nel Nya : 4 points/4 points : 100.00%
+(4) Nel Lan : 4 points/4 points : 100.00%
+Prendre_des_photos versus Faire_des_DIY
+(1) Nel Nel : 11 points/7 points : 157.14%
+(2) Nel Pie : 11 points/5 points : 220.00%
+(3) Nel Nya : 7 points/4 points : 175.00%
+(4) Nel Lan : 11 points/4 points : 275.00%
+Faire_des_DIY versus Prendre_des_photos
+(1) Nel Nel : 7 points/11 points : 63.64%
+(2) Nel Pie : 5 points/11 points : 45.45%
+(3) Nel Nya : 4 points/7 points : 57.14%
+(4) Nel Lan : 4 points/11 points : 36.36%
+Prendre_des_photos versus Prendre_des_photos
+(1) Nel Nel : 11 points/11 points : 100.00%
+(2) Nel Pie : 11 points/11 points : 100.00%
+(3) Nel Nya : 7 points/7 points : 100.00%
+(4) Nel Lan : 11 points/11 points : 100.00%

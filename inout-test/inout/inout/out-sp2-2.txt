@@ -1,0 +1,71 @@
+Inscription enregistree (1)
+Inscription enregistree (2)
+Inscription enregistree (3)
+Ute Ida
+Aucun gain
+Inscription enregistree (4)
+Creation enregistree (1)
+(1) Faire_du_jardinage : 0 participant
+Creation enregistree (2)
+Participant incorrect
+Points incorrects
+Identifiant incorrect
+Participant incorrect
+Points incorrects
+Participant incorrect
+Ute Tya
+Aucun gain
+Ute Ida
+Aucun gain
+Ute Kai
+Aucun gain
+Gain enregistre
+Gain enregistre
+(1) Ute Ute : 0 concours
+(2) Ute Ida : 0 concours
+(3) Ute Kai : 1 concours
+(4) Ute Tya : 1 concours
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+(1) Ute Ute : 1 concours
+(2) Ute Ida : 0 concours
+(3) Ute Kai : 1 concours
+(4) Ute Tya : 2 concours
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+(1) Ute Ute : 2 concours
+(2) Ute Ida : 2 concours
+(3) Ute Kai : 2 concours
+(4) Ute Tya : 2 concours
+(1) Faire_du_jardinage : 4 participants
+(2) Teletravailler : 4 participants
+Ute Ute
+(1) Faire_du_jardinage : 12 points
+(2) Teletravailler : 7 points
+Ute Ida
+(1) Faire_du_jardinage : 1 point
+(2) Teletravailler : 4 points
+Ute Kai
+(1) Faire_du_jardinage : 4 points
+(2) Teletravailler : 10 points
+Ute Tya
+(1) Faire_du_jardinage : 11 points
+(2) Teletravailler : 6 points

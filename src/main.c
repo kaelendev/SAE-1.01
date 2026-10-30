@@ -34,7 +34,6 @@ typedef struct {
     int dernier_indice_participant;
     int dernier_indice_concours;
 
-    char snapshot_initialized;
     // <id participant> [<id concours>] : <placement>
     int place_snapshot[NB_PARTICIPANTS+1][NB_CONCOURS+1];
 } Activite;
@@ -132,8 +131,6 @@ int main() {
     /* Définitions des variables globales */
     Activite activite = {0}; // Tout à 0
 
-    activite.snapshot_initialized = 0;
-
     activite.dernier_indice_participant=-1;
     activite.dernier_indice_concours=-1; 
 
@@ -218,77 +215,81 @@ void func_participants(const Activite *a) {
 void inscrire(Activite *a) {
     char prenom[TAILLE_STR], nom[TAILLE_STR];
     scanf("%s%s", prenom, nom);
-    
+
     // Pour chaque élément du tableau on regarde si un élément contient les meme prénom et nom
-    char correct = 1; // bool
     for (int p_id=0; p_id <= a->dernier_indice_participant ;++p_id) {
         if ((strcmp(prenom,a->participants[p_id].prenom)==0)
             && (strcmp(nom,a->participants[p_id].nom)==0)
             ) {
             printf("Nom incorrect\n");
-            correct = 0;
-            break;
+            return;
         }
     }
 
+    // On ajoute la participant
+    ++a->dernier_indice_participant;
+    int index = a->dernier_indice_participant;
 
-    if (correct==1) {
-        // On ajoute la participant
-        ++a->dernier_indice_participant; // TO FIX
+    a->participants[index].id = index+1;
+    strcpy(a->participants[index].prenom, prenom);
+    strcpy(a->participants[index].nom, nom);
 
-        a->participants[a->dernier_indice_participant].id = a->dernier_indice_participant+1;
-        strcpy(a->participants[a->dernier_indice_participant].prenom, prenom);
-        strcpy(a->participants[a->dernier_indice_participant].nom, nom);
+    // On initalise ses points à 0 dans tous les concours
+    for (int index_concours=0; index_concours <= a->dernier_indice_concours; index_concours++) {
+        a->participants[index].concours_points[index_concours+1] = 0;
+        a->participants[index].inscrit[index_concours+1] = 0;
 
-        // On initalise ses points à 0 dans tous les concours
-        for (int index_concours=0; index_concours <= a->dernier_indice_concours; index_concours++) {
-            a->participants[a->dernier_indice_participant].concours_points[index_concours+1] = 0;
-            a->participants[a->dernier_indice_participant].inscrit[index_concours+1] = 0;
-        }
-        // On a finis !
-        printf("Inscription enregistree (%d)\n", a->dernier_indice_participant+1); // id=index+1
+        // On le met à la dernière place de tous les concours
+        a->place_snapshot[index+1][index_concours+1] = index+1;
     }
 
-            
+
+
+    // On a finis !
+    printf("Inscription enregistree (%d)\n", a->dernier_indice_participant+1); // id=index+1
+
 }
 
 void creer(Activite *a) {
-    
+
     char arg1[TAILLE_STR];
 
     scanf("%s", arg1);
     int Nom_Existe = 0; //boolean
     for (int i=0; i<= a->dernier_indice_concours; ++i) {
-        if (strcmp(arg1, a->concours[i].nom)==0) { // il est par la le prblm
-            Nom_Existe = 1; 
+        if (strcmp(arg1, a->concours[i].nom)==0) {
+            Nom_Existe = 1;
             break;
-        } 
+        }
     }
-    
+
     if (Nom_Existe==1){
         printf("Nom incorrect\n");
-        
+
     }else if (a->dernier_indice_concours >= NB_CONCOURS) {
         printf("Nombre d'evenements maximum atteint\n");
-        
-        
+
+
     } else {
         ++ a->dernier_indice_concours;
+        int concours_id = a->dernier_indice_concours+1;
 
         // Attribuer le score de 0 tous les utilisateurs dans ce concours
         for (int i=0; i <= a->dernier_indice_participant; ++i) {
-            a->participants[i].concours_points[a->dernier_indice_concours+1] = 0;
-            a->participants[i].inscrit[a->dernier_indice_concours+1] = 0;
+            a->participants[i].concours_points[concours_id] = 0;
+            a->participants[i].inscrit[concours_id] = 0;
+
+            a->place_snapshot[i+1][concours_id] = 1;
         }
 
         // Aucun participants
         a->concours[a->dernier_indice_concours].nb_participants = 0;
 
-        printf("Creation enregistree (%d)\n", a->dernier_indice_concours+1);
+        printf("Creation enregistree (%d)\n", concours_id);
 
         strcpy(a->concours[a->dernier_indice_concours].nom, arg1);
     }
-        
+
 }
 
 /**
@@ -556,45 +557,39 @@ void comparaison(const Activite *a) {
     }
 }
 
+void calculer_places(const int points[], int nb, int places[]) {
+    for (int i=0; i < nb; ++i) {
+        // Si i est ex aequo avec i-1 ils ont la même place
+        if (i > 0 && points[i] == points[i - 1]) {
+            places[i] = places[i - 1];
+        } else {
+            places[i] = i + 1;
+        }
+    }
+}
+
 void snapshot(Activite *a) {
 
     // Pour chaque concours, on fait la snapshot
     for (int concours_index=0; concours_index < a->dernier_indice_concours; ++concours_index) {
         int sorted_participants[NB_PARTICIPANTS];
         int sorted_points[NB_PARTICIPANTS];
+        int places[NB_PARTICIPANTS];
 
         participants_points_classement(a, concours_index+1, sorted_participants, sorted_points);
 
+        calculer_places(sorted_points, a->concours[concours_index].nb_participants, places);
 
-        // Pour chaque participant, on va lui mettre sa place dans le concours
-        int n_place = 0;
-        for (int sorted_index=0; sorted_index < a->concours[concours_index].nb_participants; ++sorted_index) {
-            int sorted_participant_id = sorted_participants[sorted_index];
-
-            ++n_place;
-
-            // Si le score de ce participant est le même que celui d'avant alors ils ont la même place
-            if (sorted_index!=0) {
-                if (sorted_points[sorted_index] == sorted_points[sorted_index-1]) {
-                    a->place_snapshot[sorted_participant_id][concours_index+1] = n_place-1;
-                }
-            }
-
-
-            // On lui attribue la place qu'il avait dans la liste ordonnée (donc index+1).
-            a->place_snapshot[sorted_participant_id][concours_index+1] = n_place;
-
+        for (int i=0; i < a->concours[concours_index].nb_participants; ++i) {
+            a->place_snapshot[sorted_participants[i]][concours_index + 1] = places[i];
         }
     }
 
-
-    a->snapshot_initialized = 1;
 }
 
 
 int differencePlace(const Activite *a, int concours_id, int participant_id,
                     const int sorted_participants[], const int sorted_points[]) {
-    if (a->snapshot_initialized == 0) return 0;
 
     int ancienne = a->place_snapshot[participant_id][concours_id];
     if (ancienne == 0) return 0;           // pas de place enregistrée
@@ -613,8 +608,7 @@ int differencePlace(const Activite *a, int concours_id, int participant_id,
 
         return ancienne - nouvelle;        // positif => a gagné des places
     }
-
-    return 0;                              // participant non trouvé
+    return 0;
 }
 
 /**
@@ -653,6 +647,5 @@ void bilan(Activite *a) {
     }
 
     snapshot(a);
-    a->snapshot_initialized = 1;
 
 }

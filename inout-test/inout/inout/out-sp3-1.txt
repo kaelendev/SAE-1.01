@@ -1,0 +1,119 @@
+Aucun participant inscrit
+Creation enregistree (1)
+Creation enregistree (2)
+Regarder_des_videos_YouTube versus Regarder_des_videos_YouTube
+Aucun participant
+Inscription enregistree (1)
+Inscription enregistree (2)
+Points incorrects
+Identifiant incorrect
+Identifiant incorrect
+Concours incorrect
+Nom incorrect
+Regarder_des_videos_YouTube
+Aucun participant
+Participant incorrect
+Inscription enregistree (3)
+Faire_des_challenges versus Regarder_des_videos_YouTube
+Aucun participant
+Inscription enregistree (4)
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Faire_des_challenges
+1 -> (3) Rim Gao : 5 points
+2 -> (4) Rim Roy : 4 points
+3 -> (2) Rim Apo : 2 points
+Rim Rim
+Aucun gain
+Regarder_des_videos_YouTube versus Faire_des_challenges
+(2) Rim Apo : 0 point/2 points : 0.00%
+(3) Rim Gao : 1 point/5 points : 20.00%
+(4) Rim Roy : 4 points/4 points : 100.00%
+Rim Rim
+Aucun gain
+Gain enregistre
+Rim Rim
+Aucun gain
+Gain enregistre
+Rim Roy
+(1) Regarder_des_videos_YouTube : 4 points
+(2) Faire_des_challenges : 4 points
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Faire_des_challenges
+1 -> (3) Rim Gao : 7 points
+2 -> (4) Rim Roy : 6 points
+3 -> (1) Rim Rim : 4 points
+4 -> (2) Rim Apo : 2 points
+Gain enregistre
+(1) Regarder_des_videos_YouTube : 3 participants
+(2) Faire_des_challenges : 4 participants
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+(1) Rim Rim : 2 concours
+(2) Rim Apo : 2 concours
+(3) Rim Gao : 2 concours
+(4) Rim Roy : 2 concours
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+(1) Rim Rim : 2 concours
+(2) Rim Apo : 2 concours
+(3) Rim Gao : 2 concours
+(4) Rim Roy : 2 concours
+(1) Regarder_des_videos_YouTube : 4 participants
+(2) Faire_des_challenges : 4 participants
+Rim Rim
+(1) Regarder_des_videos_YouTube : 3 points
+(2) Faire_des_challenges : 7 points
+Rim Apo
+(1) Regarder_des_videos_YouTube : 3 points
+(2) Faire_des_challenges : 2 points
+Rim Gao
+(1) Regarder_des_videos_YouTube : 9 points
+(2) Faire_des_challenges : 13 points
+Rim Roy
+(1) Regarder_des_videos_YouTube : 16 points
+(2) Faire_des_challenges : 12 points
+Regarder_des_videos_YouTube
+1 -> (4) Rim Roy : 16 points
+2 -> (3) Rim Gao : 9 points
+3ex -> (1) Rim Rim : 3 points
+3ex -> (2) Rim Apo : 3 points
+Faire_des_challenges
+1 -> (3) Rim Gao : 13 points
+2 -> (4) Rim Roy : 12 points
+3 -> (1) Rim Rim : 7 points
+4 -> (2) Rim Apo : 2 points
+Regarder_des_videos_YouTube versus Regarder_des_videos_YouTube
+(1) Rim Rim : 3 points/3 points : 100.00%
+(2) Rim Apo : 3 points/3 points : 100.00%
+(3) Rim Gao : 9 points/9 points : 100.00%
+(4) Rim Roy : 16 points/16 points : 100.00%
+Faire_des_challenges versus Regarder_des_videos_YouTube
+(1) Rim Rim : 7 points/3 points : 233.33%
+(2) Rim Apo : 2 points/3 points : 66.67%
+(3) Rim Gao : 13 points/9 points : 144.44%
+(4) Rim Roy : 12 points/16 points : 75.00%
+Regarder_des_videos_YouTube versus Faire_des_challenges
+(1) Rim Rim : 3 points/7 points : 42.86%
+(2) Rim Apo : 3 points/2 points : 150.00%
+(3) Rim Gao : 9 points/13 points : 69.23%
+(4) Rim Roy : 16 points/12 points : 133.33%
+Faire_des_challenges versus Faire_des_challenges
+(1) Rim Rim : 7 points/7 points : 100.00%
+(2) Rim Apo : 2 points/2 points : 100.00%
+(3) Rim Gao : 13 points/13 points : 100.00%
+(4) Rim Roy : 12 points/12 points : 100.00%

@@ -1,0 +1,144 @@
+Creation enregistree (1)
+Inscription enregistree (1)
+Inscription enregistree (2)
+Gain enregistre
+Identifiant incorrect
+Inscription enregistree (3)
+Participant incorrect
+Asa Asa
+(1) Commencer_une_serie : 2 points
+Inscription enregistree (4)
+Gain enregistre
+Concours incorrect
+Asa Asa
+(1) Commencer_une_serie : 2 points
+Identifiant incorrect
+Creation enregistree (2)
+(1) Commencer_une_serie : 2 participants
+(2) Jouer_d'un_instrument : 0 participant
+Asa Asa
+(1) Commencer_une_serie : 2 points
+Asa Ali
+(1) Commencer_une_serie : 4 points
+Gain enregistre
+Identifiant incorrect
+Jouer_d'un_instrument versus Jouer_d'un_instrument
+Aucun participant
+Gain enregistre
+Gain enregistre
+Participant incorrect
+Commencer_une_serie
+1 -> (4) Asa Ali : 5 points : +1 place
+2 -> (1) Asa Asa : 4 points : -1 place
+3 -> (3) Asa Ayo : 2 points : -1 place
+(1) Asa Asa : 1 concours
+(2) Asa Paj : 0 concours
+(3) Asa Ayo : 1 concours
+(4) Asa Ali : 1 concours
+Gain enregistre
+Jouer_d'un_instrument versus Jouer_d'un_instrument
+Aucun participant
+(1) Asa Asa : 1 concours
+(2) Asa Paj : 0 concours
+(3) Asa Ayo : 1 concours
+(4) Asa Ali : 1 concours
+Jouer_d'un_instrument versus Commencer_une_serie
+(1) Asa Asa : 0 point/4 points : 0.00%
+(3) Asa Ayo : 0 point/5 points : 0.00%
+(4) Asa Ali : 0 point/5 points : 0.00%
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Commencer_une_serie
+1 -> (3) Asa Ayo : 9 points
+2 -> (4) Asa Ali : 5 points
+3 -> (1) Asa Asa : 4 points
+Jouer_d'un_instrument
+1 -> (2) Asa Paj : 6 points : +0 place
+2 -> (4) Asa Ali : 3 points : -1 place
+3 -> (3) Asa Ayo : 2 points : -2 places
+Gain enregistre
+Jouer_d'un_instrument
+1 -> (2) Asa Paj : 10 points
+2 -> (4) Asa Ali : 3 points
+3 -> (3) Asa Ayo : 2 points
+Jouer_d'un_instrument
+1 -> (2) Asa Paj : 10 points
+2 -> (4) Asa Ali : 3 points
+3 -> (3) Asa Ayo : 2 points
+Gain enregistre
+Commencer_une_serie
+1 -> (3) Asa Ayo : 9 points : +2 places
+2 -> (4) Asa Ali : 7 points : -1 place
+3 -> (1) Asa Asa : 4 points : -1 place
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+(1) Asa Asa : 2 concours
+(2) Asa Paj : 2 concours
+(3) Asa Ayo : 2 concours
+(4) Asa Ali : 2 concours
+(1) Commencer_une_serie : 4 participants
+(2) Jouer_d'un_instrument : 4 participants
+Asa Asa
+(1) Commencer_une_serie : 4 points
+(2) Jouer_d'un_instrument : 4 points
+Asa Paj
+(1) Commencer_une_serie : 1 point
+(2) Jouer_d'un_instrument : 15 points
+Asa Ayo
+(1) Commencer_une_serie : 13 points
+(2) Jouer_d'un_instrument : 2 points
+Asa Ali
+(1) Commencer_une_serie : 9 points
+(2) Jouer_d'un_instrument : 5 points
+Commencer_une_serie
+1 -> (3) Asa Ayo : 13 points
+2 -> (4) Asa Ali : 9 points
+3 -> (1) Asa Asa : 4 points
+4 -> (2) Asa Paj : 1 point
+Jouer_d'un_instrument
+1 -> (2) Asa Paj : 15 points
+2 -> (4) Asa Ali : 5 points
+3 -> (1) Asa Asa : 4 points
+4 -> (3) Asa Ayo : 2 points
+Commencer_une_serie versus Commencer_une_serie
+(1) Asa Asa : 4 points/4 points : 100.00%
+(2) Asa Paj : 1 point/1 point : 100.00%
+(3) Asa Ayo : 13 points/13 points : 100.00%
+(4) Asa Ali : 9 points/9 points : 100.00%
+Jouer_d'un_instrument versus Commencer_une_serie
+(1) Asa Asa : 4 points/4 points : 100.00%
+(2) Asa Paj : 15 points/1 point : 1500.00%
+(3) Asa Ayo : 2 points/13 points : 15.38%
+(4) Asa Ali : 5 points/9 points : 55.56%
+Commencer_une_serie versus Jouer_d'un_instrument
+(1) Asa Asa : 4 points/4 points : 100.00%
+(2) Asa Paj : 1 point/15 points : 6.67%
+(3) Asa Ayo : 13 points/2 points : 650.00%
+(4) Asa Ali : 9 points/5 points : 180.00%
+Jouer_d'un_instrument versus Jouer_d'un_instrument
+(1) Asa Asa : 4 points/4 points : 100.00%
+(2) Asa Paj : 15 points/15 points : 100.00%
+(3) Asa Ayo : 2 points/2 points : 100.00%
+(4) Asa Ali : 5 points/5 points : 100.00%
+Commencer_une_serie
+1 -> (3) Asa Ayo : 13 points : +0 place
+2 -> (4) Asa Ali : 9 points : +0 place
+3 -> (1) Asa Asa : 4 points : +0 place
+4 -> (2) Asa Paj : 1 point : -3 places
+Jouer_d'un_instrument
+1 -> (2) Asa Paj : 15 points : +0 place
+2 -> (4) Asa Ali : 5 points : +0 place
+3 -> (1) Asa Asa : 4 points : -2 places
+4 -> (3) Asa Ayo : 2 points : -1 place

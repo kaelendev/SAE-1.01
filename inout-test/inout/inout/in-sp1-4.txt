@@ -1,0 +1,18 @@
+PARTICIPANTS
+INSCRIRE Asa Asa
+CREER Commencer_une_serie
+CREER Jouer_d'un_instrument
+INSCRIRE Asa Paj
+INSCRIRE Asa Ayo
+INSCRIRE Asa Ali
+CONCOURS
+INSCRIRE Asa Ali
+PARTICIPANTS
+CREER Jouer_d'un_instrument
+CREER Jouer_d'un_instrument
+CREER Commencer_une_serie
+INSCRIRE Asa Paj
+CREER Commencer_une_serie
+PARTICIPANTS
+CONCOURS
+EXIT

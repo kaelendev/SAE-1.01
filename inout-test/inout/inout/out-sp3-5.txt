@@ -1,0 +1,118 @@
+Creation enregistree (1)
+Inscription enregistree (1)
+Inscription enregistree (2)
+(1) Construire_une_cabane : 0 participant
+Ben Noe
+Aucun gain
+Inscription enregistree (3)
+Construire_une_cabane
+Aucun participant
+Concours incorrect
+Creation enregistree (2)
+Identifiant incorrect
+Points incorrects
+Ben Ben
+Aucun gain
+Inscription enregistree (4)
+Gain enregistre
+Points incorrects
+Concours incorrect
+Gain enregistre
+Gain enregistre
+Points incorrects
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Construire_une_cabane versus Organiser_des_repas_a_theme
+Concours incompatibles
+Ben Noe
+(1) Construire_une_cabane : 2 points
+Gain enregistre
+Gain enregistre
+Organiser_des_repas_a_theme
+1 -> (4) Ben Rim : 4 points
+2 -> (3) Ben Kim : 2 points
+3 -> (2) Ben Noe : 1 point
+Organiser_des_repas_a_theme
+1 -> (4) Ben Rim : 4 points
+2 -> (3) Ben Kim : 2 points
+3 -> (2) Ben Noe : 1 point
+(1) Ben Ben : 1 concours
+(2) Ben Noe : 2 concours
+(3) Ben Kim : 1 concours
+(4) Ben Rim : 2 concours
+Gain enregistre
+Gain enregistre
+Organiser_des_repas_a_theme versus Construire_une_cabane
+Concours incompatibles
+Ben Noe
+(1) Construire_une_cabane : 4 points
+(2) Organiser_des_repas_a_theme : 2 points
+Gain enregistre
+Gain enregistre
+Organiser_des_repas_a_theme versus Construire_une_cabane
+Concours incompatibles
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+(1) Ben Ben : 2 concours
+(2) Ben Noe : 2 concours
+(3) Ben Kim : 2 concours
+(4) Ben Rim : 2 concours
+Gain enregistre
+(1) Ben Ben : 2 concours
+(2) Ben Noe : 2 concours
+(3) Ben Kim : 2 concours
+(4) Ben Rim : 2 concours
+(1) Construire_une_cabane : 4 participants
+(2) Organiser_des_repas_a_theme : 4 participants
+Ben Ben
+(1) Construire_une_cabane : 5 points
+(2) Organiser_des_repas_a_theme : 9 points
+Ben Noe
+(1) Construire_une_cabane : 7 points
+(2) Organiser_des_repas_a_theme : 12 points
+Ben Kim
+(1) Construire_une_cabane : 6 points
+(2) Organiser_des_repas_a_theme : 5 points
+Ben Rim
+(1) Construire_une_cabane : 7 points
+(2) Organiser_des_repas_a_theme : 4 points
+Construire_une_cabane
+1ex -> (2) Ben Noe : 7 points
+1ex -> (4) Ben Rim : 7 points
+3 -> (3) Ben Kim : 6 points
+4 -> (1) Ben Ben : 5 points
+Organiser_des_repas_a_theme
+1 -> (2) Ben Noe : 12 points
+2 -> (1) Ben Ben : 9 points
+3 -> (3) Ben Kim : 5 points
+4 -> (4) Ben Rim : 4 points
+Construire_une_cabane versus Construire_une_cabane
+(1) Ben Ben : 5 points/5 points : 100.00%
+(2) Ben Noe : 7 points/7 points : 100.00%
+(3) Ben Kim : 6 points/6 points : 100.00%
+(4) Ben Rim : 7 points/7 points : 100.00%
+Organiser_des_repas_a_theme versus Construire_une_cabane
+(1) Ben Ben : 9 points/5 points : 180.00%
+(2) Ben Noe : 12 points/7 points : 171.43%
+(3) Ben Kim : 5 points/6 points : 83.33%
+(4) Ben Rim : 4 points/7 points : 57.14%
+Construire_une_cabane versus Organiser_des_repas_a_theme
+(1) Ben Ben : 5 points/9 points : 55.56%
+(2) Ben Noe : 7 points/12 points : 58.33%
+(3) Ben Kim : 6 points/5 points : 120.00%
+(4) Ben Rim : 7 points/4 points : 175.00%
+Organiser_des_repas_a_theme versus Organiser_des_repas_a_theme
+(1) Ben Ben : 9 points/9 points : 100.00%
+(2) Ben Noe : 12 points/12 points : 100.00%
+(3) Ben Kim : 5 points/5 points : 100.00%
+(4) Ben Rim : 4 points/4 points : 100.00%

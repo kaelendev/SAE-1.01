@@ -1,0 +1,72 @@
+Inscription enregistree (1)
+Nom incorrect
+Inscription enregistree (2)
+Creation enregistree (1)
+Points incorrects
+Creation enregistree (2)
+Participant incorrect
+Gain enregistre
+Inscription enregistree (3)
+Participant incorrect
+Participant incorrect
+Points incorrects
+Inscription enregistree (4)
+(1) Ria Ria : 1 concours
+(2) Ria Nao : 0 concours
+(3) Ria Roy : 0 concours
+(4) Ria Gao : 0 concours
+Gain enregistre
+(1) Faire_des_challenges : 0 participant
+(2) Regarder_des_videos_YouTube : 2 participants
+Gain enregistre
+Ria Gao
+Aucun gain
+Gain enregistre
+Ria Nao
+(2) Regarder_des_videos_YouTube : 2 points
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Ria Nao
+(1) Faire_des_challenges : 1 point
+(2) Regarder_des_videos_YouTube : 4 points
+Ria Gao
+Aucun gain
+Gain enregistre
+(1) Ria Ria : 2 concours
+(2) Ria Nao : 2 concours
+(3) Ria Roy : 0 concours
+(4) Ria Gao : 1 concours
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+Gain enregistre
+(1) Ria Ria : 2 concours
+(2) Ria Nao : 2 concours
+(3) Ria Roy : 2 concours
+(4) Ria Gao : 1 concours
+(1) Faire_des_challenges : 3 participants
+(2) Regarder_des_videos_YouTube : 4 participants
+Ria Ria
+(1) Faire_des_challenges : 15 points
+(2) Regarder_des_videos_YouTube : 5 points
+Ria Nao
+(1) Faire_des_challenges : 3 points
+(2) Regarder_des_videos_YouTube : 14 points
+Ria Roy
+(1) Faire_des_challenges : 10 points
+(2) Regarder_des_videos_YouTube : 10 points
+Ria Gao
+(2) Regarder_des_videos_YouTube : 7 points
