@@ -7,6 +7,7 @@ import pexpect
 BASE = Path(__file__).resolve().parent
 EXE = str(BASE.parent / "build" / "main")
 TIMEOUT = 5
+# Délai pour laisser le temps au programme d'écrire toutes les lignes d'une réponse.
 RESPONSE_TIMEOUT = 0.2
 
 GREEN = "\033[92m"
@@ -15,7 +16,12 @@ YELLOW = "\033[93m"
 RESET = "\033[0m"
 
 
-def test_file_pair(in_file: Path, out_file: Path) -> bool:
+def test_file_pair(
+    in_file: Path,
+    out_file: Path,
+    error_limit: int | None,
+    errors: int,
+) -> tuple[bool, int, bool]:
     print(f"\nTest : {in_file.parent.name}/{in_file.name}")
     inputs = in_file.read_text().splitlines()
     expected = out_file.read_text().splitlines()
@@ -37,7 +43,8 @@ def test_file_pair(in_file: Path, out_file: Path) -> bool:
                 print(f"    TIMEOUT : le programme ne s'est pas terminé en {TIMEOUT}s")
                 print(f"    Tampon reçu : {child.before!r}")
                 child.close(force=True)
-                return False
+                errors += 1
+                return False, errors, error_limit is not None and errors >= error_limit
         else:
             while True:
                 try:
@@ -57,7 +64,12 @@ def test_file_pair(in_file: Path, out_file: Path) -> bool:
             status = GREEN + "CORRECT" + RESET if result == want else RED + "INCORRECT" + RESET
             print(f"    Réponse : {result!r} -> {status}")
             if result != want:
+                errors += 1
                 print(f"    Attendu : {want!r}")
+                if error_limit is not None and errors >= error_limit:
+                    print(f"{YELLOW}Limite de {error_limit} erreur(s) atteinte.{RESET}")
+                    child.close(force=True)
+                    return False, errors, True
 
     child.close()
     ok = sum(got == want for got, want in zip(received, expected))
@@ -65,11 +77,16 @@ def test_file_pair(in_file: Path, out_file: Path) -> bool:
     print(f"\n{ok}/{max_lines} lignes correctes")
     if len(received) < len(expected):
         missing = len(expected) - len(received)
+        errors += missing
         print(f"{YELLOW}{missing} ligne(s) attendue(s) manquante(s){RESET}")
     elif len(received) > len(expected):
         extra = len(received) - len(expected)
+        errors += extra
         print(f"{YELLOW}{extra} ligne(s) supplémentaire(s) reçue(s){RESET}")
-    return received == expected
+    stopped = error_limit is not None and errors >= error_limit
+    if stopped:
+        print(f"{YELLOW}Limite de {error_limit} erreur(s) atteinte.{RESET}")
+    return received == expected, errors, stopped
 
 
 def sprint_tests(sprint: int) -> list[tuple[Path, Path]]:
@@ -91,10 +108,11 @@ def choose_tests() -> list[tuple[Path, Path]]:
     print("Que voulez-vous tester ?")
     print("1. Tous les sprints")
     print("2. Un sprint")
-    print("3. Un dossier particulier")
-    print("4. Le sujet de base")
+    print("3. Reprendre à partir d'un sprint")
+    print("4. Un dossier particulier")
+    print("5. Le sujet de base")
 
-    choice = input("Votre choix [4] : ").strip() or "4"
+    choice = input("Votre choix [5] : ").strip() or "5"
 
     if choice == "1":
         return [
@@ -110,6 +128,16 @@ def choose_tests() -> list[tuple[Path, Path]]:
         return sprint_tests(int(sprint))
 
     if choice == "3":
+        sprint = input("Reprendre à partir du sprint (1 à 4) : ").strip()
+        if sprint not in {"1", "2", "3", "4"}:
+            raise ValueError("Le numéro du sprint doit être compris entre 1 et 4.")
+        return [
+            test
+            for sprint_number in range(int(sprint), 5)
+            for test in sprint_tests(sprint_number)
+        ]
+
+    if choice == "4":
         directory = input(
             "Dossier relatif à inout-test (ex. test1 ou comparaison) : "
         ).strip()
@@ -122,15 +150,29 @@ def choose_tests() -> list[tuple[Path, Path]]:
             raise ValueError("Le dossier doit contenir in.txt et out.txt.")
         return [(in_file, out_file)]
 
-    if choice == "4":
+    if choice == "5":
         return [(BASE / "inout-sujet" / "in.txt", BASE / "inout-sujet" / "out.txt")]
 
     raise ValueError("Choix invalide.")
 
 
+def choose_error_limit() -> int | None:
+    value = input(
+        "Nombre maximal d'erreurs avant arrêt (0 = illimité) [0] : "
+    ).strip() or "0"
+    try:
+        limit = int(value)
+    except ValueError as error:
+        raise ValueError("Le nombre d'erreurs doit être un entier positif ou nul.") from error
+    if limit < 0:
+        raise ValueError("Le nombre d'erreurs doit être positif ou nul.")
+    return limit or None
+
+
 def main():
     try:
         tests = choose_tests()
+        error_limit = choose_error_limit()
     except ValueError as error:
         print(f"{RED}{error}{RESET}")
         sys.exit(1)
@@ -140,9 +182,16 @@ def main():
         sys.exit(1)
 
     success = True
+    errors = 0
     for in_file, out_file in tests:
-        if not test_file_pair(in_file, out_file):
+        test_success, errors, stopped = test_file_pair(
+            in_file, out_file, error_limit, errors
+        )
+        if not test_success:
             success = False
+        if stopped:
+            print(f"{YELLOW}Arrêt des tests après {errors} erreur(s).{RESET}")
+            break
     print(
         f"\n{GREEN}Tous les tests sélectionnés sont réussis.{RESET}"
         if success

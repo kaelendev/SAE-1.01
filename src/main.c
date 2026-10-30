@@ -203,7 +203,7 @@ int main() {
 
 void func_participants(const Activite *a) {
     if (a->dernier_indice_participant==-1) {
-        printf("Aucun participant inscrit.\n");
+        printf("Aucun participant inscrit\n");
         return;
     }
     
@@ -305,14 +305,14 @@ void gain( Activite *a) {
     int participant_index=participant_id-1;
 
     if (participant_index > a->dernier_indice_participant) {
-        printf("Participant incorrect \n");
+        printf("Participant incorrect\n");
         return;
     }
     if (concours_index > a->dernier_indice_concours) {
-        printf("Concours incorrects\n");
+        printf("Concours incorrect\n");
         return;
     }
-    if (points < 0) {
+    if (points <= 0) {
         printf("Points incorrects\n");
         return;
     }
@@ -347,6 +347,11 @@ void gain( Activite *a) {
  * \param a Le contexte global Activité
  */
 void concours(const Activite *a) {
+    if (a->dernier_indice_concours == -1) {
+        printf("Aucun concours cree\n");
+        return;
+    }
+
     for (int i=0; i<=a->dernier_indice_concours; ++i) {
         printf("(%u) %s : %u participant", i+1 , a->concours[i].nom, a->concours[i].nb_participants);
         if (a->concours[i].nb_participants > 1) printf("s");
@@ -363,17 +368,25 @@ void scores( Activite *a) {
     unsigned int participant_id;
     scanf("%u", &participant_id);
 
-    if (participant_id > a->dernier_indice_participant+1) {
-        printf("\n");
+    if (participant_id > a->dernier_indice_participant+1 || participant_id <= 0) {
+        printf("Identifiant incorrect\n");
         return;
     }
 
+
     printf("%s %s\n", a->participants[participant_id-1].prenom, a->participants[participant_id-1].nom);
 
+    if (a->dernier_indice_concours==-1) {
+        printf("Aucun gain\n");
+        return;
+    }
+
+    int total = 0;
     for (unsigned int concours_index=0; concours_index <= a->dernier_indice_concours; ++concours_index){
         // concours_id: k+1
         unsigned int concours_id = concours_index+1;
         int points = a->participants[participant_id-1].concours_points[concours_id];
+        total += points;
 
         if(a->participants[participant_id-1].concours_points[concours_id]!=0){
             printf("(%u) %s : %u ", concours_id, a->concours[concours_index].nom, points);
@@ -386,6 +399,8 @@ void scores( Activite *a) {
             }
         }  
     }
+
+    if (total==0) printf("Aucun gain\n");
 }
 
 /**
@@ -493,6 +508,10 @@ void func_classement(Activite *a) {
 
     printf("%s\n", a->concours[concours_id-1].nom);
 
+    if (a->concours[concours_id-1].nb_participants == 0) {
+        printf("Aucun participant\n");
+    }
+
     int sorted_points[NB_PARTICIPANTS];
     int sorted_participants[NB_PARTICIPANTS];
     char sortie[NB_PARTICIPANTS][TAILLE_LIGNE];
@@ -524,6 +543,10 @@ void comparaison(const Activite *a) {
     // Affichage
     printf("%s versus %s\n", a->concours[concoursA_id-1].nom, a->concours[concoursB_id-1].nom);
 
+    if (a->concours[concoursA_id-1].nb_participants == 0 && a->concours[concoursB_id-1].nb_participants == 0) {
+        printf("Aucun participant\n");
+        return;
+    }
 
     // Verification que les utilisateurs sont inscrits dans les 2 concours
     for (int participant_index=0; participant_index <= a->dernier_indice_participant; ++participant_index) {
@@ -542,6 +565,11 @@ void comparaison(const Activite *a) {
         const Participant* participant = &a->participants[participant_index];
         int p_pointsA = participant->concours_points[concoursA_id];
         int p_pointsB = participant->concours_points[concoursB_id];
+
+        if (p_pointsA + p_pointsB <= 0) {
+            continue;
+        }
+
         printf("(%d) %s %s : ", participant->id, participant->prenom, participant->nom);
 
         if (p_pointsA <= 1) printf("%d point", p_pointsA);
