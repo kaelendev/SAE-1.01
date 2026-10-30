@@ -592,30 +592,30 @@ void snapshot(Activite *a) {
 }
 
 
-int differencePlace(const Activite *a, int concours_id, int participant_id, int sorted_participants[NB_PARTICIPANTS],
-    int sorted_points[NB_PARTICIPANTS]) {
-    if (a->snapshot_initialized == 0) {
-        return 0;
-    }
+int differencePlace(const Activite *a, int concours_id, int participant_id,
+                    const int sorted_participants[], const int sorted_points[]) {
+    if (a->snapshot_initialized == 0) return 0;
 
-    int place=-1;
-    // On cherche la nouvelle place du participant
-    for (int participant_index=0; participant_index < a->concours[concours_id-1].nb_participants; ++participant_index) {
-        if (sorted_participants[participant_index] == participant_id) {
-            if (participant_index!=0 && sorted_points[participant_index] == sorted_points[participant_index-1]) {
-                place = participant_index-1;
-            } else place = participant_index;
+    int ancienne = a->place_snapshot[participant_id][concours_id];
+    if (ancienne == 0) return 0;           // pas de place enregistrée
+
+    int nb = a->concours[concours_id - 1].nb_participants;
+
+    for (int i = 0; i < nb; ++i) {
+        if (sorted_participants[i] != participant_id) continue;
+
+        // On remonte jusqu'au premier du groupe d'ex-aequo
+        int debut = i;
+        while (debut > 0 && sorted_points[debut] == sorted_points[debut - 1]) {
+            --debut;
         }
+        int nouvelle = debut + 1;          // Place avec 1 en première
+
+        return ancienne - nouvelle;        // positif => a gagné des places
     }
 
-    assert(place != -1); // Le participant_id n'est pas dans la liste des participants sorted_participants
-
-    int difference = a->place_snapshot[participant_id][concours_id]-place;
-
-
-    return difference;
+    return 0;                              // participant non trouvé
 }
-
 
 /**
  * Commande BILAN: Affiche les avancées progressive de chaque participant depuis la dernière commande BILAN
