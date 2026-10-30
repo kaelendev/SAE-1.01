@@ -1,3 +1,4 @@
+#include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -6,7 +7,7 @@
 #define debug printf
 
 
-enum {NB_PARTICIPANTS=100, NB_CONCOURS=20, TAILLE_STR=31}; // Constantes pour le nombre maximum de participants et d'événements
+enum {NB_PARTICIPANTS=100, NB_CONCOURS=20, TAILLE_STR=31, TAILLE_LIGNE=100}; // Constantes pour le nombre maximum de participants et d'événements
 
 
 /* Définition des structures */
@@ -32,6 +33,10 @@ typedef struct {
     Concours concours[NB_CONCOURS]; // Tous les concours
     int dernier_indice_participant;
     int dernier_indice_concours;
+
+    char snapshot_initialized;
+    // <id participant> [<id concours>] : <placement>
+    int place_snapshot[NB_PARTICIPANTS+1][NB_CONCOURS+1];
 } Activite;
 
 /* Définition des prototypes des fonctions */
@@ -39,7 +44,7 @@ void func_participants(const Activite *a);
 void creer(Activite *a);
 void inscrire(Activite *a);
 void gain(Activite *a);
-void classement(Activite *a);
+void func_classement(Activite *a);
 void comparaison(const Activite *a);
 void concours(const Activite *a);
 void bilan(Activite *a);
@@ -127,6 +132,8 @@ int main() {
     /* Définitions des variables globales */
     Activite activite = {0}; // Tout à 0
 
+    activite.snapshot_initialized = 0;
+
     activite.dernier_indice_participant=-1;
     activite.dernier_indice_concours=-1; 
 
@@ -171,7 +178,7 @@ int main() {
         } else if (strcmp(commande, "CONCOURS")==0){
             concours(&activite);
         } else if (strcmp(commande, "CLASSEMENT")==0) {
-            classement(&activite);
+            func_classement(&activite);
 
             //unsigned int concours_index=concours_id-1;
             // On devrait vérifier que l'id est correcte pour ne pas planter le programme mais ce n'est pas demandé.
@@ -187,6 +194,8 @@ int main() {
 
         } else if (strcmp(commande, "COMPARAISON")==0) {
             comparaison(&activite);
+        } else if (strcmp(commande, "BILAN")==0) {
+            bilan(&activite);
         }
 
     } while (strcmp(commande, "EXIT")!=0);
@@ -380,7 +389,7 @@ void scores( Activite *a) {
 
 /**
  * Trie par points décroissants, puis par identifiant croissant en cas d'égalité
- * \param ids    Les identifiants des participants
+ * \param list   Les identifiants des participants
  * \param points Les points correspondants
  * \param nb     Le nombre d'éléments
  */
@@ -408,7 +417,71 @@ void sortvic(int list[], int points[], int nb) {
         }
     }
 }
-void classement(Activite *a) {
+
+/**
+ * Fonction qui utilise sortvic() pour trier les participants selon leurs points dans le concours donné
+ * \param a Le contexte global Activité (non modifiable)
+ * \param concours_id L'identifiant du concours
+ * \param participants Tableau vide qui contiendra les participants triés
+ * \param points Tableau vide qui contiendra les points triés selon les participants
+ */
+void participants_points_classement(const Activite *a,int concours_id, int participants[], int points[]) {
+    int nb = 0;
+
+    // On récupère les participants inscrits au concours
+    for (int i = 0; i <= a->dernier_indice_participant; ++i) {
+        if (a->participants[i].inscrit[concours_id] == 1) {
+            participants[nb] = a->participants[i].id;
+            points[nb] = a->participants[i].concours_points[concours_id];
+            ++nb;
+        }
+    }
+
+    // On trie les participants par points décroissants
+    sortvic(participants, points, nb);
+}
+
+
+/**
+ * Fonction qui produit ligne par ligne le classement des participants d'un concours en accord avec sortvic()
+ * @param a Le contexte global Activité (non modifiable)
+ * @param concours_id L'identifiant du concours
+ * @param resultat Tableau vide qui contiendra la sortie ligne par ligne
+ * @param sorted_participants Tableau vide qui contiendra les points triés selon les participants
+ * @param sorted_points Tableau vide qui contiendra les points triés selon les participants
+ */
+void process_classement(const Activite *a, int concours_id, char resultat[NB_PARTICIPANTS][TAILLE_LIGNE],
+                        int sorted_participants[NB_PARTICIPANTS],
+                        int sorted_points[NB_PARTICIPANTS]
+                       ) {
+    participants_points_classement(a, concours_id, sorted_participants, sorted_points);
+
+    // On affiche le classement
+    for (int i = 0; i < a->concours[concours_id-1].nb_participants ; ++i) {
+        char ligne[3][TAILLE_LIGNE];
+        const Participant *p = &a->participants[sorted_participants[i] - 1];
+        if(sorted_points[i]==sorted_points[i+1]){ //print ex si =sorted_points avant ou non sinon ignorer
+            snprintf(ligne[0], TAILLE_LIGNE, "%dex", i+1);
+        } else if (sorted_points[i]==sorted_points[i-1] ) {
+            snprintf(ligne[0], TAILLE_LIGNE,"%dex", i); // S'ils sont ex-arquo ils sont à la même place !
+        } // Et s'ils sont 3 à être ex-aequo ou plus ??
+        else {
+            snprintf(ligne[0], TAILLE_LIGNE,"%d", i+1);
+        }
+        snprintf(ligne[1], TAILLE_LIGNE," -> (%d) %s %s : %d point", p->id ,p->prenom, p->nom, sorted_points[i]);
+
+        if (sorted_points[i] != 1) {
+            snprintf(ligne[2], TAILLE_LIGNE,"s");
+        } else {
+            snprintf(ligne[2], TAILLE_LIGNE,"");
+        }
+
+        // On écrit les parties de cette ligne comme une nouvelle ligne dans le tableau de sortie
+        snprintf(resultat[i], TAILLE_LIGNE, "%s%s%s", ligne[0], ligne[1], ligne[2]);
+    }
+}
+
+void func_classement(Activite *a) {
     int concours_id;
     scanf("%d", &concours_id);
 
@@ -419,40 +492,13 @@ void classement(Activite *a) {
 
     printf("%s\n", a->concours[concours_id-1].nom);
 
-    int list[NB_PARTICIPANTS];
-    int points[NB_PARTICIPANTS];
-    int nb = 0;
+    int sorted_points[NB_PARTICIPANTS];
+    int sorted_participants[NB_PARTICIPANTS];
+    char sortie[NB_PARTICIPANTS][TAILLE_LIGNE];
+    process_classement(a, concours_id, sortie, sorted_participants, sorted_points);
 
-    // On récupère les participants inscrits au concours
-    for (int i = 0; i <= a->dernier_indice_participant; ++i) {
-        if (a->participants[i].inscrit[concours_id] == 1) {
-            list[nb] = a->participants[i].id;
-            points[nb] = a->participants[i].concours_points[concours_id];
-            ++nb;
-        }
-    }
-
-    // On trie les participants par points décroissants
-    sortvic(list, points, nb);
-
-    // On affiche le classement
-    for (int i = 0; i < nb; ++i) {
-        Participant *p = &a->participants[list[i] - 1];
-        if(points[i]==points[i+1]){ //print ex si =points avant ou non sinon ignorer
-            printf("%dex", i+1);
-        } else if (points[i]==points[i-1] ) {
-            printf("%dex", i); // S'ils sont ex-arquo ils sont à la même place !
-        } // Et s'ils sont 3 à être ex-aequo ou plus ??
-        else {
-            printf("%d", i+1);
-        }
-        printf(" -> (%d) %s %s : %d point", p->id ,p->prenom, p->nom, points[i]);
-
-        if (points[i] != 1) {
-            printf("s");
-        }
-
-        printf("\n");
+    for (int ligne=0; ligne < a->concours[concours_id-1].nb_participants; ++ligne) {
+        printf("%s\n", sortie[ligne]);
     }
 }
 
@@ -510,10 +556,103 @@ void comparaison(const Activite *a) {
     }
 }
 
+void snapshot(Activite *a) {
+
+    // Pour chaque concours, on fait la snapshot
+    for (int concours_index=0; concours_index < a->dernier_indice_concours; ++concours_index) {
+        int sorted_participants[NB_PARTICIPANTS];
+        int sorted_points[NB_PARTICIPANTS];
+
+        participants_points_classement(a, concours_index+1, sorted_participants, sorted_points);
+
+
+        // Pour chaque participant, on va lui mettre sa place dans le concours
+        int n_place = 0;
+        for (int sorted_index=0; sorted_index < a->concours[concours_index].nb_participants; ++sorted_index) {
+            int sorted_participant_id = sorted_participants[sorted_index];
+
+            ++n_place;
+
+            // Si le score de ce participant est le même que celui d'avant alors ils ont la même place
+            if (sorted_index!=0) {
+                if (sorted_points[sorted_index] == sorted_points[sorted_index-1]) {
+                    a->place_snapshot[sorted_participant_id][concours_index+1] = n_place-1;
+                }
+            }
+
+
+            // On lui attribue la place qu'il avait dans la liste ordonnée (donc index+1).
+            a->place_snapshot[sorted_participant_id][concours_index+1] = n_place;
+
+        }
+    }
+
+
+    a->snapshot_initialized = 1;
+}
+
+
+int differencePlace(const Activite *a, int concours_id, int participant_id, int sorted_participants[NB_PARTICIPANTS],
+    int sorted_points[NB_PARTICIPANTS]) {
+    if (a->snapshot_initialized == 0) {
+        return 0;
+    }
+
+    int place=-1;
+    // On cherche la nouvelle place du participant
+    for (int participant_index=0; participant_index < a->concours[concours_id-1].nb_participants; ++participant_index) {
+        if (sorted_participants[participant_index] == participant_id) {
+            if (participant_index!=0 && sorted_points[participant_index] == sorted_points[participant_index-1]) {
+                place = participant_index-1;
+            } else place = participant_index;
+        }
+    }
+
+    assert(place != -1); // Le participant_id n'est pas dans la liste des participants sorted_participants
+
+    int difference = a->place_snapshot[participant_id][concours_id]-place;
+
+
+    return difference;
+}
+
+
 /**
- * Commande BILAN: Affiche les avancées progressive de chaque participants depuis la dernière commande BILAN
+ * Commande BILAN: Affiche les avancées progressive de chaque participant depuis la dernière commande BILAN
  * \param a Le contexte global Activité
  */
 void bilan(Activite *a) {
+    int concours_id;
+    scanf("%d", &concours_id);
+
+    if (concours_id < 1 || concours_id > a->dernier_indice_concours + 1) {
+        printf("Identifiant incorrect\n");
+        return;
+    }
+
+    printf("%s\n", a->concours[concours_id-1].nom);
+
+    int sorted_points[NB_PARTICIPANTS];
+    int sorted_participants[NB_PARTICIPANTS];
+    char sortie[NB_PARTICIPANTS][TAILLE_LIGNE];
+    process_classement(a, concours_id, sortie, sorted_participants, sorted_points);
+
+    for (int ligne=0; ligne < a->concours[concours_id-1].nb_participants; ++ligne) {
+        int participant_id = sorted_participants[ligne];
+        int difference = differencePlace(a, concours_id,  participant_id, sorted_participants, sorted_points);
+
+        printf("%s : ", sortie[ligne]);
+
+        if (difference >= 0) printf("+");
+        else printf("-");
+
+        printf("%d ", abs(difference));
+
+        if (abs(difference) > 1) printf("places\n");
+        else printf("place\n");
+    }
+
+    snapshot(a);
+    a->snapshot_initialized = 1;
 
 }
