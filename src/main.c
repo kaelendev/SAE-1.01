@@ -240,7 +240,7 @@ void inscrire(Activite *a) {
         a->participants[index].inscrit[index_concours+1] = 0;
 
         // On le met à la dernière place de tous les concours
-        a->place_snapshot[index+1][index_concours+1] = index+1;
+                a->place_snapshot[index+1][index_concours+1] = a->concours[index_concours].nb_participants + 1;
     }
 
 
@@ -598,23 +598,18 @@ void comparaison(const Activite *a) {
 
 
 
-void snapshot(Activite *a) {
+void snapshot(Activite *a, int concours_id) {
+    int sorted_participants[NB_PARTICIPANTS];
+    int sorted_points[NB_PARTICIPANTS];
+    int places[NB_PARTICIPANTS];
+    int nb = a->concours[concours_id-1].nb_participants;
 
-    // Pour chaque concours, on fait la snapshot
-    for (int concours_index=0; concours_index < a->dernier_indice_concours; ++concours_index) {
-        int sorted_participants[NB_PARTICIPANTS];
-        int sorted_points[NB_PARTICIPANTS];
-        int places[NB_PARTICIPANTS];
+    participants_points_classement(a, concours_id, sorted_participants, sorted_points);
+    calculer_places(sorted_points, nb, places);
 
-        participants_points_classement(a, concours_index+1, sorted_participants, sorted_points);
-
-        calculer_places(sorted_points, a->concours[concours_index].nb_participants, places);
-
-        for (int i=0; i < a->concours[concours_index].nb_participants; ++i) {
-            a->place_snapshot[sorted_participants[i]][concours_index + 1] = places[i];
-        }
+    for (int i=0; i < nb; ++i) {
+        a->place_snapshot[sorted_participants[i]][concours_id] = places[i];
     }
-
 }
 
 
@@ -655,6 +650,10 @@ void bilan(Activite *a) {
     }
 
     printf("%s\n", a->concours[concours_id-1].nom);
+    if (a->concours[concours_id-1].nb_participants == 0) {
+        printf("Aucun participant\n");
+        return;
+    }
 
     int sorted_points[NB_PARTICIPANTS];
     int sorted_participants[NB_PARTICIPANTS];
@@ -676,6 +675,6 @@ void bilan(Activite *a) {
         else printf("place\n");
     }
 
-    snapshot(a);
+    snapshot(a, concours_id);
 
 }

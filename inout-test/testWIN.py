@@ -21,7 +21,7 @@ def find_exe() -> str:
 EXE = find_exe()
 TIMEOUT = 5
 # Délai pour laisser le temps au programme d'écrire toutes les lignes d'une réponse.
-RESPONSE_TIMEOUT = 0.2
+RESPONSE_TIMEOUT = 0.1
 
 # Active les couleurs ANSI dans le terminal Windows et force l'UTF-8 en sortie
 os.system("")
