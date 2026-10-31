@@ -466,34 +466,45 @@ void participants_points_classement(const Activite *a,int concours_id, int parti
  * @param sorted_participants Tableau vide qui contiendra les points triés selon les participants
  * @param sorted_points Tableau vide qui contiendra les points triés selon les participants
  */
+void calculer_places(const int points[], int nb, int places[]) {
+    for (int i=0; i < nb; ++i) {
+        // Si i est ex aequo avec i-1 ils ont la même place
+        if (i > 0 && points[i] == points[i - 1]) {
+            places[i] = places[i - 1];
+        } else {
+            places[i] = i + 1;
+        }
+    }
+}
+
+
 void process_classement(const Activite *a, int concours_id, char resultat[NB_PARTICIPANTS][TAILLE_LIGNE],
                         int sorted_participants[NB_PARTICIPANTS],
                         int sorted_points[NB_PARTICIPANTS]
                        ) {
     participants_points_classement(a, concours_id, sorted_participants, sorted_points);
 
-    // On affiche le classement
-    for (int i = 0; i < a->concours[concours_id-1].nb_participants ; ++i) {
-        char ligne[3][TAILLE_LIGNE];
+    int nb = a->concours[concours_id-1].nb_participants;
+
+    // places[i] = place du participant i (les ex-aequo ont la place du premier du groupe)
+    int places[NB_PARTICIPANTS];
+    calculer_places(sorted_points, nb, places);
+
+    for (int i = 0; i < nb; ++i) {
         const Participant *p = &a->participants[sorted_participants[i] - 1];
-        if(sorted_points[i]==sorted_points[i+1]){ //print ex si =sorted_points avant ou non sinon ignorer
-            snprintf(ligne[0], TAILLE_LIGNE, "%dex", i+1);
-        } else if (sorted_points[i]==sorted_points[i-1] ) {
-            snprintf(ligne[0], TAILLE_LIGNE,"%dex", i); // S'ils sont ex-arquo ils sont à la même place !
-        } // Et s'ils sont 3 à être ex-aequo ou plus ??
-        else {
-            snprintf(ligne[0], TAILLE_LIGNE,"%d", i+1);
-        }
-        snprintf(ligne[1], TAILLE_LIGNE," -> (%d) %s %s : %d point", p->id ,p->prenom, p->nom, sorted_points[i]);
 
-        if (sorted_points[i] != 1) {
-            snprintf(ligne[2], TAILLE_LIGNE,"s");
-        } else {
-            snprintf(ligne[2], TAILLE_LIGNE,"");
-        }
+        // Ex-aequo si même score que le précédent ou que le suivant
+        int ex = (i > 0 && sorted_points[i] == sorted_points[i-1]) ||
+                 (i + 1 < nb && sorted_points[i] == sorted_points[i+1]);
 
-        // On écrit les parties de cette ligne comme une nouvelle ligne dans le tableau de sortie
-        snprintf(resultat[i], TAILLE_LIGNE, "%s%s%s", ligne[0], ligne[1], ligne[2]);
+        char place_str[TAILLE_LIGNE];
+        if (ex) snprintf(place_str, TAILLE_LIGNE, "%dex", places[i]);
+        else    snprintf(place_str, TAILLE_LIGNE, "%d", places[i]);
+
+        const char *pluriel = (sorted_points[i] != 1) ? "s" : "";
+
+        snprintf(resultat[i], TAILLE_LIGNE, "%s -> (%d) %s %s : %d point%s",
+                 place_str, p->id, p->prenom, p->nom, sorted_points[i], pluriel);
     }
 }
 
@@ -585,16 +596,7 @@ void comparaison(const Activite *a) {
     }
 }
 
-void calculer_places(const int points[], int nb, int places[]) {
-    for (int i=0; i < nb; ++i) {
-        // Si i est ex aequo avec i-1 ils ont la même place
-        if (i > 0 && points[i] == points[i - 1]) {
-            places[i] = places[i - 1];
-        } else {
-            places[i] = i + 1;
-        }
-    }
-}
+
 
 void snapshot(Activite *a) {
 
