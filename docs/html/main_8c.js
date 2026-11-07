@@ -17,6 +17,8 @@ var main_8c =
     [ "gain", "main_8c.html#a234609ef95aa65f86af3e4e809a4456e", null ],
     [ "inscrire", "main_8c.html#a688c667260e2185adc1abee552c746fe", null ],
     [ "main", "main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4", null ],
+    [ "nbConcours", "main_8c.html#a2ce49d51fa781e2d81eded1232e8a493", null ],
+    [ "nbParticipants", "main_8c.html#a4d6eb9848ae20cf770c6309c51adc8b5", null ],
     [ "participants_points_classement", "main_8c.html#a73efbaa72d04a0b21324f623eb95d720", null ],
     [ "participeAuConcours", "main_8c.html#a017d98b1b93ad89108cd1e79acb387c5", null ],
     [ "pointsParticipants", "main_8c.html#ade8258dd7f101ca6bc52fa0cdef14ecc", null ],

@@ -9,15 +9,12 @@
   </compound>
   <compound refid="structConcours" kind="struct"><name>Concours</name>
     <member refid="structConcours_1a00ec27a9e8f18388148d27f75afe4d00" kind="variable"><name>nom</name></member>
-    <member refid="structConcours_1a8a0ddca423611254135a9d7729b16974" kind="variable"><name>nb_participants</name></member>
   </compound>
   <compound refid="structParticipant" kind="struct"><name>Participant</name>
     <member refid="structParticipant_1ad5c9f4b6a31d341feadc36d8a9d242c0" kind="variable"><name>id</name></member>
     <member refid="structParticipant_1a7ebacc9a0ce3fbf60448199612ded37b" kind="variable"><name>prenom</name></member>
     <member refid="structParticipant_1a8f17585bf9c85ec2d8a393dfe3861f4f" kind="variable"><name>nom</name></member>
     <member refid="structParticipant_1af8615ac12fdbb56bfd17ece986f77908" kind="variable"><name>concours_points</name></member>
-    <member refid="structParticipant_1a4a9c79c30ec8009acb37c1dd7bc212e4" kind="variable"><name>inscrit</name></member>
-    <member refid="structParticipant_1a1cdfca950948cba597e4a923d9ce2904" kind="variable"><name>nb_concours</name></member>
   </compound>
   <compound refid="README_8md" kind="file"><name>README.md</name>
   </compound>
@@ -40,6 +37,8 @@
     <member refid="main_8c_1a137e143da2bdafd9e0ce06a485fc92cf" kind="function"><name>sort</name></member>
     <member refid="main_8c_1a9f3598e66c16b8fc9c9643f0d7a3886a" kind="function"><name>dans</name></member>
     <member refid="main_8c_1a017d98b1b93ad89108cd1e79acb387c5" kind="function"><name>participeAuConcours</name></member>
+    <member refid="main_8c_1a4d6eb9848ae20cf770c6309c51adc8b5" kind="function"><name>nbParticipants</name></member>
+    <member refid="main_8c_1a2ce49d51fa781e2d81eded1232e8a493" kind="function"><name>nbConcours</name></member>
     <member refid="main_8c_1abbf1b4b65fc4ecff623b47426eb24f83" kind="function"><name>concoursParticipants</name></member>
     <member refid="main_8c_1ade8258dd7f101ca6bc52fa0cdef14ecc" kind="function"><name>pointsParticipants</name></member>
     <member refid="main_8c_1ae66f6b31b5ad750f1fe042a706a4e3d4" kind="function"><name>main</name></member>

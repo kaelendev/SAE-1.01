@@ -25,29 +25,14 @@ typedef struct {
     char prenom[STRING_LENGHT];
     char nom[STRING_LENGHT];
     unsigned int concours_points[NB_CONCOURS]; // Tableau: "<id concours>": <nb de points>
-    unsigned int nb_concours; // nb de concours auquel participe le participant
 } Participant;
 
 // Structure pour les Concours
 typedef struct { 
     char nom[30];
-    unsigned int participants_id[NB_PARTICIPANTS]; // Vraiment utile ?
-    unsigned int nb_participants;
 } Concours;
     
 ```
-
-#### Certaines informations ici sont redondantes et non optimale en terme d'allocation mémoire, pourquoi ce choix ? => NON RECEVABLE
-
-La priorité a été d'avoir un moyen rapide et moins complexe d'accéder à certains types d'informations:
-
-- Le nombre de concours auquel l'utilisateur participe peut être compté avec une boucle for sur `concours_points`
-
-- Le nombre de participants d'un concours peut être compté avec une boucle for sur `participants_id`
-
-- Les ids des participants d'un concours `participants_id` qui pourrait être remplacé par une boucle for sur `concours_points`
-
-Cela nuit à la lisibilité du code et permet d'avoir une base solide et documentée pour toutes les fonctions. Le remplacement par une boucle for peut être étudier.
 
 ### La boucle principale
 Une boucle qui attend la commande `EXIT` pour se terminer est bien plus élégante qu'un `while True`.
@@ -98,5 +83,5 @@ Une commande qui inscrit l'utilisateur dans le concours en question et ajoute le
 > @kaelendev
 
 
-### COMPARAISON
-> @garitaur & @kaelendev
+### BILAN
+> @kaelendev

@@ -15,30 +15,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/main.c" line="31" column="10" bodyfile="src/main.c" bodystart="31" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="structConcours_1a8a0ddca423611254135a9d7729b16974" prot="public" static="no" mutable="no">
-        <type>unsigned int</type>
-        <definition>unsigned int Concours::nb_participants</definition>
-        <argsstring></argsstring>
-        <name>nb_participants</name>
-        <qualifiedname>Concours::nb_participants</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/main.c" line="32" column="18" bodyfile="src/main.c" bodystart="32" bodyend="-1"/>
+        <location file="src/main.c" line="29" column="10" bodyfile="src/main.c" bodystart="29" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/main.c" line="30" column="1" bodyfile="src/main.c" bodystart="30" bodyend="33"/>
+    <location file="src/main.c" line="28" column="1" bodyfile="src/main.c" bodystart="28" bodyend="30"/>
     <listofallmembers>
-      <member refid="structConcours_1a8a0ddca423611254135a9d7729b16974" prot="public" virt="non-virtual"><scope>Concours</scope><name>nb_participants</name></member>
       <member refid="structConcours_1a00ec27a9e8f18388148d27f75afe4d00" prot="public" virt="non-virtual"><scope>Concours</scope><name>nom</name></member>
     </listofallmembers>
   </compounddef>

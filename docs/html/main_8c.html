@@ -152,6 +152,8 @@ Fonctions</h2></td></tr>
 <tr class="memitem:a137e143da2bdafd9e0ce06a485fc92cf" id="r_a137e143da2bdafd9e0ce06a485fc92cf"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a137e143da2bdafd9e0ce06a485fc92cf">sort</a> (int liste[], int nb)</td></tr>
 <tr class="memitem:a9f3598e66c16b8fc9c9643f0d7a3886a" id="r_a9f3598e66c16b8fc9c9643f0d7a3886a"><td class="memItemLeft">char&#160;</td><td class="memItemRight"><a class="el" href="#a9f3598e66c16b8fc9c9643f0d7a3886a">dans</a> (int element, const int liste[], int nb)</td></tr>
 <tr class="memitem:a017d98b1b93ad89108cd1e79acb387c5" id="r_a017d98b1b93ad89108cd1e79acb387c5"><td class="memItemLeft">char&#160;</td><td class="memItemRight"><a class="el" href="#a017d98b1b93ad89108cd1e79acb387c5">participeAuConcours</a> (int concours_id, int participant_id, const <a class="el" href="structActivite.html">Activite</a> *a)</td></tr>
+<tr class="memitem:a4d6eb9848ae20cf770c6309c51adc8b5" id="r_a4d6eb9848ae20cf770c6309c51adc8b5"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a4d6eb9848ae20cf770c6309c51adc8b5">nbParticipants</a> (const <a class="el" href="structActivite.html">Activite</a> *a, int concours_id)</td></tr>
+<tr class="memitem:a2ce49d51fa781e2d81eded1232e8a493" id="r_a2ce49d51fa781e2d81eded1232e8a493"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a2ce49d51fa781e2d81eded1232e8a493">nbConcours</a> (const <a class="el" href="structActivite.html">Activite</a> *a, int participant_id)</td></tr>
 <tr class="memitem:abbf1b4b65fc4ecff623b47426eb24f83" id="r_abbf1b4b65fc4ecff623b47426eb24f83"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#abbf1b4b65fc4ecff623b47426eb24f83">concoursParticipants</a> (const <a class="el" href="structActivite.html">Activite</a> *a, int concours_id, int resultat[<a class="el" href="#afbd114dbfcb594c360387c8395fe1245a63ae39e69adfa7d5b2a13ac59341e867">NB_PARTICIPANTS</a>])</td></tr>
 <tr class="memitem:ade8258dd7f101ca6bc52fa0cdef14ecc" id="r_ade8258dd7f101ca6bc52fa0cdef14ecc"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ade8258dd7f101ca6bc52fa0cdef14ecc">pointsParticipants</a> (const <a class="el" href="structActivite.html">Activite</a> *a, int concours_id, unsigned int points[<a class="el" href="#afbd114dbfcb594c360387c8395fe1245a63ae39e69adfa7d5b2a13ac59341e867">NB_PARTICIPANTS</a>])</td></tr>
 <tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4" id="r_ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
@@ -159,7 +161,6 @@ Fonctions</h2></td></tr>
 <tr class="memitem:a73efbaa72d04a0b21324f623eb95d720" id="r_a73efbaa72d04a0b21324f623eb95d720"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a73efbaa72d04a0b21324f623eb95d720">participants_points_classement</a> (const <a class="el" href="structActivite.html">Activite</a> *a, int concours_id, int participants[], int points[])</td></tr>
 <tr class="memitem:ab415b232d74e9b9175aa391a72743d68" id="r_ab415b232d74e9b9175aa391a72743d68"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ab415b232d74e9b9175aa391a72743d68">calculer_places</a> (const int points[], int nb, int places[])</td></tr>
 <tr class="memitem:abecec30bb6ca6a17a3180e11c6a28565" id="r_abecec30bb6ca6a17a3180e11c6a28565"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#abecec30bb6ca6a17a3180e11c6a28565">process_classement</a> (const <a class="el" href="structActivite.html">Activite</a> *a, int concours_id, char resultat[<a class="el" href="#afbd114dbfcb594c360387c8395fe1245a63ae39e69adfa7d5b2a13ac59341e867">NB_PARTICIPANTS</a>][<a class="el" href="#afbd114dbfcb594c360387c8395fe1245a5843543a07aefb91334ed605d9b22a3c">TAILLE_LIGNE</a>], int sorted_participants[<a class="el" href="#afbd114dbfcb594c360387c8395fe1245a63ae39e69adfa7d5b2a13ac59341e867">NB_PARTICIPANTS</a>], int sorted_points[<a class="el" href="#afbd114dbfcb594c360387c8395fe1245a63ae39e69adfa7d5b2a13ac59341e867">NB_PARTICIPANTS</a>])</td></tr>
-<tr class="memdesc:abecec30bb6ca6a17a3180e11c6a28565"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui produit ligne par ligne le classement des participants d'un concours en accord avec <a class="el" href="#a95937e51b8959d527a46b55877e0b242">sortvic()</a>.  <br /></td></tr>
 <tr class="memitem:aa9678193827f4a87e38a359d3596d43b" id="r_aa9678193827f4a87e38a359d3596d43b"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aa9678193827f4a87e38a359d3596d43b">snapshot</a> (<a class="el" href="structActivite.html">Activite</a> *a, int concours_id)</td></tr>
 <tr class="memitem:af727faf2f1c2891137423b27e0bcf356" id="r_af727faf2f1c2891137423b27e0bcf356"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#af727faf2f1c2891137423b27e0bcf356">differencePlace</a> (const <a class="el" href="structActivite.html">Activite</a> *a, int concours_id, int participant_id, const int sorted_participants[], const int sorted_points[])</td></tr>
 </table>
@@ -216,7 +217,7 @@ Fonctions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Commande BILAN: Affiche les avancées progressive de chaque participant depuis la dernière commande BILAN </p><dl class="params"><dt>Paramètres</dt><dd>
+<p>Commande BILAN: Affiche les avancées progressive de chaque participant depuis la dernière commande BILAN, demande l'identifiant du concours à l'utilisateur </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">a</td><td>Le contexte global Activité </td></tr>
   </table>
@@ -273,7 +274,7 @@ Fonctions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Commande COMPARAISON: Compare le nombre de points d'un participants dans 2 concours </p><dl class="params"><dt>Paramètres</dt><dd>
+<p>Commande COMPARAISON: Compare le nombre de points d'un participants dans 2 concours, demande à l'utilisateur l'idenfitfiants du concours A et du concours B </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">a</td><td>Le contexte global Activité </td></tr>
   </table>
@@ -353,7 +354,7 @@ Fonctions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Commande CREER: Créer un concours avec un nouvel identifiant </p><dl class="params"><dt>Paramètres</dt><dd>
+<p>Commande CREER: Créer un concours avec un nouvel identifiant, demande le nom du concours à l'utilisateur </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">a</td><td>Le contexte global Activité </td></tr>
   </table>
@@ -385,7 +386,15 @@ Fonctions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Vérifier si element est dans liste </p>
+<p>Vérifier si element est dans liste </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">element</td><td>L'entier qui peut être dans la liste </td></tr>
+    <tr><td class="paramname">liste</td><td>Liste d'entier (non modifiable) </td></tr>
+    <tr><td class="paramname">nb</td><td>Nombre d'éléments dans la liste </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>1: Si element dans liste, 0: Si element pas dans la liste </dd></dl>
 
 </div>
 </div>
@@ -426,7 +435,7 @@ Fonctions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">a</td><td>Le contexte global Activité (non modifiable) </td></tr>
     <tr><td class="paramname">concours_id</td><td>L'identifiant du concours </td></tr>
-    <tr><td class="paramname">partipant_id</td><td>L'identifiant du participant </td></tr>
+    <tr><td class="paramname">participant_id</td><td>L'identifiant du participant </td></tr>
     <tr><td class="paramname">sorted_participants</td><td>Tableau des participants triés du plus haut placement au plus bas dans le concours </td></tr>
     <tr><td class="paramname">sorted_points</td><td>Tableau des points associés à l'identifiant de chaque participants dans sorted_participants </td></tr>
   </table>
@@ -489,7 +498,7 @@ Fonctions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Commande GAIN: ajouter des points à un participants dans un concours </p><dl class="params"><dt>Paramètres</dt><dd>
+<p>Commande GAIN: ajouter des points à un participants dans un concours, demande à l'utilisateur les identifiants du participants, du concours et demande le nombre de points </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">a</td><td>Le contexte global Activité </td></tr>
   </table>
@@ -512,7 +521,7 @@ Fonctions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Commande INSCRIRE: Créer un nouveau participant avec un nouvel idenficiant </p><dl class="params"><dt>Paramètres</dt><dd>
+<p>Commande INSCRIRE: Créer un nouveau participant avec un nouvel idenficiant et demande le prénom et le nom du nouveau participant à l'utilisateur </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">a</td><td>Le contexte global Activité </td></tr>
   </table>
@@ -535,6 +544,64 @@ Fonctions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2ce49d51fa781e2d81eded1232e8a493" name="a2ce49d51fa781e2d81eded1232e8a493"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ce49d51fa781e2d81eded1232e8a493">&#9670;&#160;</a></span>nbConcours()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int nbConcours </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structActivite.html">Activite</a> *</td>          <td class="paramname"><span class="paramname"><em>a</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>participant_id</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Renvoie le nombre de concours auquel participe le participant donné </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td>Le contexte global Activité (non modifiable) </td></tr>
+    <tr><td class="paramname">participant_id</td><td>L'identifiant du participant </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>nombre de concours (entre 0 et NB_CONCOURS) </dd></dl>
+
+</div>
+</div>
+<a id="a4d6eb9848ae20cf770c6309c51adc8b5" name="a4d6eb9848ae20cf770c6309c51adc8b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d6eb9848ae20cf770c6309c51adc8b5">&#9670;&#160;</a></span>nbParticipants()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int nbParticipants </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structActivite.html">Activite</a> *</td>          <td class="paramname"><span class="paramname"><em>a</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>concours_id</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Renvoie le nombre de participants au concours donné </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td>Le contexte global Activité (non modifiable) </td></tr>
+    <tr><td class="paramname">concours_id</td><td>L'identifiant du concours </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>nombre de participants (entre 0 et NB_PARTICIPANTS) </dd></dl>
 
 </div>
 </div>
@@ -609,6 +676,7 @@ Fonctions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Renvoie</dt><dd>1 ou 0 </dd></dl>
 
 </div>
 </div>
@@ -679,9 +747,7 @@ Fonctions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Fonction qui produit ligne par ligne le classement des participants d'un concours en accord avec <a class="el" href="#a95937e51b8959d527a46b55877e0b242">sortvic()</a>. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
+<p>Fonction qui produit ligne par ligne le classement des participants d'un concours en accord avec <a class="el" href="#a95937e51b8959d527a46b55877e0b242">sortvic()</a> </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">a</td><td>Le contexte global Activité (non modifiable) </td></tr>
     <tr><td class="paramname">concours_id</td><td>L'identifiant du concours </td></tr>
@@ -708,7 +774,7 @@ Fonctions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Commande SCORE: Donne le score d'un participant dans chaque concours </p><dl class="params"><dt>Paramètres</dt><dd>
+<p>Commande SCORE: Donne le score d'un participant dans chaque concours, demande à l'utilisateur l'identifiant du participant </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">a</td><td>Le contexte global Activité (non modifiable) </td></tr>
   </table>
@@ -763,7 +829,7 @@ Fonctions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Trier dans l'ordre croissante une liste d'entier </p><dl class="params"><dt>Paramètres</dt><dd>
+<p>Trier dans l'ordre croissant une liste d'entier </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">liste</td><td>La liste à trier </td></tr>
     <tr><td class="paramname">nb</td><td>Le nombre d'éléments de liste </td></tr>

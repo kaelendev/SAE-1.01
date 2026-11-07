@@ -59,45 +59,15 @@
         </inbodydescription>
         <location file="src/main.c" line="24" column="18" bodyfile="src/main.c" bodystart="24" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="structParticipant_1a4a9c79c30ec8009acb37c1dd7bc212e4" prot="public" static="no" mutable="no">
-        <type>char</type>
-        <definition>char Participant::inscrit[NB_CONCOURS+1]</definition>
-        <argsstring>[NB_CONCOURS+1]</argsstring>
-        <name>inscrit</name>
-        <qualifiedname>Participant::inscrit</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/main.c" line="25" column="10" bodyfile="src/main.c" bodystart="25" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="structParticipant_1a1cdfca950948cba597e4a923d9ce2904" prot="public" static="no" mutable="no">
-        <type>unsigned int</type>
-        <definition>unsigned int Participant::nb_concours</definition>
-        <argsstring></argsstring>
-        <name>nb_concours</name>
-        <qualifiedname>Participant::nb_concours</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/main.c" line="26" column="18" bodyfile="src/main.c" bodystart="26" bodyend="-1"/>
-      </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/main.c" line="20" column="1" bodyfile="src/main.c" bodystart="20" bodyend="27"/>
+    <location file="src/main.c" line="20" column="1" bodyfile="src/main.c" bodystart="20" bodyend="25"/>
     <listofallmembers>
       <member refid="structParticipant_1af8615ac12fdbb56bfd17ece986f77908" prot="public" virt="non-virtual"><scope>Participant</scope><name>concours_points</name></member>
       <member refid="structParticipant_1ad5c9f4b6a31d341feadc36d8a9d242c0" prot="public" virt="non-virtual"><scope>Participant</scope><name>id</name></member>
-      <member refid="structParticipant_1a4a9c79c30ec8009acb37c1dd7bc212e4" prot="public" virt="non-virtual"><scope>Participant</scope><name>inscrit</name></member>
-      <member refid="structParticipant_1a1cdfca950948cba597e4a923d9ce2904" prot="public" virt="non-virtual"><scope>Participant</scope><name>nb_concours</name></member>
       <member refid="structParticipant_1a8f17585bf9c85ec2d8a393dfe3861f4f" prot="public" virt="non-virtual"><scope>Participant</scope><name>nom</name></member>
       <member refid="structParticipant_1a7ebacc9a0ce3fbf60448199612ded37b" prot="public" virt="non-virtual"><scope>Participant</scope><name>prenom</name></member>
     </listofallmembers>

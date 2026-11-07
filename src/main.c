@@ -16,20 +16,17 @@ enum {NB_PARTICIPANTS=100, NB_CONCOURS=20, TAILLE_STR=31, TAILLE_LIGNE=100}; // 
 
 
 /* Définition des structures */
-// Participant, qui prend prenom nom et nb de concours au quel il participe
+// Participant, qui prend prenom nom et nb de concours auquel il participe
 typedef struct {
     unsigned int id;
     char prenom[TAILLE_STR];
     char nom[TAILLE_STR];
     unsigned int concours_points[NB_CONCOURS+1]; // Tableau: "<id concours>": <nb de points>
-    char inscrit[NB_CONCOURS+1]; // Tableau: "<id concours>: 0/1 pour inscrit ou pas inscrit"
-    unsigned int nb_concours; // nb de concours auquel participe le participant
 } Participant;
 
 // Structure pour les Concours
 typedef struct { 
     char nom[TAILLE_STR];
-    unsigned int nb_participants; // EN DOUBLONS on compte le nb participant avec pts non nul/ concours
 } Concours;
     
 
@@ -55,7 +52,7 @@ void bilan(Activite *a);
 void scores(Activite *a);
 
 /**
- * Trier dans l'ordre croissante une liste d'entier
+ * Trier dans l'ordre croissant une liste d'entier
  * @param liste La liste à trier
  * @param nb Le nombre d'éléments de liste
  */
@@ -72,6 +69,10 @@ void sort(int liste[], int nb) {
 
 /**
  * Vérifier si element est dans liste
+ * @param element L'entier qui peut être dans la liste
+ * @param liste Liste d'entier (non modifiable)
+ * @param nb Nombre d'éléments dans la liste
+ * @return 1: Si element dans liste, 0: Si element pas dans la liste
  */
 char dans(int element, const int liste[], int nb) {
     for (int i=0; i<nb; ++i) {
@@ -86,10 +87,39 @@ char dans(int element, const int liste[], int nb) {
  * @param concours_id L'identifiant du concours
  * @param participant_id L'identifiant du participant
  * @param a Le contexte global Activité (non modifiable)
+ * @return 1 ou 0
  */
 char participeAuConcours(int concours_id, int participant_id, const Activite *a) {
-    if (a->participants[participant_id-1].inscrit[concours_id] == 1) return 1;
+    if (a->participants[participant_id-1].concours_points[concours_id] > 0) return 1;
     return 0;
+}
+
+/**
+ * Renvoie le nombre de participants au concours donné
+ * @param a Le contexte global Activité (non modifiable)
+ * @param concours_id L'identifiant du concours
+ * @return nombre de participants (entre 0 et NB_PARTICIPANTS)
+ */
+int nbParticipants(const Activite *a, int concours_id) {
+    int nb=0;
+    for (int i=0; i<=a->dernier_indice_participant; ++i) {
+        if (participeAuConcours(concours_id, i+1, a) == 1) ++nb;
+    }
+    return nb;
+}
+
+/**
+ * Renvoie le nombre de concours auquel participe le participant donné
+ * @param a Le contexte global Activité (non modifiable)
+ * @param participant_id L'identifiant du participant
+ * @return nombre de concours (entre 0 et NB_CONCOURS)
+ */
+int nbConcours(const Activite *a, int participant_id) {
+    int nb=0;
+    for (int i=0; i<=a->dernier_indice_concours; ++i) {
+        if (participeAuConcours(i+1, participant_id, a) == 1) ++nb;
+    }
+    return nb;
 }
 
 /**
@@ -179,12 +209,12 @@ void func_participants(const Activite *a) {
     }
     
     for (int i=0; i<= a->dernier_indice_participant ; ++i) {
-        printf("(%d) %s %s : %d concours\n", i+1, a->participants[i].prenom, a->participants[i].nom, a->participants[i].nb_concours);
+        printf("(%d) %s %s : %d concours\n", i+1, a->participants[i].prenom, a->participants[i].nom, nbConcours(a, i+1));
     }
 }
 
 /**
- * Commande INSCRIRE: Créer un nouveau participant avec un nouvel idenficiant
+ * Commande INSCRIRE: Créer un nouveau participant avec un nouvel idenficiant et demande le prénom et le nom du nouveau participant à l'utilisateur
  * @param a Le contexte global Activité
  */
 void inscrire(Activite *a) {
@@ -212,10 +242,9 @@ void inscrire(Activite *a) {
     // On initalise ses points à 0 dans tous les concours
     for (int index_concours=0; index_concours <= a->dernier_indice_concours; index_concours++) {
         a->participants[index].concours_points[index_concours+1] = 0;
-        a->participants[index].inscrit[index_concours+1] = 0;
 
         // On le met à la dernière place de tous les concours
-        a->place_snapshot[index+1][index_concours+1] = a->concours[index_concours].nb_participants + 1;
+        a->place_snapshot[index+1][index_concours+1] = nbParticipants(a, index_concours+1) + 1;
     }
 
 
@@ -226,7 +255,7 @@ void inscrire(Activite *a) {
 }
 
 /**
- * Commande CREER: Créer un concours avec un nouvel identifiant
+ * Commande CREER: Créer un concours avec un nouvel identifiant, demande le nom du concours à l'utilisateur
  * @param a Le contexte global Activité
  */
 void creer(Activite *a) {
@@ -256,14 +285,9 @@ void creer(Activite *a) {
         // Attribuer le score de 0 tous les utilisateurs dans ce concours
         for (int i=0; i <= a->dernier_indice_participant; ++i) {
             a->participants[i].concours_points[concours_id] = 0;
-            a->participants[i].inscrit[concours_id] = 0;
 
             a->place_snapshot[i+1][concours_id] = 1;
         }
-
-        // Aucun participants
-        a->concours[a->dernier_indice_concours].nb_participants = 0;
-
         printf("Creation enregistree (%d)\n", concours_id);
 
         strcpy(a->concours[a->dernier_indice_concours].nom, arg1);
@@ -272,7 +296,7 @@ void creer(Activite *a) {
 }
 
 /**
- * Commande GAIN: ajouter des points à un participants dans un concours
+ * Commande GAIN: ajouter des points à un participants dans un concours, demande à l'utilisateur les identifiants du participants, du concours et demande le nombre de points
  * @param a Le contexte global Activité
  */
 void gain( Activite *a) {
@@ -305,16 +329,8 @@ void gain( Activite *a) {
     concoursParticipants(a, concours_id, c_participants);
 
     // Si 0 points alors il ne participe pas au concours
-    if (participant->inscrit[concours_index+1] == 0 && points > 0) {
-        
-        // on ajoute +1 au compteur du nombre de concours utilisateur
-        participant->nb_concours += 1;
+    // Le nombre de participants est géré automatiquement à partir du score
 
-
-        // On augmente le compteur de nombre d'utilisateur du concours
-        a->concours[concours_index].nb_participants +=1;
-        participant->inscrit[concours_index+1] = 1;
-    }
     participant->concours_points[concours_id] += points;
     
 
@@ -332,14 +348,15 @@ void concours(const Activite *a) {
     }
 
     for (int i=0; i<=a->dernier_indice_concours; ++i) {
-        printf("(%u) %s : %u participant", i+1 , a->concours[i].nom, a->concours[i].nb_participants);
-        if (a->concours[i].nb_participants > 1) printf("s");
+        int nb_participants = nbParticipants(a, i+1);
+        printf("(%u) %s : %u participant", i+1 , a->concours[i].nom, nb_participants);
+        if (nb_participants > 1) printf("s");
         printf("\n");
     }
 }
 
 /**
- * Commande SCORE: Donne le score d'un participant dans chaque concours
+ * Commande SCORE: Donne le score d'un participant dans chaque concours, demande à l'utilisateur l'identifiant du participant
  * @param a Le contexte global Activité (non modifiable)
  */
 void scores( Activite *a) {
@@ -423,7 +440,7 @@ void participants_points_classement(const Activite *a,int concours_id, int parti
 
     // On récupère les participants inscrits au concours
     for (int i = 0; i <= a->dernier_indice_participant; ++i) {
-        if (a->participants[i].inscrit[concours_id] == 1) {
+        if (participeAuConcours(concours_id, i+1, a)) {
             participants[nb] = a->participants[i].id;
             points[nb] = a->participants[i].concours_points[concours_id];
             ++nb;
@@ -466,7 +483,7 @@ void process_classement(const Activite *a, int concours_id, char resultat[NB_PAR
                        ) {
     participants_points_classement(a, concours_id, sorted_participants, sorted_points);
 
-    int nb = a->concours[concours_id-1].nb_participants;
+    int nb = nbParticipants(a, concours_id);
 
     // places[i] = place du participant i (les ex-aequo ont la place du premier du groupe)
     int places[NB_PARTICIPANTS];
@@ -499,8 +516,9 @@ void func_classement(Activite *a) {
     }
 
     printf("%s\n", a->concours[concours_id-1].nom);
+    int nb_participants = nbParticipants(a, concours_id);
 
-    if (a->concours[concours_id-1].nb_participants == 0) {
+    if (nb_participants == 0) {
         printf("Aucun participant\n");
     }
 
@@ -509,13 +527,13 @@ void func_classement(Activite *a) {
     char sortie[NB_PARTICIPANTS][TAILLE_LIGNE];
     process_classement(a, concours_id, sortie, sorted_participants, sorted_points);
 
-    for (int ligne=0; ligne < a->concours[concours_id-1].nb_participants; ++ligne) {
+    for (int ligne=0; ligne < nb_participants; ++ligne) {
         printf("%s\n", sortie[ligne]);
     }
 }
 
 /**
- * Commande COMPARAISON: Compare le nombre de points d'un participants dans 2 concours
+ * Commande COMPARAISON: Compare le nombre de points d'un participants dans 2 concours, demande à l'utilisateur l'idenfitfiants du concours A et du concours B
  * @param a Le contexte global Activité
  */
 void comparaison(const Activite *a) {
@@ -535,7 +553,7 @@ void comparaison(const Activite *a) {
     // Affichage
     printf("%s versus %s\n", a->concours[concoursA_id-1].nom, a->concours[concoursB_id-1].nom);
 
-    if (a->concours[concoursA_id-1].nb_participants == 0 && a->concours[concoursB_id-1].nb_participants == 0) {
+    if (nbParticipants(a, concoursA_id) == 0 && nbParticipants(a, concoursB_id) == 0) {
         printf("Aucun participant\n");
         return;
     }
@@ -587,7 +605,7 @@ void snapshot(Activite *a, int concours_id) {
     int sorted_participants[NB_PARTICIPANTS];
     int sorted_points[NB_PARTICIPANTS];
     int places[NB_PARTICIPANTS];
-    int nb = a->concours[concours_id-1].nb_participants;
+    int nb = nbParticipants(a, concours_id);
 
     participants_points_classement(a, concours_id, sorted_participants, sorted_points);
     calculer_places(sorted_points, nb, places);
@@ -601,7 +619,7 @@ void snapshot(Activite *a, int concours_id) {
  * Calcule la différence de placement pour un participant donné dans un concours donné depuis la dernière snapshot
  * @param a Le contexte global Activité (non modifiable)
  * @param concours_id L'identifiant du concours
- * @param partipant_id L'identifiant du participant
+ * @param participant_id L'identifiant du participant
  * @param sorted_participants Tableau des participants triés du plus haut placement au plus bas dans le concours
  * @param sorted_points Tableau des points associés à l'identifiant de chaque participants dans sorted_participants
  */
@@ -611,7 +629,7 @@ int differencePlace(const Activite *a, int concours_id, int participant_id,
     int ancienne = a->place_snapshot[participant_id][concours_id];
     if (ancienne == 0) return 0;           // pas de place enregistrée
 
-    int nb = a->concours[concours_id - 1].nb_participants;
+    int nb = nbParticipants(a, concours_id);
 
     for (int i = 0; i < nb; ++i) {
         if (sorted_participants[i] != participant_id) continue;
@@ -629,7 +647,7 @@ int differencePlace(const Activite *a, int concours_id, int participant_id,
 }
 
 /**
- * Commande BILAN: Affiche les avancées progressive de chaque participant depuis la dernière commande BILAN
+ * Commande BILAN: Affiche les avancées progressive de chaque participant depuis la dernière commande BILAN, demande l'identifiant du concours à l'utilisateur
  * @param a Le contexte global Activité
  */
 void bilan(Activite *a) {
@@ -642,7 +660,8 @@ void bilan(Activite *a) {
     }
 
     printf("%s\n", a->concours[concours_id-1].nom);
-    if (a->concours[concours_id-1].nb_participants == 0) {
+    int nb_participants = nbParticipants(a, concours_id);
+    if (nb_participants == 0) {
         printf("Aucun participant\n");
         return;
     }
@@ -652,7 +671,7 @@ void bilan(Activite *a) {
     char sortie[NB_PARTICIPANTS][TAILLE_LIGNE];
     process_classement(a, concours_id, sortie, sorted_participants, sorted_points);
 
-    for (int ligne=0; ligne < a->concours[concours_id-1].nb_participants; ++ligne) {
+    for (int ligne=0; ligne < nb_participants; ++ligne) {
         int participant_id = sorted_participants[ligne];
         int difference = differencePlace(a, concours_id,  participant_id, sorted_participants, sorted_points);
 

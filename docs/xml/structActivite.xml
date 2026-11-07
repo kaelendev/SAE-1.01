@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/main.c" line="37" column="17" bodyfile="src/main.c" bodystart="37" bodyend="-1"/>
+        <location file="src/main.c" line="34" column="17" bodyfile="src/main.c" bodystart="34" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structActivite_1a44edeee964d82a10fb6840205373382c" prot="public" static="no" mutable="no">
         <type><ref refid="structConcours" kindref="compound">Concours</ref></type>
@@ -29,7 +29,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/main.c" line="38" column="14" bodyfile="src/main.c" bodystart="38" bodyend="-1"/>
+        <location file="src/main.c" line="35" column="14" bodyfile="src/main.c" bodystart="35" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structActivite_1a48016035e949416811a6d45c4b2bb1d2" prot="public" static="no" mutable="no">
         <type>int</type>
@@ -43,7 +43,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/main.c" line="39" column="9" bodyfile="src/main.c" bodystart="39" bodyend="-1"/>
+        <location file="src/main.c" line="36" column="9" bodyfile="src/main.c" bodystart="36" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structActivite_1aaf356905d06b8e88544c1113bcbbab14" prot="public" static="no" mutable="no">
         <type>int</type>
@@ -57,7 +57,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/main.c" line="40" column="9" bodyfile="src/main.c" bodystart="40" bodyend="-1"/>
+        <location file="src/main.c" line="37" column="9" bodyfile="src/main.c" bodystart="37" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structActivite_1ae5380067f4093b679b65d0a8fdd191c6" prot="public" static="no" mutable="no">
         <type>int</type>
@@ -71,7 +71,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/main.c" line="43" column="9" bodyfile="src/main.c" bodystart="43" bodyend="-1"/>
+        <location file="src/main.c" line="40" column="9" bodyfile="src/main.c" bodystart="40" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -98,7 +98,7 @@
         <link refid="structParticipant"/>
       </node>
     </collaborationgraph>
-    <location file="src/main.c" line="36" column="1" bodyfile="src/main.c" bodystart="36" bodyend="44"/>
+    <location file="src/main.c" line="33" column="1" bodyfile="src/main.c" bodystart="33" bodyend="41"/>
     <listofallmembers>
       <member refid="structActivite_1a44edeee964d82a10fb6840205373382c" prot="public" virt="non-virtual"><scope>Activite</scope><name>concours</name></member>
       <member refid="structActivite_1aaf356905d06b8e88544c1113bcbbab14" prot="public" virt="non-virtual"><scope>Activite</scope><name>dernier_indice_concours</name></member>
