@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.18.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>SAE 1.01: Projet SAE 1.01</title>
+<title>SAE 1.01: SAE-1.01</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="codefolding.js"></script>
 <script type="text/javascript" src="clipboard.js"></script>
@@ -108,35 +108,113 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('md_README.html
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">Projet SAE 1.01 </div></div>
+  <div class="headertitle"><div class="title">SAE-1.01 </div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="autotoc_md0"></a></p>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md1"></a>
+Le Projet</h1>
+<p>Il s'agit d'un interpréteur de commande permettant de gérer des concours et les joueurs qui y participent. Pour cela plusieurs commandes ont été données à faire dans le cachier des charges, leur implémentation se fait en plusieurs "sprint" durant chacun en moyenne une semaine pour notre binôme.</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md2"></a>
 Implémentation du projet</h1>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md2"></a>
-La boucle principale</h2>
-<p>Une boucle while True: simple &amp; efficace.</p>
 <h2 class="doxsection"><a class="anchor" id="autotoc_md3"></a>
+Travail en binôme</h2>
+<p>Pour réaliser ce projet en binôme nous avons dû utiliser 2 outils différents:</p><ul>
+<li>Le premier est l'IDE VSCode avec son extension <b><em>Live Share</em></b> pratique pour la collaboration en temps réel, caractère par caractère.</li>
+<li>Le deuxième est probablement l'outil et la plateforme que vous avez utilisé pour voir ce fichier markdown: <b><em>git</em></b> et <b><em>Github</em></b>.<ul>
+<li>En effet git nous permet de versionner notre code et de facilement nous faire passer les changements majeurs de notre code lorsque la collaboration en temps réel n'est pas possible.</li>
+<li>Github est la plateforme d'hébergement de repo git la plus connue et la plus répandue. Même si j'aurais personnellement (@kaelendev) préféré utiliser gitlab une instance hébergé localement de forgejo/gitea, Github est la solution la plus facile à prendre en main que je pouvais proposer à mon camarade.</li>
+</ul>
+</li>
+</ul>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md4"></a>
+Structures de données</h2>
+<div class="fragment"><div class="line"><span class="comment">/* Définition des structures */</span></div>
+<div class="line"><span class="comment">// Participant, qui prend prenom nom et nb de concours au quel il participe</span></div>
+<div class="line"><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line">    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> id;</div>
+<div class="line">    <span class="keywordtype">char</span> prenom[STRING_LENGHT];</div>
+<div class="line">    <span class="keywordtype">char</span> nom[STRING_LENGHT];</div>
+<div class="line">    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> concours_points[<a class="code hl_enumvalue" href="main_8c.html#afbd114dbfcb594c360387c8395fe1245abd3fb6cb79a5963aa5d698243387d855">NB_CONCOURS</a>]; <span class="comment">// Tableau: &quot;&lt;id concours&gt;&quot;: &lt;nb de points&gt;</span></div>
+<div class="line">    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> nb_concours; <span class="comment">// nb de concours auquel participe le participant</span></div>
+<div class="line">} <a class="code hl_struct" href="structParticipant.html">Participant</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Structure pour les Concours</span></div>
+<div class="line"><span class="keyword">typedef</span> <span class="keyword">struct </span>{ </div>
+<div class="line">    <span class="keywordtype">char</span> nom[30];</div>
+<div class="line">    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> participants_id[<a class="code hl_enumvalue" href="main_8c.html#afbd114dbfcb594c360387c8395fe1245a63ae39e69adfa7d5b2a13ac59341e867">NB_PARTICIPANTS</a>]; <span class="comment">// Vraiment utile ?</span></div>
+<div class="line">    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> nb_participants;</div>
+<div class="line">} <a class="code hl_struct" href="structConcours.html">Concours</a>;</div>
+<div class="ttc" id="amain_8c_html_afbd114dbfcb594c360387c8395fe1245a63ae39e69adfa7d5b2a13ac59341e867"><div class="ttname"><a href="main_8c.html#afbd114dbfcb594c360387c8395fe1245a63ae39e69adfa7d5b2a13ac59341e867">NB_PARTICIPANTS</a></div><div class="ttdeci">@ NB_PARTICIPANTS</div><div class="ttdef"><b>Définition</b> main.c:15</div></div>
+<div class="ttc" id="amain_8c_html_afbd114dbfcb594c360387c8395fe1245abd3fb6cb79a5963aa5d698243387d855"><div class="ttname"><a href="main_8c.html#afbd114dbfcb594c360387c8395fe1245abd3fb6cb79a5963aa5d698243387d855">NB_CONCOURS</a></div><div class="ttdeci">@ NB_CONCOURS</div><div class="ttdef"><b>Définition</b> main.c:15</div></div>
+<div class="ttc" id="astructConcours_html"><div class="ttname"><a href="structConcours.html">Concours</a></div><div class="ttdef"><b>Définition</b> main.c:30</div></div>
+<div class="ttc" id="astructParticipant_html"><div class="ttname"><a href="structParticipant.html">Participant</a></div><div class="ttdef"><b>Définition</b> main.c:20</div></div>
+</div><!-- fragment --><h3 class="doxsection"><a class="anchor" id="autotoc_md5"></a>
+Certaines informations ici sont redondantes et non optimale en terme d'allocation mémoire, pourquoi ce choix ? =&gt; NON RECEVABLE</h3>
+<p>La priorité a été d'avoir un moyen rapide et moins complexe d'accéder à certains types d'informations:</p>
+<ul>
+<li>Le nombre de concours auquel l'utilisateur participe peut être compté avec une boucle for sur <span class="tt">concours_points</span></li>
+<li>Le nombre de participants d'un concours peut être compté avec une boucle for sur <span class="tt">participants_id</span></li>
+<li>Les ids des participants d'un concours <span class="tt">participants_id</span> qui pourrait être remplacé par une boucle for sur <span class="tt">concours_points</span></li>
+</ul>
+<p>Cela nuit à la lisibilité du code et permet d'avoir une base solide et documentée pour toutes les fonctions. Le remplacement par une boucle for peut être étudier.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md6"></a>
+La boucle principale</h2>
+<p>Une boucle qui attend la commande <span class="tt">EXIT</span> pour se terminer est bien plus élégante qu'un <span class="tt">while True</span>.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md7"></a>
 Les commandes</h2>
-<p>Un <span class="tt">if (strcmp(commande, "commande") == 0)</span> pour executer une commande enfonction de la commande.</p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md4"></a>
-EXIT</h1>
-<p>Un simple break qui arrete la boucle et qui met donc fin au script</p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md5"></a>
-INSCRIRE</h1>
+<p>Une simple vérification de la commande entrée <span class="tt">if (strcmp(commande, "commande") == 0)</span> avant de demander interactivements les arguments nécessaires pour executer une commande en fonction de la commande.</p>
+<p>Nous avons commencé par implémenter les commandes une par une au sein de la fonction <span class="tt"><a class="el" href="main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main()</a></span> par soucide praticité, cela nous a permis de facilement tester quelle approche nous prenions concernant la structuration des données des concours et des participants.</p>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md8"></a>
+EXIT</h3>
+<p>La condition d'arrêt de la boucle principale</p>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md9"></a>
+INSCRIRE</h3>
 <blockquote class="doxtable">
-<p>Thomas Inscrire des participants </p>
+<p>@kaelendev </p>
 </blockquote>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md6"></a>
-PARTICIPANTS</h1>
+<p>Inscrire des participants</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md10"></a>
+PARTICIPANTS</h2>
 <blockquote class="doxtable">
-<p>Thomas </p>
+<p>@kaelendev </p>
 </blockquote>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md7"></a>
-CREER</h1>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md8"></a>
-CONCOURS</h1>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md11"></a>
+CREER</h2>
+<blockquote class="doxtable">
+<p>@garitaur </p>
+</blockquote>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md12"></a>
+CONCOURS</h2>
+<blockquote class="doxtable">
+<p>@garitaur </p>
+</blockquote>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md13"></a>
+GAIN</h2>
+<blockquote class="doxtable">
+<p>@kaelendev </p>
+</blockquote>
+<p>Une commande qui inscrit l'utilisateur dans le concours en question et ajoute le concours en questions à la liste de concours de l'utilisateur. La commande <span class="tt">GAIN</span> permet aussi d'attribuer un certains nombre de point qui est stocké dans</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md14"></a>
+SCORES</h2>
+<blockquote class="doxtable">
+<p>@garitaur &amp; @kaelendev </p>
+</blockquote>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md15"></a>
+CLASSEMENT</h2>
+<blockquote class="doxtable">
+<p>@garitaur </p>
+</blockquote>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md16"></a>
+COMPARAISON</h2>
+<blockquote class="doxtable">
+<p>@kaelendev </p>
+</blockquote>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md17"></a>
+COMPARAISON</h2>
+<blockquote class="doxtable">
+<p>@garitaur &amp; @kaelendev </p>
+</blockquote>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

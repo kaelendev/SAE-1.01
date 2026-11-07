@@ -2,34 +2,104 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="fr">
   <compounddef id="md_README" kind="page">
     <compoundname>md_README</compoundname>
-    <title>Projet SAE 1.01</title>
+    <title>SAE-1.01</title>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
 <para><anchor id="md_README_1autotoc_md0"/></para>
 <sect1 id="md_README_1autotoc_md1">
-<title>Implémentation du projet</title><sect2 id="md_README_1autotoc_md2">
-<title>La boucle principale</title><para>Une boucle while True: simple &amp; efficace.</para>
+<title>Le Projet</title><para>Il s&apos;agit d&apos;un interpréteur de commande permettant de gérer des concours et les joueurs qui y participent. Pour cela plusieurs commandes ont été données à faire dans le cachier des charges, leur implémentation se fait en plusieurs &quot;sprint&quot; durant chacun en moyenne une semaine pour notre binôme.</para>
+</sect1>
+<sect1 id="md_README_1autotoc_md2">
+<title>Implémentation du projet</title><sect2 id="md_README_1autotoc_md3">
+<title>Travail en binôme</title><para>Pour réaliser ce projet en binôme nous avons dû utiliser 2 outils différents:<itemizedlist>
+<listitem><para>Le premier est l&apos;IDE VSCode avec son extension <bold><emphasis>Live Share</emphasis></bold> pratique pour la collaboration en temps réel, caractère par caractère.</para>
+</listitem><listitem><para>Le deuxième est probablement l&apos;outil et la plateforme que vous avez utilisé pour voir ce fichier markdown: <bold><emphasis>git</emphasis></bold> et <bold><emphasis>Github</emphasis></bold>.<itemizedlist>
+<listitem><para>En effet git nous permet de versionner notre code et de facilement nous faire passer les changements majeurs de notre code lorsque la collaboration en temps réel n&apos;est pas possible.</para>
+</listitem><listitem><para>Github est la plateforme d&apos;hébergement de repo git la plus connue et la plus répandue. Même si j&apos;aurais personnellement (@kaelendev) préféré utiliser gitlab une instance hébergé localement de forgejo/gitea, Github est la solution la plus facile à prendre en main que je pouvais proposer à mon camarade.</para>
+</listitem></itemizedlist>
+</para>
+</listitem></itemizedlist>
+</para>
 </sect2>
-<sect2 id="md_README_1autotoc_md3">
-<title>Les commandes</title><para>Un <computeroutput>if (strcmp(commande, "commande") == 0)</computeroutput> pour executer une commande enfonction de la commande.</para>
+<sect2 id="md_README_1autotoc_md4">
+<title>Structures de données</title><para><programlisting filename=".c"><codeline><highlight class="comment">/*<sp/>Définition<sp/>des<sp/>structures<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>Participant,<sp/>qui<sp/>prend<sp/>prenom<sp/>nom<sp/>et<sp/>nb<sp/>de<sp/>concours<sp/>au<sp/>quel<sp/>il<sp/>participe</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>id;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>prenom[STRING_LENGHT];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>nom[STRING_LENGHT];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>concours_points[<ref refid="main_8c_1afbd114dbfcb594c360387c8395fe1245abd3fb6cb79a5963aa5d698243387d855" kindref="member">NB_CONCOURS</ref>];<sp/></highlight><highlight class="comment">//<sp/>Tableau:<sp/>&quot;&lt;id<sp/>concours&gt;&quot;:<sp/>&lt;nb<sp/>de<sp/>points&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_concours;<sp/></highlight><highlight class="comment">//<sp/>nb<sp/>de<sp/>concours<sp/>auquel<sp/>participe<sp/>le<sp/>participant</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">}<sp/><ref refid="structParticipant" kindref="compound">Participant</ref>;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>Structure<sp/>pour<sp/>les<sp/>Concours</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>nom[30];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>participants_id[<ref refid="main_8c_1afbd114dbfcb594c360387c8395fe1245a63ae39e69adfa7d5b2a13ac59341e867" kindref="member">NB_PARTICIPANTS</ref>];<sp/></highlight><highlight class="comment">//<sp/>Vraiment<sp/>utile<sp/>?</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_participants;</highlight></codeline>
+<codeline><highlight class="normal">}<sp/><ref refid="structConcours" kindref="compound">Concours</ref>;</highlight></codeline>
+</programlisting></para>
+<sect3 id="md_README_1autotoc_md5">
+<title>Certaines informations ici sont redondantes et non optimale en terme d&apos;allocation mémoire, pourquoi ce choix ? =&gt; NON RECEVABLE</title><para>La priorité a été d&apos;avoir un moyen rapide et moins complexe d&apos;accéder à certains types d&apos;informations:</para>
+<para><itemizedlist>
+<listitem><para>Le nombre de concours auquel l&apos;utilisateur participe peut être compté avec une boucle for sur <computeroutput>concours_points</computeroutput></para>
+</listitem><listitem><para>Le nombre de participants d&apos;un concours peut être compté avec une boucle for sur <computeroutput>participants_id</computeroutput></para>
+</listitem><listitem><para>Les ids des participants d&apos;un concours <computeroutput>participants_id</computeroutput> qui pourrait être remplacé par une boucle for sur <computeroutput>concours_points</computeroutput></para>
+</listitem></itemizedlist>
+</para>
+<para>Cela nuit à la lisibilité du code et permet d&apos;avoir une base solide et documentée pour toutes les fonctions. Le remplacement par une boucle for peut être étudier.</para>
+</sect3>
+</sect2>
+<sect2 id="md_README_1autotoc_md6">
+<title>La boucle principale</title><para>Une boucle qui attend la commande <computeroutput>EXIT</computeroutput> pour se terminer est bien plus élégante qu&apos;un <computeroutput>while True</computeroutput>.</para>
+</sect2>
+<sect2 id="md_README_1autotoc_md7">
+<title>Les commandes</title><para>Une simple vérification de la commande entrée <computeroutput>if (strcmp(commande, "commande") == 0)</computeroutput> avant de demander interactivements les arguments nécessaires pour executer une commande en fonction de la commande.</para>
+<para>Nous avons commencé par implémenter les commandes une par une au sein de la fonction <computeroutput><ref refid="main_8c_1ae66f6b31b5ad750f1fe042a706a4e3d4" kindref="member">main()</ref></computeroutput> par soucide praticité, cela nous a permis de facilement tester quelle approche nous prenions concernant la structuration des données des concours et des participants.</para>
+<sect3 id="md_README_1autotoc_md8">
+<title>EXIT</title><para>La condition d&apos;arrêt de la boucle principale</para>
+</sect3>
+<sect3 id="md_README_1autotoc_md9">
+<title>INSCRIRE</title><para><blockquote><para>@kaelendev </para>
+</blockquote></para>
+<para>Inscrire des participants</para>
+</sect3>
+</sect2>
+<sect2 id="md_README_1autotoc_md10">
+<title>PARTICIPANTS</title><para><blockquote><para>@kaelendev </para>
+</blockquote></para>
+</sect2>
+<sect2 id="md_README_1autotoc_md11">
+<title>CREER</title><para><blockquote><para>@garitaur </para>
+</blockquote></para>
+</sect2>
+<sect2 id="md_README_1autotoc_md12">
+<title>CONCOURS</title><para><blockquote><para>@garitaur </para>
+</blockquote></para>
+</sect2>
+<sect2 id="md_README_1autotoc_md13">
+<title>GAIN</title><para><blockquote><para>@kaelendev </para>
+</blockquote></para>
+<para>Une commande qui inscrit l&apos;utilisateur dans le concours en question et ajoute le concours en questions à la liste de concours de l&apos;utilisateur. La commande <computeroutput>GAIN</computeroutput> permet aussi d&apos;attribuer un certains nombre de point qui est stocké dans</para>
+</sect2>
+<sect2 id="md_README_1autotoc_md14">
+<title>SCORES</title><para><blockquote><para>@garitaur &amp; @kaelendev </para>
+</blockquote></para>
+</sect2>
+<sect2 id="md_README_1autotoc_md15">
+<title>CLASSEMENT</title><para><blockquote><para>@garitaur </para>
+</blockquote></para>
+</sect2>
+<sect2 id="md_README_1autotoc_md16">
+<title>COMPARAISON</title><para><blockquote><para>@kaelendev </para>
+</blockquote></para>
+</sect2>
+<sect2 id="md_README_1autotoc_md17">
+<title>COMPARAISON</title><para><blockquote><para>@garitaur &amp; @kaelendev </para>
+</blockquote></para>
 </sect2>
 </sect1>
-<sect1 id="md_README_1autotoc_md4">
-<title>EXIT</title><para>Un simple break qui arrete la boucle et qui met donc fin au script</para>
-</sect1>
-<sect1 id="md_README_1autotoc_md5">
-<title>INSCRIRE</title><para><blockquote><para>Thomas Inscrire des participants </para>
-</blockquote></para>
-</sect1>
-<sect1 id="md_README_1autotoc_md6">
-<title>PARTICIPANTS</title><para><blockquote><para>Thomas </para>
-</blockquote></para>
-</sect1>
-<sect1 id="md_README_1autotoc_md7">
-<title>CREER</title></sect1>
-<sect1 id="md_README_1autotoc_md8">
-<title>CONCOURS</title></sect1>
     </detaileddescription>
     <location file="README.md"/>
   </compounddef>

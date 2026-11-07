@@ -1,3 +1,8 @@
+/**
+ * @file main.c
+ * @brief Programme de gestion et classement de concours.
+ */
+
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -16,8 +21,8 @@ typedef struct {
     unsigned int id;
     char prenom[TAILLE_STR];
     char nom[TAILLE_STR];
-    unsigned int concours_points[NB_CONCOURS+1]; // Tableau: "<id concours>": <nb de points>         participant.concours_points[1] => 3
-    char inscrit[NB_CONCOURS+1]; // Tableau: "<id concours>: 0/1 pour inscrit ou pas inscrit" // INUTILE
+    unsigned int concours_points[NB_CONCOURS+1]; // Tableau: "<id concours>": <nb de points>
+    char inscrit[NB_CONCOURS+1]; // Tableau: "<id concours>: 0/1 pour inscrit ou pas inscrit"
     unsigned int nb_concours; // nb de concours auquel participe le participant
 } Participant;
 
@@ -51,8 +56,8 @@ void scores(Activite *a);
 
 /**
  * Trier dans l'ordre croissante une liste d'entier
- * \param liste La liste à trier
- * \param nb Le nombre d'éléments de liste
+ * @param liste La liste à trier
+ * @param nb Le nombre d'éléments de liste
  */
 void sort(int liste[], int nb) {
 
@@ -78,9 +83,9 @@ char dans(int element, const int liste[], int nb) {
 
 /**
  * Renvoie 1 si l'utilisateur est dans le concours donné et 0 s'il n'est pas dans le concours
- * \param concours_id L'identifiant du concours
- * \param participant_id L'identifiant du participant
- * \param a Le contexte global Activité (non modifiable)
+ * @param concours_id L'identifiant du concours
+ * @param participant_id L'identifiant du participant
+ * @param a Le contexte global Activité (non modifiable)
  */
 char participeAuConcours(int concours_id, int participant_id, const Activite *a) {
     if (a->participants[participant_id-1].inscrit[concours_id] == 1) return 1;
@@ -89,9 +94,9 @@ char participeAuConcours(int concours_id, int participant_id, const Activite *a)
 
 /**
  * Renvoie la liste d'identifiants de participants qui participe au concours donné
- * \param a Le contexte global Activité (non modifiable)
- * \param concours_id L'identifiant du concours
- * \param resultat Le tableau de sortie qui va contenir le résultat
+ * @param a Le contexte global Activité (non modifiable)
+ * @param concours_id L'identifiant du concours
+ * @param resultat Le tableau de sortie qui va contenir le résultat
  */
 void concoursParticipants(const Activite *a, int concours_id, int resultat[NB_PARTICIPANTS]) {
     int nb_results = 0;
@@ -103,17 +108,14 @@ void concoursParticipants(const Activite *a, int concours_id, int resultat[NB_PA
             ++nb_results;
         }
     }
-
-    // { 0: 2, 1: 4, 2: 5}
 }
 
-// { 2: 12, 4: 24, 5: 10}
 
 /**
  * Lister les points de participants par identifiant pour le concours donné
- * \param a Le contexte global Activité (non modifiable)
- * \param concours_id L'identifiant du concours
- * \param points Le tableau de sortie qui va contenir le résultat
+ * @param a Le contexte global Activité (non modifiable)
+ * @param concours_id L'identifiant du concours
+ * @param points Le tableau de sortie qui va contenir le résultat
  */
 void pointsParticipants(const Activite *a, int concours_id, unsigned int points[NB_PARTICIPANTS]) {
     //Concours concours = a->concours[concours_id-1];
@@ -141,28 +143,7 @@ int main() {
         // Variables pours les autres informations après la commande
         scanf("%s", commande);
 
-        if (strcmp(commande, "test")==0) { 
-            printf("Tu as selectionne test\n");
-
-            for (int concours_index=0;concours_index <= activite.dernier_indice_concours;++concours_index) {
-                printf("Concours (id: %d), nb_participants=%d:\n", concours_index+1, activite.concours[concours_index].nb_participants );
-
-                int participants_concours[NB_PARTICIPANTS];
-                concoursParticipants(&activite, concours_index+1, participants_concours); 
-                
-                for (int participants_id_index=0; participants_id_index < activite.concours[concours_index].nb_participants; ++participants_id_index) {
-                    Participant* p = &activite.participants[participants_id_index];
-                    printf("\tContient utilisateur (%d): %s %s\n",
-                        p->id,
-                        p->prenom,
-                        p->nom
-                    );
-                    for (int i=0; i <= activite.dernier_indice_concours; ++i) {
-                        if (p->inscrit[i+1] == 1 ) printf("\t\tParticipe au concours (%d)\n", i+1 );
-                    }
-                }
-            }
-        } else if (strcmp(commande, "CREER")==0) { //Creation d'un concours
+        if (strcmp(commande, "CREER")==0) { //Creation d'un concours
             creer(&activite);            
         } else if (strcmp(commande, "INSCRIRE")==0) {
            inscrire(&activite);
@@ -176,19 +157,6 @@ int main() {
             concours(&activite);
         } else if (strcmp(commande, "CLASSEMENT")==0) {
             func_classement(&activite);
-
-            //unsigned int concours_index=concours_id-1;
-            // On devrait vérifier que l'id est correcte pour ne pas planter le programme mais ce n'est pas demandé.
-            // assert(concours_id!=last_event_id+1)
-            //if (event[concours_id-1])
-
-            // if (concours_id >  activite.dernier_indice_concours+1) {
-            //     printf("Identifiant incorrect\n");
-            //     continue;
-            // }
-            //
-            // printf("%s\n", activite.concours[concours_id-1]);
-
         } else if (strcmp(commande, "COMPARAISON")==0) {
             comparaison(&activite);
         } else if (strcmp(commande, "BILAN")==0) {
@@ -200,7 +168,10 @@ int main() {
     return 0;
 }
 
-
+/**
+ * COMMANDE PARTICIPANTS: Liste les participants et le nombre de concours auxquels ils participent
+ * @param a Le contexte global Activité
+ */
 void func_participants(const Activite *a) {
     if (a->dernier_indice_participant==-1) {
         printf("Aucun participant inscrit\n");
@@ -212,6 +183,10 @@ void func_participants(const Activite *a) {
     }
 }
 
+/**
+ * Commande INSCRIRE: Créer un nouveau participant avec un nouvel idenficiant
+ * @param a Le contexte global Activité
+ */
 void inscrire(Activite *a) {
     char prenom[TAILLE_STR], nom[TAILLE_STR];
     scanf("%s%s", prenom, nom);
@@ -240,7 +215,7 @@ void inscrire(Activite *a) {
         a->participants[index].inscrit[index_concours+1] = 0;
 
         // On le met à la dernière place de tous les concours
-                a->place_snapshot[index+1][index_concours+1] = a->concours[index_concours].nb_participants + 1;
+        a->place_snapshot[index+1][index_concours+1] = a->concours[index_concours].nb_participants + 1;
     }
 
 
@@ -250,6 +225,10 @@ void inscrire(Activite *a) {
 
 }
 
+/**
+ * Commande CREER: Créer un concours avec un nouvel identifiant
+ * @param a Le contexte global Activité
+ */
 void creer(Activite *a) {
 
     char arg1[TAILLE_STR];
@@ -294,7 +273,7 @@ void creer(Activite *a) {
 
 /**
  * Commande GAIN: ajouter des points à un participants dans un concours
- * \param a Le contexte global Activité
+ * @param a Le contexte global Activité
  */
 void gain( Activite *a) {
     unsigned int participant_id, concours_id;
@@ -344,7 +323,7 @@ void gain( Activite *a) {
 
 /**
  * Commande CONCOURS: Liste les concours par ID et affiche le nombre de participants
- * \param a Le contexte global Activité
+ * @param a Le contexte global Activité
  */
 void concours(const Activite *a) {
     if (a->dernier_indice_concours == -1) {
@@ -356,13 +335,12 @@ void concours(const Activite *a) {
         printf("(%u) %s : %u participant", i+1 , a->concours[i].nom, a->concours[i].nb_participants);
         if (a->concours[i].nb_participants > 1) printf("s");
         printf("\n");
-
     }
 }
 
 /**
  * Commande SCORE: Donne le score d'un participant dans chaque concours
- * \param a Le contexte global Activité (non modifiable)
+ * @param a Le contexte global Activité (non modifiable)
  */
 void scores( Activite *a) {
     unsigned int participant_id;
@@ -372,7 +350,6 @@ void scores( Activite *a) {
         printf("Identifiant incorrect\n");
         return;
     }
-
 
     printf("%s %s\n", a->participants[participant_id-1].prenom, a->participants[participant_id-1].nom);
 
@@ -405,9 +382,9 @@ void scores( Activite *a) {
 
 /**
  * Trie par points décroissants, puis par identifiant croissant en cas d'égalité
- * \param list   Les identifiants des participants
- * \param points Les points correspondants
- * \param nb     Le nombre d'éléments
+ * @param list   Les identifiants des participants
+ * @param points Les points correspondants
+ * @param nb     Le nombre d'éléments
  */
 void sortvic(int list[], int points[], int nb) {
     for (int fin = nb - 1; fin > 0; --fin) {
@@ -436,10 +413,10 @@ void sortvic(int list[], int points[], int nb) {
 
 /**
  * Fonction qui utilise sortvic() pour trier les participants selon leurs points dans le concours donné
- * \param a Le contexte global Activité (non modifiable)
- * \param concours_id L'identifiant du concours
- * \param participants Tableau vide qui contiendra les participants triés
- * \param points Tableau vide qui contiendra les points triés selon les participants
+ * @param a Le contexte global Activité (non modifiable)
+ * @param concours_id L'identifiant du concours
+ * @param participants Tableau vide qui contiendra les participants triés
+ * @param points Tableau vide qui contiendra les points triés selon les participants
  */
 void participants_points_classement(const Activite *a,int concours_id, int participants[], int points[]) {
     int nb = 0;
@@ -459,12 +436,10 @@ void participants_points_classement(const Activite *a,int concours_id, int parti
 
 
 /**
- * Fonction qui produit ligne par ligne le classement des participants d'un concours en accord avec sortvic()
- * @param a Le contexte global Activité (non modifiable)
- * @param concours_id L'identifiant du concours
- * @param resultat Tableau vide qui contiendra la sortie ligne par ligne
- * @param sorted_participants Tableau vide qui contiendra les points triés selon les participants
- * @param sorted_points Tableau vide qui contiendra les points triés selon les participants
+ * Calcule le rang/placement de chaque utilisateur par identifiant en fonction de leurs points 
+ * @param points Tableau de points par identifiant non modifiable
+ * @param nb Nombre de participants dans le tableau points
+ * @param places Tableau vide qui contiendra le placement des participant selon leurs points
  */
 void calculer_places(const int points[], int nb, int places[]) {
     for (int i=0; i < nb; ++i) {
@@ -477,7 +452,14 @@ void calculer_places(const int points[], int nb, int places[]) {
     }
 }
 
-
+/**
+ * Fonction qui produit ligne par ligne le classement des participants d'un concours en accord avec sortvic()
+ * @param a Le contexte global Activité (non modifiable)
+ * @param concours_id L'identifiant du concours
+ * @param resultat Tableau vide qui contiendra la sortie ligne par ligne
+ * @param sorted_participants Tableau vide qui contiendra les points triés selon les participants
+ * @param sorted_points Tableau vide qui contiendra les points triés selon les participants
+ */
 void process_classement(const Activite *a, int concours_id, char resultat[NB_PARTICIPANTS][TAILLE_LIGNE],
                         int sorted_participants[NB_PARTICIPANTS],
                         int sorted_points[NB_PARTICIPANTS]
@@ -494,8 +476,7 @@ void process_classement(const Activite *a, int concours_id, char resultat[NB_PAR
         const Participant *p = &a->participants[sorted_participants[i] - 1];
 
         // Ex-aequo si même score que le précédent ou que le suivant
-        int ex = (i > 0 && sorted_points[i] == sorted_points[i-1]) ||
-                 (i + 1 < nb && sorted_points[i] == sorted_points[i+1]);
+        int ex = (i > 0 && sorted_points[i] == sorted_points[i-1]) || (i + 1 < nb && sorted_points[i] == sorted_points[i+1]);
 
         char place_str[TAILLE_LIGNE];
         if (ex) snprintf(place_str, TAILLE_LIGNE, "%dex", places[i]);
@@ -535,7 +516,7 @@ void func_classement(Activite *a) {
 
 /**
  * Commande COMPARAISON: Compare le nombre de points d'un participants dans 2 concours
- * \param a Le contexte global Activité
+ * @param a Le contexte global Activité
  */
 void comparaison(const Activite *a) {
     int concoursA_id;
@@ -597,7 +578,11 @@ void comparaison(const Activite *a) {
 }
 
 
-
+/**
+ * Sauvegarde les places de chaque participant pour un concours donné
+ * @param a Le contexte global Activité
+ * @param concours_id L'identifiant du concours
+ */
 void snapshot(Activite *a, int concours_id) {
     int sorted_participants[NB_PARTICIPANTS];
     int sorted_points[NB_PARTICIPANTS];
@@ -612,7 +597,14 @@ void snapshot(Activite *a, int concours_id) {
     }
 }
 
-
+/**
+ * Calcule la différence de placement pour un participant donné dans un concours donné depuis la dernière snapshot
+ * @param a Le contexte global Activité (non modifiable)
+ * @param concours_id L'identifiant du concours
+ * @param partipant_id L'identifiant du participant
+ * @param sorted_participants Tableau des participants triés du plus haut placement au plus bas dans le concours
+ * @param sorted_points Tableau des points associés à l'identifiant de chaque participants dans sorted_participants
+ */
 int differencePlace(const Activite *a, int concours_id, int participant_id,
                     const int sorted_participants[], const int sorted_points[]) {
 
@@ -638,7 +630,7 @@ int differencePlace(const Activite *a, int concours_id, int participant_id,
 
 /**
  * Commande BILAN: Affiche les avancées progressive de chaque participant depuis la dernière commande BILAN
- * \param a Le contexte global Activité
+ * @param a Le contexte global Activité
  */
 void bilan(Activite *a) {
     int concours_id;

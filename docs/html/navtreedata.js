@@ -25,23 +25,51 @@
 var NAVTREE =
 [
   [ "SAE 1.01", "index.html", [
-    [ "Projet SAE 1.01", "md_README.html", [
-      [ "Implémentation du projet", "md_README.html#autotoc_md1", [
-        [ "La boucle principale", "md_README.html#autotoc_md2", null ],
-        [ "Les commandes", "md_README.html#autotoc_md3", null ]
-      ] ],
-      [ "EXIT", "md_README.html#autotoc_md4", null ],
-      [ "INSCRIRE", "md_README.html#autotoc_md5", null ],
-      [ "PARTICIPANTS", "md_README.html#autotoc_md6", null ],
-      [ "CREER", "md_README.html#autotoc_md7", null ],
-      [ "CONCOURS", "md_README.html#autotoc_md8", null ]
+    [ "SAE-1.01", "md_README.html", [
+      [ "Le Projet", "md_README.html#autotoc_md1", null ],
+      [ "Implémentation du projet", "md_README.html#autotoc_md2", [
+        [ "Travail en binôme", "md_README.html#autotoc_md3", null ],
+        [ "Structures de données", "md_README.html#autotoc_md4", [
+          [ "Certaines informations ici sont redondantes et non optimale en terme d'allocation mémoire, pourquoi ce choix ? =&gt; NON RECEVABLE", "md_README.html#autotoc_md5", null ]
+        ] ],
+        [ "La boucle principale", "md_README.html#autotoc_md6", null ],
+        [ "Les commandes", "md_README.html#autotoc_md7", [
+          [ "EXIT", "md_README.html#autotoc_md8", null ],
+          [ "INSCRIRE", "md_README.html#autotoc_md9", null ]
+        ] ],
+        [ "PARTICIPANTS", "md_README.html#autotoc_md10", null ],
+        [ "CREER", "md_README.html#autotoc_md11", null ],
+        [ "CONCOURS", "md_README.html#autotoc_md12", null ],
+        [ "GAIN", "md_README.html#autotoc_md13", null ],
+        [ "SCORES", "md_README.html#autotoc_md14", null ],
+        [ "CLASSEMENT", "md_README.html#autotoc_md15", null ],
+        [ "COMPARAISON", "md_README.html#autotoc_md16", null ],
+        [ "COMPARAISON", "md_README.html#autotoc_md17", null ]
+      ] ]
+    ] ],
+    [ "Structures de données", "annotated.html", [
+      [ "Structures de données", "annotated.html", "annotated_dup" ],
+      [ "Index des structures de données", "classes.html", null ],
+      [ "Champs de donnée", "functions.html", [
+        [ "Tout", "functions.html", null ],
+        [ "Variables", "functions_vars.html", null ]
+      ] ]
+    ] ],
+    [ "Fichiers", "files.html", [
+      [ "Liste des fichiers", "files.html", "files_dup" ],
+      [ "Variables globale", "globals.html", [
+        [ "Tout", "globals.html", null ],
+        [ "Fonctions", "globals_func.html", null ],
+        [ "Valeurs énumérées", "globals_eval.html", null ],
+        [ "Macros", "globals_defs.html", null ]
+      ] ]
     ] ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"index.html"
+"annotated.html"
 ];
 
 const SYNCONMSG = 'cliquez pour désactiver la synchronisation du panel';

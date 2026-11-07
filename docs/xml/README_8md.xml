@@ -7,32 +7,108 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline><highlight class="normal">#<sp/>Projet<sp/>SAE<sp/>1.01</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>SAE-1.01</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Le<sp/>Projet</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Il<sp/>s&apos;agit<sp/>d&apos;un<sp/>interpréteur<sp/>de<sp/>commande<sp/>permettant<sp/>de<sp/>gérer<sp/>des<sp/>concours<sp/>et<sp/>les<sp/>joueurs<sp/>qui<sp/>y<sp/>participent.<sp/>Pour<sp/>cela<sp/>plusieurs<sp/>commandes<sp/>ont<sp/>été<sp/>données<sp/>à<sp/>faire<sp/>dans<sp/>le<sp/>cachier<sp/>des<sp/>charges,<sp/>leur<sp/>implémentation<sp/>se<sp/>fait<sp/>en<sp/>plusieurs<sp/>&quot;sprint&quot;<sp/>durant<sp/>chacun<sp/>en<sp/>moyenne<sp/>une<sp/>semaine<sp/>pour<sp/>notre<sp/>binôme.</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">##<sp/>Implémentation<sp/>du<sp/>projet</highlight></codeline>
 <codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Travail<sp/>en<sp/>binôme</highlight></codeline>
+<codeline><highlight class="normal">Pour<sp/>réaliser<sp/>ce<sp/>projet<sp/>en<sp/>binôme<sp/>nous<sp/>avons<sp/>dû<sp/>utiliser<sp/>2<sp/>outils<sp/>différents:</highlight></codeline>
+<codeline><highlight class="normal">-<sp/><sp/>Le<sp/>premier<sp/>est<sp/>l&apos;IDE<sp/>VSCode<sp/>avec<sp/>son<sp/>extension<sp/>__*Live<sp/>Share*__<sp/>pratique<sp/>pour<sp/>la<sp/>collaboration<sp/>en<sp/>temps<sp/>réel,<sp/>caractère<sp/>par<sp/>caractère.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Le<sp/>deuxième<sp/>est<sp/>probablement<sp/>l&apos;outil<sp/>et<sp/>la<sp/>plateforme<sp/>que<sp/>vous<sp/>avez<sp/>utilisé<sp/>pour<sp/>voir<sp/>ce<sp/>fichier<sp/>markdown:<sp/>__*git*__<sp/>et<sp/>__*Github*__.<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>En<sp/>effet<sp/>git<sp/>nous<sp/>permet<sp/>de<sp/>versionner<sp/>notre<sp/>code<sp/>et<sp/>de<sp/>facilement<sp/>nous<sp/>faire<sp/>passer<sp/>les<sp/>changements<sp/>majeurs<sp/>de<sp/>notre<sp/>code<sp/>lorsque<sp/>la<sp/>collaboration<sp/>en<sp/>temps<sp/>réel<sp/>n&apos;est<sp/>pas<sp/>possible.<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>Github<sp/>est<sp/>la<sp/>plateforme<sp/>d&apos;hébergement<sp/>de<sp/>repo<sp/>git<sp/>la<sp/>plus<sp/>connue<sp/>et<sp/>la<sp/>plus<sp/>répandue.<sp/>Même<sp/>si<sp/>j&apos;aurais<sp/>personnellement<sp/>(@kaelendev)<sp/>préféré<sp/>utiliser<sp/>gitlab<sp/>une<sp/>instance<sp/>hébergé<sp/>localement<sp/>de<sp/>forgejo/gitea,<sp/>Github<sp/>est<sp/>la<sp/>solution<sp/>la<sp/>plus<sp/>facile<sp/>à<sp/>prendre<sp/>en<sp/>main<sp/>que<sp/>je<sp/>pouvais<sp/>proposer<sp/>à<sp/>mon<sp/>camarade.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Structures<sp/>de<sp/>données</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">/*<sp/>Définition<sp/>des<sp/>structures<sp/>*/</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Participant,<sp/>qui<sp/>prend<sp/>prenom<sp/>nom<sp/>et<sp/>nb<sp/>de<sp/>concours<sp/>au<sp/>quel<sp/>il<sp/>participe</highlight></codeline>
+<codeline><highlight class="normal">typedef<sp/>struct<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>unsigned<sp/>int<sp/>id;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>char<sp/>prenom[STRING_LENGHT];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>char<sp/>nom[STRING_LENGHT];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>unsigned<sp/>int<sp/>concours_points[NB_CONCOURS];<sp/>//<sp/>Tableau:<sp/>&quot;&lt;id<sp/>concours&gt;&quot;:<sp/>&lt;nb<sp/>de<sp/>points&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>unsigned<sp/>int<sp/>nb_concours;<sp/>//<sp/>nb<sp/>de<sp/>concours<sp/>auquel<sp/>participe<sp/>le<sp/>participant</highlight></codeline>
+<codeline><highlight class="normal">}<sp/>Participant;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Structure<sp/>pour<sp/>les<sp/>Concours</highlight></codeline>
+<codeline><highlight class="normal">typedef<sp/>struct<sp/>{<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>char<sp/>nom[30];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>unsigned<sp/>int<sp/>participants_id[NB_PARTICIPANTS];<sp/>//<sp/>Vraiment<sp/>utile<sp/>?</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>unsigned<sp/>int<sp/>nb_participants;</highlight></codeline>
+<codeline><highlight class="normal">}<sp/>Concours;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>Certaines<sp/>informations<sp/>ici<sp/>sont<sp/>redondantes<sp/>et<sp/>non<sp/>optimale<sp/>en<sp/>terme<sp/>d&apos;allocation<sp/>mémoire,<sp/>pourquoi<sp/>ce<sp/>choix<sp/>?<sp/>=&gt;<sp/>NON<sp/>RECEVABLE</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">La<sp/>priorité<sp/>a<sp/>été<sp/>d&apos;avoir<sp/>un<sp/>moyen<sp/>rapide<sp/>et<sp/>moins<sp/>complexe<sp/>d&apos;accéder<sp/>à<sp/>certains<sp/>types<sp/>d&apos;informations:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Le<sp/>nombre<sp/>de<sp/>concours<sp/>auquel<sp/>l&apos;utilisateur<sp/>participe<sp/>peut<sp/>être<sp/>compté<sp/>avec<sp/>une<sp/>boucle<sp/>for<sp/>sur<sp/>`concours_points`</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Le<sp/>nombre<sp/>de<sp/>participants<sp/>d&apos;un<sp/>concours<sp/>peut<sp/>être<sp/>compté<sp/>avec<sp/>une<sp/>boucle<sp/>for<sp/>sur<sp/>`participants_id`</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Les<sp/>ids<sp/>des<sp/>participants<sp/>d&apos;un<sp/>concours<sp/>`participants_id`<sp/>qui<sp/>pourrait<sp/>être<sp/>remplacé<sp/>par<sp/>une<sp/>boucle<sp/>for<sp/>sur<sp/>`concours_points`</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Cela<sp/>nuit<sp/>à<sp/>la<sp/>lisibilité<sp/>du<sp/>code<sp/>et<sp/>permet<sp/>d&apos;avoir<sp/>une<sp/>base<sp/>solide<sp/>et<sp/>documentée<sp/>pour<sp/>toutes<sp/>les<sp/>fonctions.<sp/>Le<sp/>remplacement<sp/>par<sp/>une<sp/>boucle<sp/>for<sp/>peut<sp/>être<sp/>étudier.</highlight></codeline>
+<codeline></codeline>
 <codeline><highlight class="normal">###<sp/>La<sp/>boucle<sp/>principale</highlight></codeline>
-<codeline><highlight class="normal">Une<sp/>boucle<sp/>while<sp/>True:<sp/>simple<sp/>&amp;<sp/>efficace.</highlight></codeline>
+<codeline><highlight class="normal">Une<sp/>boucle<sp/>qui<sp/>attend<sp/>la<sp/>commande<sp/>`EXIT`<sp/>pour<sp/>se<sp/>terminer<sp/>est<sp/>bien<sp/>plus<sp/>élégante<sp/>qu&apos;un<sp/>`while<sp/>True`.</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">###<sp/>Les<sp/>commandes</highlight></codeline>
-<codeline><highlight class="normal">Un<sp/>`if<sp/>(strcmp(commande,<sp/>&quot;commande&quot;)<sp/>==<sp/>0)`<sp/>pour<sp/>executer<sp/>une<sp/>commande<sp/>enfonction<sp/>de<sp/>la<sp/>commande.</highlight></codeline>
+<codeline><highlight class="normal">Une<sp/>simple<sp/>vérification<sp/>de<sp/>la<sp/>commande<sp/>entrée<sp/>`if<sp/>(strcmp(commande,<sp/>&quot;commande&quot;)<sp/>==<sp/>0)`<sp/>avant<sp/>de<sp/>demander<sp/>interactivements<sp/>les<sp/>arguments<sp/>nécessaires<sp/><sp/>pour<sp/>executer<sp/>une<sp/>commande<sp/>en<sp/>fonction<sp/>de<sp/>la<sp/>commande.</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">##<sp/>EXIT</highlight></codeline>
-<codeline><highlight class="normal">Un<sp/>simple<sp/>break<sp/>qui<sp/>arrete<sp/>la<sp/>boucle<sp/>et<sp/>qui<sp/>met<sp/>donc<sp/>fin<sp/>au<sp/>script</highlight></codeline>
+<codeline><highlight class="normal">Nous<sp/>avons<sp/>commencé<sp/>par<sp/>implémenter<sp/>les<sp/>commandes<sp/>une<sp/>par<sp/>une<sp/>au<sp/>sein<sp/>de<sp/>la<sp/>fonction<sp/>`main()`<sp/>par<sp/>soucide<sp/>praticité,<sp/>cela<sp/>nous<sp/>a<sp/>permis<sp/>de<sp/>facilement<sp/>tester<sp/>quelle<sp/>approche<sp/>nous<sp/>prenions<sp/>concernant<sp/>la<sp/>structuration<sp/>des<sp/>données<sp/>des<sp/>concours<sp/>et<sp/>des<sp/>participants.</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">##<sp/>INSCRIRE</highlight></codeline>
-<codeline><highlight class="normal">&gt;<sp/>Thomas</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>EXIT</highlight></codeline>
+<codeline><highlight class="normal">La<sp/>condition<sp/>d&apos;arrêt<sp/>de<sp/>la<sp/>boucle<sp/>principale</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>INSCRIRE</highlight></codeline>
+<codeline><highlight class="normal">&gt;<sp/>@kaelendev</highlight></codeline>
+<codeline></codeline>
 <codeline><highlight class="normal">Inscrire<sp/>des<sp/>participants</highlight></codeline>
 <codeline></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">##<sp/>PARTICIPANTS</highlight></codeline>
-<codeline><highlight class="normal">&gt;<sp/>Thomas</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">##<sp/>CREER</highlight></codeline>
+<codeline><highlight class="normal">###<sp/>PARTICIPANTS</highlight></codeline>
+<codeline><highlight class="normal">&gt;<sp/>@kaelendev</highlight></codeline>
 <codeline></codeline>
 <codeline></codeline>
+<codeline><highlight class="normal">###<sp/>CREER</highlight></codeline>
+<codeline><highlight class="normal">&gt;<sp/>@garitaur</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">##<sp/>CONCOURS</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>CONCOURS</highlight></codeline>
+<codeline><highlight class="normal">&gt;<sp/>@garitaur</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>GAIN</highlight></codeline>
+<codeline><highlight class="normal">&gt;<sp/>@kaelendev</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Une<sp/>commande<sp/>qui<sp/>inscrit<sp/>l&apos;utilisateur<sp/>dans<sp/>le<sp/>concours<sp/>en<sp/>question<sp/>et<sp/>ajoute<sp/>le<sp/>concours<sp/>en<sp/>questions<sp/>à<sp/>la<sp/>liste<sp/>de<sp/>concours<sp/>de<sp/>l&apos;utilisateur.<sp/>La<sp/>commande<sp/>`GAIN`<sp/>permet<sp/>aussi<sp/>d&apos;attribuer<sp/>un<sp/>certains<sp/>nombre<sp/>de<sp/>point<sp/>qui<sp/>est<sp/>stocké<sp/>dans</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>SCORES</highlight></codeline>
+<codeline><highlight class="normal">&gt;<sp/>@garitaur<sp/>&amp;<sp/>@kaelendev</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>CLASSEMENT</highlight></codeline>
+<codeline><highlight class="normal">&gt;<sp/>@garitaur</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>COMPARAISON</highlight></codeline>
+<codeline><highlight class="normal">&gt;<sp/>@kaelendev</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>COMPARAISON</highlight></codeline>
+<codeline><highlight class="normal">&gt;<sp/>@garitaur<sp/>&amp;<sp/>@kaelendev</highlight></codeline>
     </programlisting>
     <location file="README.md"/>
   </compounddef>

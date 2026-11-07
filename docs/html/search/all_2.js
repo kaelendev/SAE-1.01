@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['boucle_20principale_0',['La boucle principale',['../md_README.html#autotoc_md2',1,'']]]
+  ['activite_0',['Activite',['../structActivite.html',1,'']]],
+  ['allocation_20mémoire_20pourquoi_20ce_20choix_20non_20recevable_1',['Certaines informations ici sont redondantes et non optimale en terme d&apos;allocation mémoire, pourquoi ce choix ? =&amp;gt; NON RECEVABLE',['../md_README.html#autotoc_md5',1,'']]]
 ];

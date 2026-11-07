@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="fr">
+  <compounddef id="structActivite" kind="struct" language="C++" prot="public">
+    <compoundname>Activite</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structActivite_1a86945a22b3120714a2b16c9eb88d5ca3" prot="public" static="no" mutable="no">
+        <type><ref refid="structParticipant" kindref="compound">Participant</ref></type>
+        <definition>Participant Activite::participants[NB_PARTICIPANTS]</definition>
+        <argsstring>[NB_PARTICIPANTS]</argsstring>
+        <name>participants</name>
+        <qualifiedname>Activite::participants</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/main.c" line="37" column="17" bodyfile="src/main.c" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structActivite_1a44edeee964d82a10fb6840205373382c" prot="public" static="no" mutable="no">
+        <type><ref refid="structConcours" kindref="compound">Concours</ref></type>
+        <definition>Concours Activite::concours[NB_CONCOURS]</definition>
+        <argsstring>[NB_CONCOURS]</argsstring>
+        <name>concours</name>
+        <qualifiedname>Activite::concours</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/main.c" line="38" column="14" bodyfile="src/main.c" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structActivite_1a48016035e949416811a6d45c4b2bb1d2" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Activite::dernier_indice_participant</definition>
+        <argsstring></argsstring>
+        <name>dernier_indice_participant</name>
+        <qualifiedname>Activite::dernier_indice_participant</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/main.c" line="39" column="9" bodyfile="src/main.c" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structActivite_1aaf356905d06b8e88544c1113bcbbab14" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Activite::dernier_indice_concours</definition>
+        <argsstring></argsstring>
+        <name>dernier_indice_concours</name>
+        <qualifiedname>Activite::dernier_indice_concours</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/main.c" line="40" column="9" bodyfile="src/main.c" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structActivite_1ae5380067f4093b679b65d0a8fdd191c6" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Activite::place_snapshot[NB_PARTICIPANTS+1][NB_CONCOURS+1]</definition>
+        <argsstring>[NB_PARTICIPANTS+1][NB_CONCOURS+1]</argsstring>
+        <name>place_snapshot</name>
+        <qualifiedname>Activite::place_snapshot</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/main.c" line="43" column="9" bodyfile="src/main.c" bodystart="43" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Activite</label>
+        <link refid="structActivite"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>participants</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>concours</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Concours</label>
+        <link refid="structConcours"/>
+      </node>
+      <node id="2">
+        <label>Participant</label>
+        <link refid="structParticipant"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/main.c" line="36" column="1" bodyfile="src/main.c" bodystart="36" bodyend="44"/>
+    <listofallmembers>
+      <member refid="structActivite_1a44edeee964d82a10fb6840205373382c" prot="public" virt="non-virtual"><scope>Activite</scope><name>concours</name></member>
+      <member refid="structActivite_1aaf356905d06b8e88544c1113bcbbab14" prot="public" virt="non-virtual"><scope>Activite</scope><name>dernier_indice_concours</name></member>
+      <member refid="structActivite_1a48016035e949416811a6d45c4b2bb1d2" prot="public" virt="non-virtual"><scope>Activite</scope><name>dernier_indice_participant</name></member>
+      <member refid="structActivite_1a86945a22b3120714a2b16c9eb88d5ca3" prot="public" virt="non-virtual"><scope>Activite</scope><name>participants</name></member>
+      <member refid="structActivite_1ae5380067f4093b679b65d0a8fdd191c6" prot="public" virt="non-virtual"><scope>Activite</scope><name>place_snapshot</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

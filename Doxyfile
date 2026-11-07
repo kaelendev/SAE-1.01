@@ -14,7 +14,7 @@ EXCLUDE                  = docs
 EXCLUDE_PATTERNS         = */.git/* */build/*
 
 # Documentation et avertissements
-EXTRACT_ALL              = NO
+EXTRACT_ALL              = YES
 WARNINGS                 = YES
 WARN_IF_UNDOCUMENTED     = YES
 WARN_IF_DOC_ERROR        = YES

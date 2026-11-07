@@ -1,12 +1,57 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.18.0" xml:lang="fr">
-  <compound refid="main_8c" kind="file"><name>main.c</name>
-    <member refid="main_8c_1a322565ccf348d13e4d3de13af771e5fc" kind="define"><name>debug</name></member>
-    <member refid="main_8c_1a6df4923d4f7727753f7dc617bb0aa321" kind="function"><name>inscrire</name></member>
-    <member refid="main_8c_1ae66f6b31b5ad750f1fe042a706a4e3d4" kind="function"><name>main</name></member>
+  <compound refid="structActivite" kind="struct"><name>Activite</name>
+    <member refid="structActivite_1a86945a22b3120714a2b16c9eb88d5ca3" kind="variable"><name>participants</name></member>
+    <member refid="structActivite_1a44edeee964d82a10fb6840205373382c" kind="variable"><name>concours</name></member>
+    <member refid="structActivite_1a48016035e949416811a6d45c4b2bb1d2" kind="variable"><name>dernier_indice_participant</name></member>
+    <member refid="structActivite_1aaf356905d06b8e88544c1113bcbbab14" kind="variable"><name>dernier_indice_concours</name></member>
+    <member refid="structActivite_1ae5380067f4093b679b65d0a8fdd191c6" kind="variable"><name>place_snapshot</name></member>
+  </compound>
+  <compound refid="structConcours" kind="struct"><name>Concours</name>
+    <member refid="structConcours_1a00ec27a9e8f18388148d27f75afe4d00" kind="variable"><name>nom</name></member>
+    <member refid="structConcours_1a8a0ddca423611254135a9d7729b16974" kind="variable"><name>nb_participants</name></member>
+  </compound>
+  <compound refid="structParticipant" kind="struct"><name>Participant</name>
+    <member refid="structParticipant_1ad5c9f4b6a31d341feadc36d8a9d242c0" kind="variable"><name>id</name></member>
+    <member refid="structParticipant_1a7ebacc9a0ce3fbf60448199612ded37b" kind="variable"><name>prenom</name></member>
+    <member refid="structParticipant_1a8f17585bf9c85ec2d8a393dfe3861f4f" kind="variable"><name>nom</name></member>
+    <member refid="structParticipant_1af8615ac12fdbb56bfd17ece986f77908" kind="variable"><name>concours_points</name></member>
+    <member refid="structParticipant_1a4a9c79c30ec8009acb37c1dd7bc212e4" kind="variable"><name>inscrit</name></member>
+    <member refid="structParticipant_1a1cdfca950948cba597e4a923d9ce2904" kind="variable"><name>nb_concours</name></member>
   </compound>
   <compound refid="README_8md" kind="file"><name>README.md</name>
   </compound>
+  <compound refid="main_8c" kind="file"><name>main.c</name>
+    <member refid="main_8c_1a322565ccf348d13e4d3de13af771e5fc" kind="define"><name>debug</name></member>
+    <member refid="main_8c_1afbd114dbfcb594c360387c8395fe1245" kind="enum"><name>@057340251207156331175107174245243255025053126303</name></member>
+    <member refid="main_8c_1afbd114dbfcb594c360387c8395fe1245a63ae39e69adfa7d5b2a13ac59341e867" kind="enumvalue"><name>NB_PARTICIPANTS</name></member>
+    <member refid="main_8c_1afbd114dbfcb594c360387c8395fe1245abd3fb6cb79a5963aa5d698243387d855" kind="enumvalue"><name>NB_CONCOURS</name></member>
+    <member refid="main_8c_1afbd114dbfcb594c360387c8395fe1245a12061484c6f8e0743a753f3e6d592b7e" kind="enumvalue"><name>TAILLE_STR</name></member>
+    <member refid="main_8c_1afbd114dbfcb594c360387c8395fe1245a5843543a07aefb91334ed605d9b22a3c" kind="enumvalue"><name>TAILLE_LIGNE</name></member>
+    <member refid="main_8c_1ae3e0023be05de997f7034c33e07ddc29" kind="function"><name>func_participants</name></member>
+    <member refid="main_8c_1a070065a32dece138740ca8a91cfb8bd8" kind="function"><name>creer</name></member>
+    <member refid="main_8c_1a688c667260e2185adc1abee552c746fe" kind="function"><name>inscrire</name></member>
+    <member refid="main_8c_1a234609ef95aa65f86af3e4e809a4456e" kind="function"><name>gain</name></member>
+    <member refid="main_8c_1a7509dff9364e57699429abbd24f713f4" kind="function"><name>func_classement</name></member>
+    <member refid="main_8c_1a0dcf2bf83030ff50fafbaee77b49572c" kind="function"><name>comparaison</name></member>
+    <member refid="main_8c_1a8c7c71b6695c8519a855989f9ee64b99" kind="function"><name>concours</name></member>
+    <member refid="main_8c_1acda5153fe082bc12b75df19e95b4d018" kind="function"><name>bilan</name></member>
+    <member refid="main_8c_1acf50195405b82210c3227dbbaae85f14" kind="function"><name>scores</name></member>
+    <member refid="main_8c_1a137e143da2bdafd9e0ce06a485fc92cf" kind="function"><name>sort</name></member>
+    <member refid="main_8c_1a9f3598e66c16b8fc9c9643f0d7a3886a" kind="function"><name>dans</name></member>
+    <member refid="main_8c_1a017d98b1b93ad89108cd1e79acb387c5" kind="function"><name>participeAuConcours</name></member>
+    <member refid="main_8c_1abbf1b4b65fc4ecff623b47426eb24f83" kind="function"><name>concoursParticipants</name></member>
+    <member refid="main_8c_1ade8258dd7f101ca6bc52fa0cdef14ecc" kind="function"><name>pointsParticipants</name></member>
+    <member refid="main_8c_1ae66f6b31b5ad750f1fe042a706a4e3d4" kind="function"><name>main</name></member>
+    <member refid="main_8c_1a95937e51b8959d527a46b55877e0b242" kind="function"><name>sortvic</name></member>
+    <member refid="main_8c_1a73efbaa72d04a0b21324f623eb95d720" kind="function"><name>participants_points_classement</name></member>
+    <member refid="main_8c_1ab415b232d74e9b9175aa391a72743d68" kind="function"><name>calculer_places</name></member>
+    <member refid="main_8c_1abecec30bb6ca6a17a3180e11c6a28565" kind="function"><name>process_classement</name></member>
+    <member refid="main_8c_1aa9678193827f4a87e38a359d3596d43b" kind="function"><name>snapshot</name></member>
+    <member refid="main_8c_1af727faf2f1c2891137423b27e0bcf356" kind="function"><name>differencePlace</name></member>
+  </compound>
   <compound refid="md_README" kind="page"><name>md_README</name>
+  </compound>
+  <compound refid="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir"><name>src</name>
   </compound>
 </doxygenindex>
