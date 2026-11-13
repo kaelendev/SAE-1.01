@@ -7,9 +7,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <limits.h>
-
-#define debug printf
 
 
 enum {NB_PARTICIPANTS=100, NB_CONCOURS=20, TAILLE_STR=31, TAILLE_LIGNE=100}; // Constantes pour le nombre maximum de participants et d'événements
@@ -155,7 +152,6 @@ void concoursParticipants(const Activite *a, int concours_id, int resultat[NB_PA
     for (int id=1; id <= a->dernier_indice_participant+1; ++id) {
 
         if (participeAuConcours(concours_id, id, a) == 1) {
-            //debug("(id: %d) dans concours (%d)\n", id, concours_id);
             resultat[nb_results] = id;
             ++nb_results;
         }
