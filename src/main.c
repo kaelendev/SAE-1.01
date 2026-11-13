@@ -52,6 +52,19 @@ void bilan(Activite *a);
 void scores(Activite *a);
 
 /**
+ * Vérifie que le contexte d'activité est non nul et que les identifiants sont dans les bornes autorisées.
+ * @param a Le contexte global Activité (non modifiable)
+ * @param participant_id L'identifiant du participant (entre 1 et NB_PARTICIPANTS)
+ * @param concours_id L'identifiant du concours (entre 1 et NB_CONCOURS)
+ * @return 1 si le contexte et les identifiants sont valides, 0 sinon
+ */
+int contexteValide(const Activite *a, int participant_id, int concours_id) {
+    return a != NULL
+        && participant_id >= 1 && participant_id <= NB_PARTICIPANTS
+        && concours_id >= 1 && concours_id <= NB_CONCOURS;
+}
+
+/**
  * Trier dans l'ordre croissant une liste d'entier
  * @param liste La liste à trier
  * @param nb Le nombre d'éléments de liste
@@ -90,6 +103,8 @@ char dans(int element, const int liste[], int nb) {
  * @return 1 ou 0
  */
 char participeAuConcours(int concours_id, int participant_id, const Activite *a) {
+    assert(contexteValide(a, participant_id, concours_id));
+
     if (a->participants[participant_id-1].concours_points[concours_id] > 0) return 1;
     return 0;
 }
@@ -101,6 +116,8 @@ char participeAuConcours(int concours_id, int participant_id, const Activite *a)
  * @return nombre de participants (entre 0 et NB_PARTICIPANTS)
  */
 int nbParticipants(const Activite *a, int concours_id) {
+    assert(contexteValide(a, 1, concours_id));
+
     int nb=0;
     for (int i=0; i<=a->dernier_indice_participant; ++i) {
         if (participeAuConcours(concours_id, i+1, a) == 1) ++nb;
@@ -115,6 +132,8 @@ int nbParticipants(const Activite *a, int concours_id) {
  * @return nombre de concours (entre 0 et NB_CONCOURS)
  */
 int nbConcours(const Activite *a, int participant_id) {
+    assert(contexteValide(a, participant_id, 1));
+
     int nb=0;
     for (int i=0; i<=a->dernier_indice_concours; ++i) {
         if (participeAuConcours(i+1, participant_id, a) == 1) ++nb;
@@ -129,6 +148,9 @@ int nbConcours(const Activite *a, int participant_id) {
  * @param resultat Le tableau de sortie qui va contenir le résultat
  */
 void concoursParticipants(const Activite *a, int concours_id, int resultat[NB_PARTICIPANTS]) {
+    assert(contexteValide(a, 1, concours_id));
+    assert(resultat != NULL);
+
     int nb_results = 0;
     for (int id=1; id <= a->dernier_indice_participant+1; ++id) {
 
@@ -148,7 +170,8 @@ void concoursParticipants(const Activite *a, int concours_id, int resultat[NB_PA
  * @param points Le tableau de sortie qui va contenir le résultat
  */
 void pointsParticipants(const Activite *a, int concours_id, unsigned int points[NB_PARTICIPANTS]) {
-    //Concours concours = a->concours[concours_id-1];
+    assert(contexteValide(a, 1, concours_id));
+    assert(points != NULL);
 
     for (int id=1; id <= a->dernier_indice_participant; ++id) {
 
@@ -232,6 +255,8 @@ void inscrire(Activite *a) {
     }
 
     // On ajoute la participant
+    assert(a->dernier_indice_participant + 1 < NB_PARTICIPANTS);
+
     ++a->dernier_indice_participant;
     int index = a->dernier_indice_participant;
 
@@ -279,6 +304,7 @@ void creer(Activite *a) {
 
 
     } else {
+        assert(a->dernier_indice_concours + 1 < NB_CONCOURS);
         ++ a->dernier_indice_concours;
         int concours_id = a->dernier_indice_concours+1;
 
@@ -303,6 +329,8 @@ void gain( Activite *a) {
     unsigned int participant_id, concours_id;
     int points ;
     scanf("%d%d%d", &participant_id, &concours_id, &points);
+
+
 
     int concours_index=concours_id-1;
     int participant_index=participant_id-1;
@@ -399,11 +427,12 @@ void scores( Activite *a) {
 
 /**
  * Trie par points décroissants, puis par identifiant croissant en cas d'égalité
- * @param list   Les identifiants des participants
+ * @param liste   Les identifiants des participants
  * @param points Les points correspondants
  * @param nb     Le nombre d'éléments
  */
-void sortvic(int list[], int points[], int nb) {
+void sortvic(int liste[], int points[], int nb) {
+    assert(liste != NULL && nb >= 0);
     for (int fin = nb - 1; fin > 0; --fin) {
         for (int index = 0; index < fin; ++index) {
             if (points[index] < points[index+1]) {
@@ -413,15 +442,15 @@ void sortvic(int list[], int points[], int nb) {
                 points[index] = tmp;
 
                 // On échange les identifiants
-                tmp = list[index+1];
-                list[index+1] = list[index];
-                list[index] = tmp;
+                tmp = liste[index+1];
+                liste[index+1] = liste[index];
+                liste[index] = tmp;
             } else if (points[index] == points[index+1]) {
-                if (list[index] > list[index+1]) {
+                if (liste[index] > liste[index+1]) {
                     // On échange les identifiants
-                    int tmp = list[index+1];
-                    list[index+1] = list[index];
-                    list[index] = tmp;
+                    int tmp = liste[index+1];
+                    liste[index+1] = liste[index];
+                    liste[index] = tmp;
                 }
             }
         }
@@ -436,6 +465,9 @@ void sortvic(int list[], int points[], int nb) {
  * @param points Tableau vide qui contiendra les points triés selon les participants
  */
 void participants_points_classement(const Activite *a,int concours_id, int participants[], int points[]) {
+    assert(contexteValide(a, 1, concours_id));
+    assert(participants != NULL && points != NULL);
+
     int nb = 0;
 
     // On récupère les participants inscrits au concours
@@ -459,6 +491,8 @@ void participants_points_classement(const Activite *a,int concours_id, int parti
  * @param places Tableau vide qui contiendra le placement des participant selon leurs points
  */
 void calculer_places(const int points[], int nb, int places[]) {
+    assert(points != NULL && places != NULL && nb >= 0 && nb <= NB_PARTICIPANTS);
+
     for (int i=0; i < nb; ++i) {
         // Si i est ex aequo avec i-1 ils ont la même place
         if (i > 0 && points[i] == points[i - 1]) {
@@ -481,6 +515,9 @@ void process_classement(const Activite *a, int concours_id, char resultat[NB_PAR
                         int sorted_participants[NB_PARTICIPANTS],
                         int sorted_points[NB_PARTICIPANTS]
                        ) {
+    assert(contexteValide(a, 1, concours_id));
+    assert(resultat != NULL);
+
     participants_points_classement(a, concours_id, sorted_participants, sorted_points);
 
     int nb = nbParticipants(a, concours_id);
@@ -602,6 +639,8 @@ void comparaison(const Activite *a) {
  * @param concours_id L'identifiant du concours
  */
 void snapshot(Activite *a, int concours_id) {
+    assert(contexteValide(a, 1, concours_id));
+
     int sorted_participants[NB_PARTICIPANTS];
     int sorted_points[NB_PARTICIPANTS];
     int places[NB_PARTICIPANTS];
@@ -625,6 +664,8 @@ void snapshot(Activite *a, int concours_id) {
  */
 int differencePlace(const Activite *a, int concours_id, int participant_id,
                     const int sorted_participants[], const int sorted_points[]) {
+    assert(contexteValide(a, participant_id, concours_id));
+    assert(sorted_participants != NULL && sorted_points != NULL);
 
     int ancienne = a->place_snapshot[participant_id][concours_id];
     if (ancienne == 0) return 0;           // pas de place enregistrée
